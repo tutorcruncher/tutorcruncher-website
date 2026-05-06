@@ -1,0 +1,47 @@
+# TutorCruncher
+
+> TutorCruncher is business-management software for tutoring, coaching and teaching agencies. It handles scheduling, invoicing, payments, CRM, contractor management, and integrations. Used by hundreds of agencies in 30+ countries.
+
+## Key information
+
+- **Industry**: Education / EdTech / SaaS
+- **Customers**: Tutoring agencies, coaching businesses, education providers
+- **Geographies**: UK, US, Australia, Canada, New Zealand, Ireland, and more
+- **Pricing model**: Pay-as-you-go (per-lesson fee), Startup, Enterprise tiers — see /pricing
+- **Auth integrations**: Email, Google, Apple
+- **Payment integrations**: Stripe, GoCardless
+- **Other integrations**: Xero, QuickBooks, Mailchimp, Zapier, Zoom, Daily.co, Lessonspace
+
+## Product
+
+- [Features](https://tutorcruncher.com/features) — overview of every feature
+- [Integrations](https://tutorcruncher.com/integrations) — full integration catalogue
+- [Solutions](https://tutorcruncher.com/solutions) — by use case
+- [Pricing](https://tutorcruncher.com/pricing) — tiers, fees, calculator
+- [Pricing calculator](https://tutorcruncher.com/pricing-calculator) — interactive estimate
+- [Reviews](https://tutorcruncher.com/reviews) — customer testimonials
+- [Blog](https://tutorcruncher.com/blog) — articles and product updates
+
+## Developer / API
+
+- [API documentation (Swagger UI)](https://secure.tutorcruncher.com/api/docs/) — interactive API reference
+- [API documentation (ReDoc)](https://secure.tutorcruncher.com/api/redoc/) — alternative reference layout
+- [OpenAPI 3 schema](https://secure.tutorcruncher.com/api/schema/) — machine-readable specification
+- [AI plugin manifest](https://tutorcruncher.com/.well-known/ai-plugin.json)
+
+The REST API exposes appointments (lessons), services (jobs), clients, contractors, students (service recipients), agents, invoices, payment orders, ad-hoc charges, balance updates, reports, and more. Authentication is per-Integration via `Authorization: Token <api_key>`.
+
+## Company
+
+- [Contact us](https://tutorcruncher.com/contact)
+- [Book a demo call](https://tutorcruncher.com/book-a-call)
+- Support: support@tutorcruncher.com
+
+## Legal
+
+- [Privacy policy](https://tutorcruncher.com/privacy-policy)
+- [Terms and conditions](https://tutorcruncher.com/user-terms-and-conditions.txt)
+
+## Sitemap
+
+Full URL list: https://tutorcruncher.com/sitemap.xml

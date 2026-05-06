@@ -7,6 +7,7 @@ import { ReadyToGetStarted } from "@/components/features/ready-to-get-started";
 import { formatMetaData } from "@/helpers/metaData";
 import { fetchHomePage } from "@/lib/prismic/home";
 import { RenderSchemas } from "@/components/schema";
+import { softwareApplicationSchema } from "@/schema/structured-data";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { meta } = await fetchHomePage();
@@ -21,7 +22,9 @@ export default async function Index() {
 
   return (
     <>
-      <RenderSchemas schemas={schemas} />
+      <RenderSchemas
+        schemas={[softwareApplicationSchema, ...(schemas ?? [])]}
+      />
       <HomePageHero heading={heading} intro={intro} heroImages={heroImages} />
       <SliceZone slices={slices} components={components} />
       <ReadyToGetStarted />

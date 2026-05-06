@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "TutorCruncher",
+  "name_for_model": "tutorcruncher",
+  "description_for_human": "TutorCruncher is business-management software for tutoring, coaching and teaching agencies. It handles scheduling, invoicing, payments, CRM, contractor management, integrations with Stripe and GoCardless, and a public REST API.",
+  "description_for_model": "TutorCruncher is a multi-tenant SaaS for tutoring agencies. Use the OpenAPI specification to read or modify clients, contractors, students, lessons, services, invoices, payment orders, ad-hoc charges, payments, reviews, and integrations. Authenticate by sending the header `Authorization: Token <api_key>`, where the API key is provisioned per Integration in the agency's Settings > API. The API enforces per-branch (tenant) scoping; every authenticated request is scoped to a single Branch.",
+  "auth": {
+    "type": "service_http",
+    "authorization_type": "bearer"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://secure.tutorcruncher.com/api/schema/"
+  },
+  "logo_url": "https://tutorcruncher.com/logo_full.png",
+  "contact_email": "support@tutorcruncher.com",
+  "legal_info_url": "https://tutorcruncher.com/privacy-policy"
+}
