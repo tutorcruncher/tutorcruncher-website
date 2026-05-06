@@ -1,4 +1,6 @@
-# website-new
+# tutorcruncher-website
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/38a77df5-c3ea-4a74-8d5b-d39d74e72f39/deploy-status)](https://app.netlify.com/projects/tutorcruncher/deploys)
 
 This is the repository for the TutorCruncher website, built using [Next.js](https://nextjs.org/) and integrated with [Prismic](https://prismic.io/) for content management.
 
@@ -14,8 +16,8 @@ This is the repository for the TutorCruncher website, built using [Next.js](http
 To get started with the project, clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/your-username/website-new.git
-cd website-new
+git clone https://github.com/tutorcruncher/tutorcruncher-website.git
+cd tutorcruncher-website
 npm install
 ```
 
