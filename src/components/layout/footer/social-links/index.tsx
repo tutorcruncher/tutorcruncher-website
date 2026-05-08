@@ -1,7 +1,6 @@
 import { IconButtonLink } from "@/components/ui/icon-button-link";
 import { Facebook } from "@/svgs/facebook";
 import { LinkedIn } from "@/svgs/linkedin";
-import { Github } from "@/svgs/github";
 
 export const socials = [
   {
@@ -9,12 +8,6 @@ export const socials = [
     href: "https://www.facebook.com/TutorCruncher",
     label: "Visit our Facebook page",
     icon: <Facebook />,
-  },
-  {
-    outlet: "Github",
-    href: "https://github.com/tutorcruncher/",
-    label: "Visit our github profile",
-    icon: <Github />,
   },
   {
     outlet: "LinkedIn",
