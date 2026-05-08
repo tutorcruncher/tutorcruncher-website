@@ -28,7 +28,7 @@ const CheckIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
   >
-    <circle cx="12" cy="12" r="9.08" fill="#7BC57B" />
+    <circle cx="12" cy="12" r="9.08" fill="#1d1914" />
     <path
       d="M8 12.5l2.8 2.8L16.5 9.5"
       stroke="#fff"
@@ -99,7 +99,7 @@ export const BobbinSignupPopup = () => {
       onClick={dismiss}
       role="dialog"
       aria-modal="true"
-      aria-labelledby="bobbin-popup-heading"
+      aria-label="Bobbin signup"
     >
       <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
         <button
@@ -113,21 +113,23 @@ export const BobbinSignupPopup = () => {
         <div className={styles.imageWrap}>
           <Image
             src="/img/bobbin-popup.png"
-            alt="Bobbin"
-            width={600}
-            height={600}
+            alt="Better lessons. Built with Bobbin."
+            width={918}
+            height={538}
             priority
           />
         </div>
         <div className={styles.content}>
-          <h2 id="bobbin-popup-heading" className={styles.heading}>
-            Your lessons just got better with Bobbin
-          </h2>
-          <div>
-            <p className={styles.intro}>
-              We&rsquo;ve just opened early release for TutorCruncher customers,
-              sign up today to supercharge your teaching.
-            </p>
+          <div className={styles.topGroup}>
+            <div className={styles.logo}>
+              <Image
+                src="/img/bobbin-logo.svg"
+                alt="Bobbin"
+                width={208}
+                height={52}
+                className={styles.logoImg}
+              />
+            </div>
             <ul className={styles.benefits}>
               {benefits.map((benefit) => (
                 <li key={benefit}>
@@ -144,7 +146,7 @@ export const BobbinSignupPopup = () => {
             className={styles.cta}
             onClick={handleCtaClick}
           >
-            Visit the website
+            Find out more
             <ArrowRightIcon />
           </a>
         </div>
