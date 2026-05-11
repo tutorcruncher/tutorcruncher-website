@@ -19,7 +19,6 @@ const addBlogUtm = (url: string) => {
   if (!url) return url;
   try {
     const parsed = new URL(url, "https://tutorcruncher.com");
-    if (!/(^|\.)tutorcruncher\.com$/.test(parsed.hostname)) return url;
     parsed.searchParams.set("utm_source", "tutorcruncherblog");
     return parsed.toString();
   } catch {
