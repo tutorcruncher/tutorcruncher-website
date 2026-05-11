@@ -2,6 +2,7 @@ import { SliceZone } from "@prismicio/react";
 import { Metadata } from "next/types";
 import { components } from "slices";
 
+import { BobbinSignupPopup } from "@/components/features/bobbin-signup-popup";
 import { HomePageHero } from "@/components/features/home-page-hero";
 import { ReadyToGetStarted } from "@/components/features/ready-to-get-started";
 import { formatMetaData } from "@/helpers/metaData";
@@ -25,6 +26,7 @@ export default async function Index() {
       <HomePageHero heading={heading} intro={intro} heroImages={heroImages} />
       <SliceZone slices={slices} components={components} />
       <ReadyToGetStarted />
+      <BobbinSignupPopup />
     </>
   );
 }
