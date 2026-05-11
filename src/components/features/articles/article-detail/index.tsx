@@ -15,6 +15,18 @@ import { CallToAction } from "../../call-to-action";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
 import { ArticlePage } from "@/lib/prismic/format/article";
 
+const addBlogUtm = (url: string) => {
+  if (!url) return url;
+  try {
+    const parsed = new URL(url, "https://tutorcruncher.com");
+    if (!/(^|\.)tutorcruncher\.com$/.test(parsed.hostname)) return url;
+    parsed.searchParams.set("utm_source", "tutorcruncherblog");
+    return parsed.toString();
+  } catch {
+    return url;
+  }
+};
+
 const components = {
   heading2: ({ text }) => {
     return <h2 id={createID(text)}>{text}</h2>;
@@ -45,9 +57,9 @@ const components = {
     if (text === "{{ blog_ctas() }}") {
       return (
         <div className={styles.buttonsContainer}>
-          <Action href="/book-a-call">Book a call </Action>
+          <Action href="/book-a-call?utm_source=tutorcruncherblog">Book a call </Action>
           <TrackingLink
-            url="https://secure.tutorcruncher.com/start/1/"
+            url="https://secure.tutorcruncher.com/start/1/?utm_source=tutorcruncherblog"
             text="Start a free trial"
           />
         </div>
@@ -59,9 +71,10 @@ const components = {
   hyperlink: ({ children, node }) => {
     const target = node.data.target === "_blank" ? "_blank" : "_self";
     const rel = target === "_blank" ? "noopener noreferrer" : null;
+    const href = addBlogUtm(node.data.url);
 
     return (
-      <a href={node.data.url} target={target} rel={rel}>
+      <a href={href} target={target} rel={rel}>
         {children}
       </a>
     );

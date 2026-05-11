@@ -10,7 +10,7 @@ import { CloseSvg } from "@/svgs/close";
 const COOKIE_NAME = "bobbinSignupPopup";
 const COOKIE_VALUE = "dismissed";
 const SHOW_DELAY_MS = 3000;
-const CTA_URL = "https://withbobbin.com";
+const CTA_URL = "https://withbobbin.com?utm_source=tutorcruncherpopup";
 
 const benefits = [
   "Create bespoke lesson plans in seconds",

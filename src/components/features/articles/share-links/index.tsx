@@ -52,7 +52,9 @@ export const ArticleShareLinks = ({
             href={social.href
               .replace(
                 "{url}",
-                encodeURIComponent(`https://tutorcruncher.com${pathname}`)
+                encodeURIComponent(
+                  `https://tutorcruncher.com${pathname}?utm_source=tutorcruncherblog`
+                )
               )
               .replace("{title}", encodeURIComponent(title))}
             ariaLabel={social.label}
