@@ -13,10 +13,9 @@ const SHOW_DELAY_MS = 3000;
 const CTA_URL = "https://withbobbin.com?utm_source=tutorcruncherpopup";
 
 const benefits = [
-  "Create bespoke lesson plans in seconds",
-  "Run online sessions and capture every thread in one place",
+  "Plan, deliver and report on lessons with ease",
   "Get parent-ready reporting in a cinch",
-  "Use data insights to track student progress with ease",
+  "Use smart analytics to run better lessons",
 ];
 
 const CheckIcon = () => (
@@ -130,6 +129,7 @@ export const BobbinSignupPopup = () => {
                 className={styles.logoImg}
               />
             </div>
+            <p className={styles.intro}>A new product from TutorCruncher that helps tutors:</p>
             <ul className={styles.benefits}>
               {benefits.map((benefit) => (
                 <li key={benefit}>
