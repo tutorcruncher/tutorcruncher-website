@@ -38,6 +38,14 @@ const nextConfig = {
   async redirects() {
     return [...integrationsRedirects, ...blogRedirects, ...miscellaneousRedirects];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/.well-known/openapi.yaml",
+        destination: "https://secure.tutorcruncher.com/api/schema/",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

@@ -26,6 +26,12 @@ export default async function RootLayout({ children }) {
           type="application/json"
           href="/.well-known/ai-plugin.json"
         />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="LLM-readable site summary"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

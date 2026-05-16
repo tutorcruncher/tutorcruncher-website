@@ -44,4 +44,25 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: Applebot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://tutorcruncher.com/sitemap.xml

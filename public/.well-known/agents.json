@@ -1,0 +1,158 @@
+{
+  "agentsJson": "0.1.0",
+  "info": {
+    "title": "TutorCruncher API — Agent Contracts",
+    "version": "0.1.0",
+    "description": "Agent-facing contracts for the TutorCruncher REST API. All operations require Bearer-token authentication (Authorization: Token <api_key>) and are automatically scoped to the Integration's Branch (tenant). The flows declared below are the read-only operations that are safe for autonomous agents to invoke. Mutating operations (create/update/destroy) are documented in the OpenAPI source but are intentionally NOT pre-approved as agent flows — they should require explicit per-tenant user consent."
+  },
+  "sources": [
+    {
+      "id": "tutorcruncher",
+      "path": "https://tutorcruncher.com/.well-known/openapi.yaml",
+      "description": "TutorCruncher REST API OpenAPI 3 specification (proxied from secure.tutorcruncher.com/api/schema/)."
+    }
+  ],
+  "overrides": [],
+  "flows": [
+    {
+      "id": "list_appointments",
+      "title": "List lessons",
+      "description": "List the authenticated Integration's lessons (appointments). Read-only.",
+      "actions": [
+        {
+          "id": "list_appointments_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "appointments_list"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "get_appointment",
+      "title": "Get a lesson",
+      "description": "Retrieve a single lesson by id. Read-only.",
+      "actions": [
+        {
+          "id": "get_appointment_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "appointments_retrieve"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "list_services",
+      "title": "List services",
+      "description": "List services (jobs) in the agency. Read-only.",
+      "actions": [
+        {
+          "id": "list_services_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "services_list"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "list_clients",
+      "title": "List clients",
+      "description": "List clients (parents/companies) for the authenticated branch. Read-only.",
+      "actions": [
+        {
+          "id": "list_clients_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "clients_list"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "get_client",
+      "title": "Get a client",
+      "description": "Retrieve a single client by id. Read-only.",
+      "actions": [
+        {
+          "id": "get_client_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "clients_retrieve"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "list_contractors",
+      "title": "List contractors",
+      "description": "List contractors (tutors) for the authenticated branch. Read-only.",
+      "actions": [
+        {
+          "id": "list_contractors_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "contractors_list"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "list_recipients",
+      "title": "List students",
+      "description": "List recipients (students) for the authenticated branch. Read-only.",
+      "actions": [
+        {
+          "id": "list_recipients_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "recipients_list"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "list_invoices",
+      "title": "List invoices",
+      "description": "List invoices for the authenticated branch. Read-only.",
+      "actions": [
+        {
+          "id": "list_invoices_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "invoices_list"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "list_payment_orders",
+      "title": "List payment orders",
+      "description": "List payment orders (contractor payouts) for the authenticated branch. Read-only.",
+      "actions": [
+        {
+          "id": "list_payment_orders_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "payment_orders_list"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    },
+    {
+      "id": "get_branch",
+      "title": "Get branch configuration",
+      "description": "Read the authenticated Branch's configuration (currency, region, branding). Read-only.",
+      "actions": [
+        {
+          "id": "get_branch_action",
+          "sourceId": "tutorcruncher",
+          "operationId": "branch_list"
+        }
+      ],
+      "links": [],
+      "fields": { "parameters": [], "requestBody": {} }
+    }
+  ]
+}
