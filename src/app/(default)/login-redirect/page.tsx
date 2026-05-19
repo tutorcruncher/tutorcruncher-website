@@ -17,7 +17,7 @@ const LoginRedirectPage = () => {
           (event: Record<string, string>) => event.event === "gtm.js"
         )
       ) {
-        window.location.href = "https://secure.tutorcruncher.com/";
+        window.location.href = "https://app.tutorcruncher.com/";
       } else {
         setTimeout(checkGA, 500);
       }

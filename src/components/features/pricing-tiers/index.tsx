@@ -97,7 +97,7 @@ export const PricingTiers = ({ region, pricing }) => {
                   Find out more
                 </Action>
                 <TrackingLink
-                  url={`https://secure.tutorcruncher.com/start/1/?plan=${tier.pricing}`}
+                  url={`https://app.tutorcruncher.com/start/1/?plan=${tier.pricing}`}
                   text="Get Started"
                   variant="solid"
                 />

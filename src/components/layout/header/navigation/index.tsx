@@ -119,7 +119,7 @@ export const Navigation = ({
           Login
         </Action>
         <TrackingLink
-          url="https://secure.tutorcruncher.com/start/1/"
+          url="https://app.tutorcruncher.com/start/1/"
           text="Start a free trial"
           variant="solid"
         />

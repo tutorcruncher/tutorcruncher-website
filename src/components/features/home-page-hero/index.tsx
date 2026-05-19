@@ -16,7 +16,7 @@ export const HomePageHero = ({ heading, intro, heroImages }) => {
           <div className={styles.buttons}>
             <Action href="/book-a-call">Book a call</Action>
             <TrackingLink
-              url="https://secure.tutorcruncher.com/start/1/"
+              url="https://app.tutorcruncher.com/start/1/"
               text="Start a free trial"
             />
           </div>

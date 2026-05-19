@@ -58,7 +58,7 @@ const components = {
         <div className={styles.buttonsContainer}>
           <Action href="/book-a-call?utm_source=tutorcruncherblog">Book a call </Action>
           <TrackingLink
-            url="https://secure.tutorcruncher.com/start/1/?utm_source=tutorcruncherblog"
+            url="https://app.tutorcruncher.com/start/1/?utm_source=tutorcruncherblog"
             text="Start a free trial"
           />
         </div>
