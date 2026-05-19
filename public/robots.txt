@@ -6,4 +6,32 @@ Disallow: /tutoring-online/
 Disallow: /us/blog/
 Disallow: /gb/blog/
 
+# AI / LLM crawlers — explicit allow so model-training and answer-engine bots
+# can index our marketing pages and discover the API spec at /.well-known/ai-plugin.json
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Applebot
+User-agent: Bingbot
+User-agent: Meta-ExternalAgent
+User-agent: FacebookBot
+User-agent: Bytespider
+User-agent: CCBot
+User-agent: Amazonbot
+User-agent: cohere-ai
+User-agent: Diffbot
+Disallow: /api/
+Disallow: /_next/
+Disallow: /tutoring-online/
+Disallow: /us/blog/
+Disallow: /gb/blog/
+Allow: /
+
 Sitemap: https://tutorcruncher.com/sitemap.xml

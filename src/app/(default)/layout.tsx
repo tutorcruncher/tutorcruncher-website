@@ -11,6 +11,7 @@ import IntercomClientComponent from "@/components/intercom/intercom";
 import CookieConsentBanner from "@/components/cookie-consent-banner";
 import Image from "next/image";
 import Script from "next/script";
+import { organizationSchema } from "@/schema/structured-data";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,21 @@ export default async function RootLayout({ children }) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/mnd5til.css" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="describedby"
+          type="application/json"
+          href="/.well-known/ai-plugin.json"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="LLM-readable site summary"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       <body>

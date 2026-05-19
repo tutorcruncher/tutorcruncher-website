@@ -1,0 +1,79 @@
+# TutorCruncher — Full Reference
+
+TutorCruncher is a business-management platform built specifically for tutoring agencies, coaching companies and education providers. It replaces a patchwork of spreadsheets, calendars, billing tools and CRMs with a single multi-tenant web application. The platform has been in continuous development since 2014 and is used by agencies across the UK, US, Australia, Canada, New Zealand and beyond.
+
+## What it does
+
+- **Scheduling**: book one-to-one and group lessons, set tutor availability, send reminders, run recurring lesson series, manage cancellations.
+- **CRM**: store clients (parents/companies), contractors (tutors), students (service recipients) and agents (affiliates) with custom fields, labels, and a configurable sales pipeline.
+- **Invoicing & payments**: generate invoices and proforma invoices automatically from lessons, accept card payments via Stripe (Standard or Connect), accept direct debit via GoCardless, handle multi-currency, run payouts to contractors, reconcile via Xero/QuickBooks.
+- **Reporting**: financial reports, contractor pay reports, client statements, lesson reports, custom exports, BigQuery export for advanced analytics.
+- **Communication**: branded email templates, SMS notifications, broadcasts, automated reminders.
+- **Public-facing**: a tutor-discovery website ("Socket") that agencies can embed, plus public profiles and an enquiry form.
+- **API & integrations**: a documented REST API, webhooks (via the Chronos service), Zapier, and direct integrations with Stripe, GoCardless, Xero, QuickBooks, Mailchimp, Zoom, Daily.co, Lessonspace.
+
+## Pricing tiers
+
+TutorCruncher offers three tiers. All tiers include unlimited users, unlimited lessons, all features, and standard support.
+
+1. **Pay-as-you-go (PAYG)** — low monthly base, charged per completed lesson. Best for new or low-volume agencies.
+2. **Startup** — higher monthly base, fewer per-lesson fees. Best for established agencies running 100+ lessons/month.
+3. **Enterprise** — flat fee for very large agencies. Includes dedicated account management.
+
+Per-lesson and payment-processing fees vary by region and currency. See https://tutorcruncher.com/pricing for live numbers and https://tutorcruncher.com/pricing-calculator for an interactive estimate.
+
+## API
+
+The REST API at `https://secure.tutorcruncher.com/api/` exposes nearly every resource in the system:
+
+- `/api/appointments/` — lessons (create, list, update, cancel)
+- `/api/services/` — services / jobs
+- `/api/clients/`, `/api/contractors/`, `/api/recipients/`, `/api/agents/` — the four role types
+- `/api/invoices/`, `/api/proforma-invoices/`, `/api/payment-orders/` — billing
+- `/api/adhoccharges/`, `/api/ahc-categories/` — ad-hoc charges
+- `/api/balance-updates/` — manual balance adjustments
+- `/api/reports/`, `/api/reviews/`, `/api/tasks/`, `/api/notes/`, `/api/labels/` — supporting resources
+- `/api/branch/`, `/api/integration/` — agency configuration
+- `/api/enquiry/` — public enquiry submission (used by Socket and external tutor sites)
+- `/api/webhook/` — webhook activation/deactivation
+
+Authentication is per-Integration. Generate an API key in the agency's Settings > API > Integrations, then include `Authorization: Token <api_key>` on every request. Each integration is scoped to one Branch (tenant).
+
+The full machine-readable schema lives at `https://secure.tutorcruncher.com/api/schema/`. Interactive Swagger UI is at `/api/docs/` and ReDoc is at `/api/redoc/`.
+
+Webhooks are delivered via the Chronos service and signed with HMAC-SHA256 using the integration's API key (sent in the `Webhook-Signature` header). Webhook events fire on create/update/delete of all major resources.
+
+## Integrations
+
+- **Payments**: Stripe (Standard accounts, Connect, GBP/USD/EUR/AUD/CAD/NZD/SEK), GoCardless (UK, EU, AU, NZ direct debit), bank transfer
+- **Accounting**: Xero, QuickBooks Online
+- **Marketing/comms**: Mailchimp Transactional (Mandrill), Intercom, Zapier (1000+ apps)
+- **Video**: Zoom, Daily.co, Lessonspace, Microsoft Teams
+- **SSO**: Google, Apple
+- **Calendar**: Google Calendar, iCal feeds
+
+## Multi-tenancy
+
+Every account ("Agency") has one or more Branches. Branches are the unit of tenant isolation: data, settings, branding, currencies, payment processors, and users are all scoped to a single Branch. The API enforces this — every authenticated request is automatically filtered to the requesting Integration's Branch.
+
+## Compliance and security
+
+- GDPR-compliant: data residency in EU/UK on request, full data export and erasure tools
+- PCI compliance handled via Stripe (no card numbers ever touch TutorCruncher servers)
+- Optional SSO (Google, Apple) and 2FA via authenticator apps
+- Audit log (Action history) on every meaningful action
+
+## Support and contact
+
+- Email: support@tutorcruncher.com
+- Help centre: https://help.tutorcruncher.com (linked from in-product help icons)
+- Book a demo: https://tutorcruncher.com/book-a-call
+- Status: monitored internally; outages reported via in-app banners and email
+
+## Where to read more
+
+- Marketing site: https://tutorcruncher.com
+- App: https://secure.tutorcruncher.com
+- API docs: https://secure.tutorcruncher.com/api/docs/
+- Privacy policy: https://tutorcruncher.com/privacy-policy
+- Sitemap: https://tutorcruncher.com/sitemap.xml

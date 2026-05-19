@@ -1,0 +1,5 @@
+Contact: mailto:support@tutorcruncher.com
+Expires: 2027-05-15T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://tutorcruncher.com/.well-known/security.txt
+Policy: https://tutorcruncher.com/privacy-policy
