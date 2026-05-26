@@ -72,36 +72,65 @@ interface PricingTierData {
   description: string;
 }
 
+const REGION_CURRENCY: Record<string, string> = {
+  gb: "GBP",
+  us: "USD",
+  eu: "EUR",
+  au: "AUD",
+  ca: "CAD",
+};
+
+const ISO_4217 = /^[A-Z]{3}$/;
+
+function toNumericPrice(value: number | string): string | null {
+  if (typeof value === "number") return Number.isFinite(value) ? String(value) : null;
+  // Prismic base_price is free text — strip currency symbols, commas, "/month" suffixes, etc.
+  const match = value.replace(/,/g, "").match(/-?\d+(?:\.\d+)?/);
+  return match ? match[0] : null;
+}
+
 export function buildProductSchema(
   region: string,
   currency: string | null | undefined,
   tiers: PricingTierData[],
 ) {
-  const priceCurrency = (currency ?? "GBP").toUpperCase();
+  const fromRegion = REGION_CURRENCY[region.toLowerCase()];
+  const fromInput = currency?.toUpperCase();
+  const priceCurrency =
+    fromRegion ?? (fromInput && ISO_4217.test(fromInput) ? fromInput : "GBP");
   return {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "SoftwareApplication",
     name: `TutorCruncher (${region.toUpperCase()})`,
     description:
       "Business-management software for tutoring agencies. Three tiers — Pay-as-you-go, Startup and Enterprise — with unlimited users and unlimited lessons on every tier.",
-    brand: { "@id": `${SITE_URL}/#organization` },
+    image: `${SITE_URL}/logo_full.png`,
+    applicationCategory: "BusinessApplication",
+    applicationSubCategory: "Education Management",
+    operatingSystem: "Web",
+    publisher: { "@id": `${SITE_URL}/#organization` },
     url: `${SITE_URL}/pricing/${region}`,
     offers: tiers
-      .filter((t) => t.basePrice != null && t.basePrice !== "")
-      .map((tier) => ({
-        "@type": "Offer",
-        name: tier.name,
-        description: tier.description,
-        price: String(tier.basePrice),
-        priceCurrency,
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: String(tier.basePrice),
+      .map((tier) => {
+        if (tier.basePrice == null || tier.basePrice === "") return null;
+        const price = toNumericPrice(tier.basePrice);
+        if (price === null) return null;
+        return {
+          "@type": "Offer",
+          name: tier.name,
+          description: tier.description,
+          price,
           priceCurrency,
-          unitText: "MONTH",
-        },
-        availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing/${region}`,
-      })),
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price,
+            priceCurrency,
+            unitText: "MONTH",
+          },
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/pricing/${region}`,
+        };
+      })
+      .filter((o): o is NonNullable<typeof o> => o !== null),
   };
 }
