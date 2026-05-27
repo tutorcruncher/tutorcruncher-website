@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import Image from "next/image";
 
 import { Action } from "@/components/ui/action";
 import { Heading } from "@/components/ui/heading";
@@ -46,20 +45,6 @@ export const ReadyToGetStarted = () => {
               </p>
             </PillCard>
           </div>
-        </div>
-        <div className={styles.artWork}>
-          <Image
-            src={"/img/svg/ready-one.svg"}
-            alt=""
-            width={843}
-            height={398}
-          />
-          <Image
-            src={"/img/svg/ready-two.svg"}
-            alt=""
-            width={288}
-            height={263}
-          />
         </div>
       </div>
     </div>

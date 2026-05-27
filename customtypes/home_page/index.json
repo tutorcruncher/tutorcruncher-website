@@ -58,6 +58,9 @@
             },
             "articles": {
               "type": "SharedSlice"
+            },
+            "faqs": {
+              "type": "SharedSlice"
             }
           }
         }

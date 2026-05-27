@@ -1,5 +1,6 @@
 import { Action } from "../../ui/action";
 import { Heading } from "../../ui/heading";
+import { TrustpilotRating } from "../../ui/trustpilot-rating";
 import styles from "./home-page-hero.module.scss";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
 import { PrismicNextImage } from "@prismicio/next";
@@ -9,16 +10,22 @@ export const HomePageHero = ({ heading, intro, heroImages }) => {
     <div className={styles.hero}>
       <div className={styles.inner}>
         <div className={styles.text}>
+          <p className={styles.eyebrow}>
+            Trusted by 1,800+ tutoring companies in the UK, US, and worldwide
+          </p>
           <Heading size="large" variant="div" noMargin>
             {heading}
           </Heading>
           <p className={styles.tagLine}>{intro}</p>
           <div className={styles.buttons}>
-            <Action href="/book-a-call">Book a call</Action>
             <TrackingLink
               url="https://app.tutorcruncher.com/start/1/"
               text="Start a free trial"
             />
+            <Action href="/book-a-call">Book a demo</Action>
+          </div>
+          <div className={styles.trust}>
+            <TrustpilotRating />
           </div>
         </div>
         <div className={styles.animations}>

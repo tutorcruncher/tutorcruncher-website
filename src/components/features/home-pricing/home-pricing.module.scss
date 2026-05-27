@@ -1,0 +1,68 @@
+.tiers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: grid(6);
+
+  @include md-display {
+    align-items: stretch;
+    flex-direction: row;
+  }
+}
+
+.tier {
+  display: flex;
+  flex-direction: column;
+  gap: grid(6);
+  max-width: 400px;
+  padding: grid(8);
+  border: 2px solid $navy-blue;
+  border-radius: $border-radius--medium;
+  width: 100%;
+  background: linear-gradient(to top, #d5f3ff, #fff);
+}
+
+.header {
+  border-bottom: 1px solid $navy-blue-15;
+  padding-bottom: grid(3);
+}
+
+.name {
+  font-size: grid(8);
+  line-height: 1.2;
+  margin: 0 0 grid(2);
+}
+
+.description {
+  margin: 0;
+  font-size: $font-size--base;
+}
+
+.pricing {
+  line-height: 1.2;
+}
+
+.startingFrom {
+  margin: 0 0 grid(2);
+  font-size: $font-size--base;
+}
+
+.price {
+  margin: 0;
+  font-size: grid(14);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.cycle {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: grid(3);
+  margin-top: auto;
+}
