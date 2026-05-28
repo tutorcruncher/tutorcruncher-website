@@ -3,7 +3,9 @@ import { Metadata } from "next/types";
 import { components } from "slices";
 
 import { BobbinSignupPopup } from "@/components/features/bobbin-signup-popup";
+import { CustomerLogos } from "@/components/features/customer-logos";
 import { HomePageHero } from "@/components/features/home-page-hero";
+import { HomePricing } from "@/components/features/home-pricing";
 import { ReadyToGetStarted } from "@/components/features/ready-to-get-started";
 import { formatMetaData } from "@/helpers/metaData";
 import { fetchHomePage } from "@/lib/prismic/home";
@@ -27,7 +29,9 @@ export default async function Index() {
         schemas={[softwareApplicationSchema, ...(schemas ?? [])]}
       />
       <HomePageHero heading={heading} intro={intro} heroImages={heroImages} />
+      <CustomerLogos />
       <SliceZone slices={slices} components={components} />
+      <HomePricing />
       <ReadyToGetStarted />
       <BobbinSignupPopup />
     </>

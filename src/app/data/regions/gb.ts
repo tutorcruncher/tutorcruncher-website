@@ -17,7 +17,7 @@ export const gb = {
     enterprise: {
       offline_percentage: 0.5,
       online_percentage: 2.1,
-      base_price: 700,
+      base_price: 200,
     },
     enterprise_limit: 1000000,
     support: {
