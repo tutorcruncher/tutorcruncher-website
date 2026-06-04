@@ -1,0 +1,56 @@
+.subheading {
+  text-align: center;
+  margin: grid(3) 0 0;
+  font-size: $font-size--large;
+  color: $navy-blue-75;
+}
+
+.grid {
+  display: grid;
+  gap: grid(6);
+  margin-top: grid(10);
+
+  @include sm-display {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include lg-display {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: grid(3);
+  padding: grid(6);
+  border: 2px solid $navy-blue;
+  border-radius: $border-radius--medium;
+  background-color: $white;
+  height: 100%;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: grid(11);
+  height: grid(11);
+  border-radius: $border-radius--small;
+  background-color: $baby-blue;
+  color: $steel-blue;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: $font-size--xlarge;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.description {
+  margin: 0;
+  font-size: $font-size--base;
+  color: $navy-blue-75;
+}
