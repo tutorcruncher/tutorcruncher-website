@@ -21,6 +21,7 @@ const Stats = ({ slice }: StatsProps): JSX.Element => {
       image: stat.image,
       percent: stat.percent,
       description: stat.description,
+      source: stat.source,
     };
   });
 

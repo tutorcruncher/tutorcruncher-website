@@ -7,6 +7,7 @@ interface Stat {
   image: ImageField;
   percent: string;
   description: string;
+  source?: string;
 }
 
 export interface StatsProps {

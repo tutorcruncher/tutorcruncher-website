@@ -48,6 +48,13 @@
                   "label": "Description",
                   "placeholder": ""
                 }
+              },
+              "source": {
+                "type": "Text",
+                "config": {
+                  "label": "Source",
+                  "placeholder": "Context/source for this statistic"
+                }
               }
             }
           }

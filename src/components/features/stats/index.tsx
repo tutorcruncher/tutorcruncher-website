@@ -18,7 +18,7 @@ export const Stats = ({ heading, stats }: StatsProps) => {
       }
     >
       <div className={styles.statsGrid}>
-        {stats.map(({ image, percent, description }, index) => (
+        {stats.map(({ image, percent, description, source }, index) => (
           <div
             key={description}
             className={clsx(styles.statsCard, "animate")}
@@ -29,6 +29,7 @@ export const Stats = ({ heading, stats }: StatsProps) => {
               {percent}
             </Heading>
             <p className={styles.description}>{description}</p>
+            {source ? <p className={styles.source}>{source}</p> : null}
           </div>
         ))}
       </div>

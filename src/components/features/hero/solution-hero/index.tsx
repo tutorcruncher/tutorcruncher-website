@@ -75,11 +75,22 @@ export const SolutionHero = ({ heading, pricingTier, intro }: HeroProps) => {
         className={clsx(styles.buttonsContainer, "animate")}
         style={{ animationDelay: "0.6s" }}
       >
-        <Action href="/book-a-call">Book a call </Action>
-        <TrackingLink
-          url="https://app.tutorcruncher.com/start/1/"
-          text="Start a free trial"
-        />
+        {pricingTier === "enterprise" ? (
+          // Enterprise focuses on booking a call only (no free trial).
+          <Action href="/book-a-call">Book a call</Action>
+        ) : (
+          // PAYG / Startup lead with the free trial; PAYG books a "demo".
+          <>
+            <TrackingLink
+              url="https://app.tutorcruncher.com/start/1/"
+              text="Start a free trial"
+              variant="solid"
+            />
+            <Action href="/book-a-call" variant="outline">
+              {pricingTier === "payg" ? "Book a demo" : "Book a call"}
+            </Action>
+          </>
+        )}
       </div>
     </Body>
   );

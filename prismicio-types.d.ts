@@ -3029,6 +3029,16 @@ export interface StatsSliceDefaultPrimaryStatsItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   description: prismic.KeyTextField;
+
+  /**
+   * Source field in *Stats → Default → Primary → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Context/source for this statistic
+   * - **API ID Path**: stats.default.primary.stats[].source
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  source: prismic.KeyTextField;
 }
 
 /**
@@ -3652,6 +3662,16 @@ export type TextImageGridSlice = prismic.SharedSlice<
  * Primary content in *Video → Default → Primary*
  */
 export interface YoutubeSliceDefaultPrimary {
+  /**
+   * Heading field in *Video → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Optional heading shown above the video
+   * - **API ID Path**: youtube.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
   /**
    * Video Url field in *Video → Default → Primary*
    *
