@@ -13,7 +13,7 @@ export const fetchArticles = async (
 ): Promise<ArticleDocument<string>[]> => {
   const client = createClient();
   try {
-    return await client.getAllByType("article", {
+    const articles = await client.getAllByType("article", {
       filters,
       limit,
       orderings: {
@@ -22,6 +22,13 @@ export const fetchArticles = async (
       },
       fetchLinks: "category.title",
     });
+
+    // Pinned/featured articles surface at the top, keeping the existing
+    // publish-date order within the pinned and non-pinned groups.
+    return articles.sort(
+      (a, b) =>
+        Number(Boolean(b.data.featured)) - Number(Boolean(a.data.featured))
+    );
   } catch (error) {
     console.error("Error fetching articles:", error);
     return [];

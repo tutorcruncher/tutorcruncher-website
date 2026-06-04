@@ -1,0 +1,25 @@
+{
+  "id": "table",
+  "type": "SharedSlice",
+  "name": "Table",
+  "description": "Table",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "table": {
+          "type": "Table",
+          "config": {
+            "label": "Table"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

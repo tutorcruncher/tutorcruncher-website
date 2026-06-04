@@ -28,10 +28,34 @@
           "placeholder": ""
         }
       },
+      "author": {
+        "type": "Text",
+        "config": {
+          "label": "Author / Byline",
+          "placeholder": "Defaults to 'The TutorCruncher Team' if left blank"
+        }
+      },
+      "featured": {
+        "type": "Boolean",
+        "config": {
+          "label": "Pin to featured / top",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "featured_image": {
         "type": "Image",
         "config": {
-          "label": "Featured Image",
+          "label": "Featured Image (shown in the article)",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "thumbnail_image": {
+        "type": "Image",
+        "config": {
+          "label": "Thumbnail Image (shown in listings/cards)",
           "constraint": {},
           "thumbnails": []
         }

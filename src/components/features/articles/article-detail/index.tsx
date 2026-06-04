@@ -1,5 +1,6 @@
-import { PrismicRichText } from "@prismicio/react";
+import { PrismicRichText, SliceZone } from "@prismicio/react";
 
+import { components as sliceComponents } from "slices";
 import { LatestPosts } from "@/components/Posts/LatestPosts";
 import { Action } from "@/components/ui/action";
 import { Heading } from "@/components/ui/heading";
@@ -110,7 +111,9 @@ export const ArticleDetail = ({
           {content.title}
         </Heading>
         <div className={styles.dateAndShareWraper}>
-          {publishedDate}
+          <span className={styles.byline}>
+            By {content.author} · {publishedDate}
+          </span>
           <div className={styles.hideOnMobile}>
             <ArticleShareLinks title={content.title} variant="white" />
           </div>
@@ -147,6 +150,7 @@ export const ArticleDetail = ({
           <div>
             <article className="main-content">
               <PrismicRichText field={content.body} components={components} />
+              <SliceZone slices={content.slices} components={sliceComponents} />
             </article>
             <div className={styles.dateAndShareWraper}>
               <div className={styles.hideOnMobile}>{publishedDate}</div>

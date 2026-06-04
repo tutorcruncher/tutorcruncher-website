@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@next/third-parties": "^14.2.7",
-    "@prismicio/client": "^7.15.1",
-    "@prismicio/next": "^2.0.0",
-    "@prismicio/react": "^3.0.0",
+    "@prismicio/client": "^7.21.8",
+    "@prismicio/next": "^2.2.4",
+    "@prismicio/react": "^3.4.1",
     "@prismicio/types": "^0.2.9",
     "@react-google-maps/api": "^2.20.3",
     "@sentry/nextjs": "^8.45.0",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
-    "@slicemachine/adapter-next": "^0.3.66",
+    "@slicemachine/adapter-next": "^0.3.96",
     "@types/react": "18.2.33",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.57.1",
@@ -50,13 +50,13 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.13.0",
+    "husky": "^9.0.11",
     "install": "^0.13.0",
     "npm": "^10.5.2",
     "postcss": "^8.4.31",
     "prettier": "^3.3.3",
-    "slice-machine-ui": "^2.12.3",
+    "slice-machine-ui": "^2.21.3",
     "typescript": "5.5.4",
-    "typescript-eslint": "^8.17.0",
-    "husky": "^9.0.11"
+    "typescript-eslint": "^8.17.0"
   }
 }

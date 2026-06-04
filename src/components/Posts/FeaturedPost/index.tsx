@@ -5,7 +5,7 @@ import { Heading } from "@/components/ui/heading";
 import { Tag } from "@/components/ui/tag";
 
 import { ArticleDocument } from "../../../../prismicio-types";
-import styles from "./post.module.scss";
+import styles from "./featured-post.module.scss";
 
 const DisplayDate = ({ publishDate, updateDate }) => {
   const publish = new Date(publishDate);
@@ -13,13 +13,13 @@ const DisplayDate = ({ publishDate, updateDate }) => {
 
   const isUpdated = update > publish;
 
-  const formattedDate = new Date(isUpdated ? updateDate : publishDate)
-    .toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "2-digit",
-    })
-    .replace(/ /g, " ");
+  const formattedDate = new Date(
+    isUpdated ? updateDate : publishDate
+  ).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "2-digit",
+  });
 
   return (
     <p className={styles.date}>
@@ -28,47 +28,41 @@ const DisplayDate = ({ publishDate, updateDate }) => {
   );
 };
 
-const TrimmedRichText = ({ content }) => {
+const Excerpt = ({ content }) => {
   const firstParagraph = content.find((block) => block.type === "paragraph");
 
   if (!firstParagraph) return null;
 
-  const textContent = firstParagraph.text;
+  const trimmedText =
+    firstParagraph.text.split(" ").slice(0, 40).join(" ") + "...";
 
-  const wordsArray = textContent.split(" ");
-  const trimmedText = wordsArray.slice(0, 20).join(" ") + "...";
-
-  return <p>{trimmedText}</p>;
+  return <p className={styles.excerpt}>{trimmedText}</p>;
 };
 
-export const Post = ({ post }: { post: ArticleDocument }) => {
+export const FeaturedPost = ({ post }: { post: ArticleDocument }) => {
   const { data } = post;
   // @ts-expect-error - category does not exist on the article by standard
   const category = data.category?.data?.title;
+
   return (
-    <Link
-      href={`/blog/${post.uid}`}
-      key={post.id}
-      className={styles.postListItem}
-    >
+    <Link href={`/blog/${post.uid}`} className={styles.featuredPost}>
       <div className={styles.imageWrapper}>
         <PrismicNextImage
-          field={data.thumbnail_image?.url ? data.thumbnail_image : data.featured_image}
+          field={
+            data.thumbnail_image?.url ? data.thumbnail_image : data.featured_image
+          }
           fallbackAlt=""
         />
       </div>
       <div className={styles.inner}>
         <div className={styles.tags}>
-          <Tag
-            key={`${post.id} - ${category}`}
-            title={category}
-            noHoverEffect
-          />
+          <span className={styles.featuredBadge}>Featured</span>
+          {category ? <Tag title={category} noHoverEffect /> : null}
         </div>
-        <Heading size="xxsmall" className={styles.title} variant="h2" noMargin>
+        <Heading size="large" className={styles.title} variant="h2" noMargin>
           {data.title}
         </Heading>
-        <TrimmedRichText content={data.content} />
+        <Excerpt content={data.content} />
         <DisplayDate
           publishDate={data.publishDate}
           updateDate={data.updated_date}

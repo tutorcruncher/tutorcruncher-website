@@ -1,0 +1,84 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "table": {
+        "__TYPE__": "TableContent",
+        "value": {
+          "head": {
+            "rows": [
+              {
+                "key": "head-row-1",
+                "cells": [
+                  {
+                    "key": "head-cell-1",
+                    "type": "header",
+                    "content": {
+                      "__TYPE__": "StructuredTextContent",
+                      "value": [
+                        {
+                          "type": "paragraph",
+                          "content": { "text": "Plan" }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": "head-cell-2",
+                    "type": "header",
+                    "content": {
+                      "__TYPE__": "StructuredTextContent",
+                      "value": [
+                        {
+                          "type": "paragraph",
+                          "content": { "text": "Price" }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "body": {
+            "rows": [
+              {
+                "key": "body-row-1",
+                "cells": [
+                  {
+                    "key": "body-cell-1",
+                    "type": "data",
+                    "content": {
+                      "__TYPE__": "StructuredTextContent",
+                      "value": [
+                        {
+                          "type": "paragraph",
+                          "content": { "text": "Pay as you go" }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": "body-cell-2",
+                    "type": "data",
+                    "content": {
+                      "__TYPE__": "StructuredTextContent",
+                      "value": [
+                        {
+                          "type": "paragraph",
+                          "content": { "text": "Free to start" }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "items": []
+  }
+]

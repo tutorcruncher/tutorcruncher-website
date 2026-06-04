@@ -1,6 +1,11 @@
-import { ArticleDocument, Simplify } from "../../../../prismicio-types";
+import {
+  ArticleDocument,
+  ArticleDocumentDataSlicesSlice,
+  Simplify,
+} from "../../../../prismicio-types";
 import { PrismicNextImage } from "@prismicio/next";
 import { RichTextField } from "@prismicio/types";
+import { SliceZone } from "@prismicio/client";
 
 export interface ArticleDocumentWithCategory extends Simplify<ArticleDocument> {
   data: ArticleDocument["data"] & {
@@ -13,11 +18,15 @@ export interface ArticleDocumentWithCategory extends Simplify<ArticleDocument> {
   };
 }
 
+export const DEFAULT_AUTHOR = "The TutorCruncher Team";
+
 export interface ArticlePage {
   content: {
     title: string;
+    author: string;
     url: string;
     body: RichTextField;
+    slices: SliceZone<ArticleDocumentDataSlicesSlice>;
     createdDate: Date;
     publishedDate: Date;
     updatedDate: Date;
@@ -42,8 +51,10 @@ export const formatArticlePage = (
 
   const content = {
     title: data.title,
+    author: data.author || DEFAULT_AUTHOR,
     url: `/blog/${page.uid}`,
     body: data.content,
+    slices: data.slices,
     createdDate: new Date(page.first_publication_date),
     publishedDate: new Date(data.publishDate),
     updatedDate: data.updated_date

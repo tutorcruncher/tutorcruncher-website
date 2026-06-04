@@ -37,10 +37,10 @@ export const generateArticleSchema = (article: ArticlePage) => {
     name: content.title,
     thumbnailUrl: image.url,
     author: {
-      "@type": "Person",
-      name: "TutorCruncher",
+      "@type": "Organization",
+      name: content.author,
     },
-    creator: ["TutorCruncher"],
+    creator: [content.author],
     publisher: {
       "@type": "Organization",
       name: "TutorCruncher",

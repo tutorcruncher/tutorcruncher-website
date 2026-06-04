@@ -33,7 +33,30 @@ interface ArticleDocumentData {
   title: prismic.KeyTextField;
 
   /**
-   * Featured Image field in *Article*
+   * Author / Byline field in *Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Defaults to 'The TutorCruncher Team' if left blank
+   * - **API ID Path**: article.author
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  author: prismic.KeyTextField;
+
+  /**
+   * Pin to featured / top field in *Article*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: article.featured
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  featured: prismic.BooleanField;
+
+  /**
+   * Featured Image (shown in the article) field in *Article*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -42,6 +65,17 @@ interface ArticleDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   featured_image: prismic.ImageField<never>;
+
+  /**
+   * Thumbnail Image (shown in listings/cards) field in *Article*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.thumbnail_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  thumbnail_image: prismic.ImageField<never>;
 
   /**
    * Publish Date field in *Article*
@@ -642,7 +676,8 @@ type HomePageDocumentDataSlicesSlice =
   | TestimonialsSlice
   | LogosSlice
   | TextImageGridSlice
-  | ArticlesSlice;
+  | ArticlesSlice
+  | FaqsSlice;
 
 /**
  * Item in *Home Page → Schemas*
@@ -3049,6 +3084,47 @@ type StatsSliceVariation = StatsSliceDefault;
 export type StatsSlice = prismic.SharedSlice<"stats", StatsSliceVariation>;
 
 /**
+ * Primary content in *Table → Default → Primary*
+ */
+export interface TableSliceDefaultPrimary {
+  /**
+   * Table field in *Table → Default → Primary*
+   *
+   * - **Field Type**: Table
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.default.primary.table
+   */
+  table: unknown;
+}
+
+/**
+ * Default variation for Table Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TableSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TableSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Table*
+ */
+type TableSliceVariation = TableSliceDefault;
+
+/**
+ * Table Shared Slice
+ *
+ * - **API ID**: `table`
+ * - **Description**: Table
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TableSlice = prismic.SharedSlice<"table", TableSliceVariation>;
+
+/**
  * Item in *TeamList → Default → Primary → Team Members*
  */
 export interface TeamListSliceDefaultPrimaryTeamMembersItem {
@@ -3765,6 +3841,10 @@ declare module "@prismicio/client" {
       StatsSliceDefaultPrimary,
       StatsSliceVariation,
       StatsSliceDefault,
+      TableSlice,
+      TableSliceDefaultPrimary,
+      TableSliceVariation,
+      TableSliceDefault,
       TeamListSlice,
       TeamListSliceDefaultPrimaryTeamMembersItem,
       TeamListSliceDefaultPrimary,

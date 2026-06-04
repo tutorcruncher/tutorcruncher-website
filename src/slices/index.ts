@@ -13,6 +13,7 @@ export const components = {
   logos: dynamic(() => import("./Logos")),
   markdown: dynamic(() => import("./Markdown")),
   stats: dynamic(() => import("./Stats")),
+  table: dynamic(() => import("./Table")),
   team_list: dynamic(() => import("./TeamList")),
   testimonials: dynamic(() => import("./Testimonials")),
   text_image_grid: dynamic(() => import("./AlternatingGrid")),
