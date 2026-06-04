@@ -5,6 +5,7 @@ import { formatMetaData } from "@/helpers/metaData";
 import { TutoringCalculator } from "@/components/features/tutoring-calculator";
 import { fetchTutoringCalculatorPage } from "@/lib/prismic/tutoring-calculator";
 import { RenderSchemas } from "@/components/schema";
+import { ReadyToGetStarted } from "@/components/features/ready-to-get-started";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { meta } = await fetchTutoringCalculatorPage();
@@ -22,6 +23,7 @@ export default async function TutoringCalculatorPage() {
       <RenderSchemas schemas={schemas} />
       <Hero heading={heading} headingVariant="div" />
       <TutoringCalculator intro={intro} content={content} />
+      <ReadyToGetStarted />
     </>
   );
 }
