@@ -3,6 +3,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 import { TestimonialSlider } from "@/components/features/testimonials/testimonial-slider";
 import { formatTestimonials } from "@/lib/prismic/format/testimonials";
+import { BackgroundColour } from "@/types/backgroundColor";
 import { createClient } from "prismicio";
 
 /**
@@ -36,6 +37,10 @@ const Testimonials = async ({ slice }: TestimonialsProps) => {
 
   const formattedTestimonials = formatTestimonials(testimonials);
 
+  const background =
+    (slice.primary.background_colour?.toLowerCase() as BackgroundColour) ||
+    "blue";
+
   return (
     <TestimonialSlider
       heading={
@@ -44,6 +49,7 @@ const Testimonials = async ({ slice }: TestimonialsProps) => {
         ) : undefined
       }
       testimonials={formattedTestimonials}
+      background={background}
     />
   );
 };

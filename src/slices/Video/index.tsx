@@ -4,6 +4,7 @@ import { JSX } from "react";
 
 import { Heading } from "@/components/ui/heading";
 import { VideoPlayerContainer } from "@/components/features/video";
+import { BackgroundColour } from "@/types/backgroundColor";
 /**
  * Props for `Youtube`.
  */
@@ -19,6 +20,10 @@ const Youtube = ({ slice }: YoutubeProps): JSX.Element => {
     </Heading>
   ) : undefined;
 
+  const background =
+    (slice.primary.background_colour?.toLowerCase() as BackgroundColour) ||
+    "white";
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -28,6 +33,7 @@ const Youtube = ({ slice }: YoutubeProps): JSX.Element => {
         videoUrl={slice.primary.video_url}
         placeholderImage={slice.primary.placeholder_image}
         heading={heading}
+        background={background}
       />
     </section>
   );

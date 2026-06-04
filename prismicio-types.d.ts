@@ -3046,6 +3046,17 @@ export interface StatsSliceDefaultPrimaryStatsItem {
  */
 export interface StatsSliceDefaultPrimary {
   /**
+   * Background colour field in *Stats → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Cream
+   * - **API ID Path**: stats.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
+
+  /**
    * Heading field in *Stats → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -3340,6 +3351,17 @@ export interface TestimonialsSliceDefaultPrimaryTestimonialsItem {
  * Primary content in *Testimonials → Default → Primary*
  */
 export interface TestimonialsSliceDefaultPrimary {
+  /**
+   * Background colour field in *Testimonials → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Blue
+   * - **API ID Path**: testimonials.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Blue" | "Cream" | "White", "filled">;
+
   /**
    * Heading field in *Testimonials → Default → Primary*
    *
@@ -3662,6 +3684,17 @@ export type TextImageGridSlice = prismic.SharedSlice<
  * Primary content in *Video → Default → Primary*
  */
 export interface YoutubeSliceDefaultPrimary {
+  /**
+   * Background colour field in *Video → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: White
+   * - **API ID Path**: youtube.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"White" | "Cream" | "Blue", "filled">;
+
   /**
    * Heading field in *Video → Default → Primary*
    *

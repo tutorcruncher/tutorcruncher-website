@@ -3,6 +3,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import type { JSX } from "react";
 
 import { Stats as StatsComponent } from "@/components/features/stats";
+import { BackgroundColour } from "@/types/backgroundColor";
 /**
  * Props for `Stats`.
  */
@@ -13,6 +14,10 @@ export type StatsProps = SliceComponentProps<Content.StatsSlice>;
  */
 const Stats = ({ slice }: StatsProps): JSX.Element => {
   const { heading, stats } = slice.primary;
+
+  const background =
+    (slice.primary.background_colour?.toLowerCase() as BackgroundColour) ||
+    "cream";
 
   const headingText = <PrismicRichText field={heading} />;
 
@@ -30,7 +35,11 @@ const Stats = ({ slice }: StatsProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <StatsComponent heading={headingText} stats={formattedStats} />
+      <StatsComponent
+        heading={headingText}
+        stats={formattedStats}
+        background={background}
+      />
     </section>
   );
 };

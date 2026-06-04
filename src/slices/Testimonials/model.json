@@ -12,6 +12,15 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "background_colour": {
+          "type": "Select",
+          "config": {
+            "label": "Background colour",
+            "placeholder": "",
+            "options": ["Blue", "Cream", "White"],
+            "default_value": "Blue"
+          }
+        },
         "heading": {
           "type": "StructuredText",
           "config": {

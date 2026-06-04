@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { BackgroundColour } from "@/types/backgroundColor";
+
 export interface ITestimonialProps {
   testimonial: ReactNode;
   shortTestimonial: string;
@@ -23,4 +25,5 @@ export interface ITestimonialProps {
 export interface ITestimonialsProps {
   heading: ReactNode;
   testimonials: ITestimonialProps[];
+  background?: BackgroundColour;
 }

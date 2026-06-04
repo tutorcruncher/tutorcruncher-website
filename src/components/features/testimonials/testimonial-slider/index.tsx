@@ -14,6 +14,7 @@ import styles from "./testimonial-slider.module.scss";
 export const TestimonialSlider = ({
   heading,
   testimonials,
+  background = "blue",
 }: ITestimonialsProps) => {
   const options: EmblaOptionsType = { loop: true };
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()]);
@@ -21,7 +22,7 @@ export const TestimonialSlider = ({
   return (
     <Body
       containerSize="screenWidth"
-      background="blue"
+      background={background}
       spacing="small"
       heading={
         <Heading variant="div" size="xlarge" center>

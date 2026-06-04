@@ -7,10 +7,10 @@ import styles from "./stats.module.scss";
 import { StatsProps } from "./types";
 import { PrismicNextImage } from "@prismicio/next";
 
-export const Stats = ({ heading, stats }: StatsProps) => {
+export const Stats = ({ heading, stats, background = "cream" }: StatsProps) => {
   return (
     <Body
-      background="cream"
+      background={background}
       heading={
         <Heading center size="small" variant="div">
           {heading}
