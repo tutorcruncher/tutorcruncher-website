@@ -14,11 +14,21 @@ export const TestimonialList = ({ testimonials }) => {
           reviewerRole,
           testimonial,
           companyName,
+          reviewerImage,
+          tag,
         }) => (
           <div className={styles.testimonial} key={id}>
+            {tag ? <span className={styles.tag}>{tag}</span> : null}
             <div className="main-content">{testimonial}</div>
             <div className={styles.cite}>
-              <PrismicImage field={companyLogo} />
+              {reviewerImage?.url ? (
+                <PrismicImage
+                  field={reviewerImage}
+                  className={styles.reviewerImage}
+                />
+              ) : (
+                <PrismicImage field={companyLogo} />
+              )}
               <div>
                 <Heading size="xxsmall" variant="h3" noMargin>
                   {reviewerName}

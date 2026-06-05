@@ -14,6 +14,17 @@
     display: grid;
     margin-bottom: grid(3);
 
+    .tag {
+      justify-self: start;
+      margin-bottom: grid(4);
+      padding: 4px 12px;
+      border-radius: 999px;
+      background-color: $baby-blue;
+      color: $steel-blue;
+      font-size: $font-size--xsmall;
+      font-weight: 600;
+    }
+
     .cite {
       margin-top: grid(4);
       display: flex;
@@ -33,6 +44,15 @@
         max-height: 50px;
         height: auto;
         width: auto;
+      }
+
+      .reviewerImage {
+        width: 56px;
+        height: 56px;
+        max-width: none;
+        max-height: none;
+        border-radius: 50%;
+        object-fit: cover;
       }
 
       p {

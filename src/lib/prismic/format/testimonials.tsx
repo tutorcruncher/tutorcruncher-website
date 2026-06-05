@@ -1,7 +1,8 @@
 import { PrismicRichText } from "@prismicio/react";
 
 export const formatTestimonials = (testimonials) => {
-  return testimonials.map(({ data }) => ({
+  return testimonials.map(({ id, data }) => ({
+    id,
     companyLogo: data.company_logo,
     companyName: data.company_name,
     testimonial: <PrismicRichText field={data.testimonial} />,
@@ -9,5 +10,7 @@ export const formatTestimonials = (testimonials) => {
     reviewerImage: data.reviewer_image,
     reviewerName: data.reviewer_name,
     reviewerRole: data.reviewer_role,
+    segment: data.segment,
+    tag: data.tag,
   }));
 };

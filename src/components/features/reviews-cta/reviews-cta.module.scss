@@ -1,0 +1,16 @@
+.inner {
+  text-align: center;
+}
+
+.copy {
+  margin: 0 auto grid(6);
+  max-width: 560px;
+  font-size: $font-size--large;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: grid(3);
+  justify-content: center;
+}

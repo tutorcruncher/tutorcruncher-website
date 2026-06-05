@@ -26,6 +26,8 @@ const Star = () => (
 export const TrustpilotRating = ({
   ratingLabel = "4.8 average rating",
   reviewsLabel = "500+ reviews",
+  linkLabel,
+  linkUrl,
 }: TrustpilotRatingProps) => {
   return (
     <div className={styles.rating}>
@@ -39,6 +41,18 @@ export const TrustpilotRating = ({
       <span>{ratingLabel}</span>
       <span className={styles.divider} aria-hidden />
       <span>{reviewsLabel}</span>
+      {linkLabel ? (
+        <>
+          <span className={styles.divider} aria-hidden />
+          {linkUrl ? (
+            <a href={linkUrl} target="_blank" rel="noopener noreferrer">
+              {linkLabel}
+            </a>
+          ) : (
+            <span>{linkLabel}</span>
+          )}
+        </>
+      ) : null}
     </div>
   );
 };

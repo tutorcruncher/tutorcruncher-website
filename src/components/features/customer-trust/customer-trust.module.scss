@@ -1,0 +1,18 @@
+.trust {
+  display: flex;
+  flex-direction: column;
+  gap: grid(4);
+
+  &.center {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: $font-size--base;
+  font-weight: 600;
+  color: $steel-blue;
+  text-transform: none;
+}

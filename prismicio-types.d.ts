@@ -2038,6 +2038,28 @@ interface TestimonialDocumentData {
   reviewer_role: prismic.KeyTextField;
 
   /**
+   * Segment field in *Testimonial*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.segment
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  segment: prismic.SelectField<"Pay as you go" | "Startup" | "Enterprise">;
+
+  /**
+   * Tag field in *Testimonial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. US - Pay as you go
+   * - **API ID Path**: testimonial.tag
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *Testimonial*
    *
    * - **Field Type**: Slice Zone

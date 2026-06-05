@@ -65,6 +65,21 @@
           "placeholder": ""
         }
       },
+      "segment": {
+        "type": "Select",
+        "config": {
+          "label": "Segment (reviews page section)",
+          "placeholder": "",
+          "options": ["Pay as you go", "Startup", "Enterprise"]
+        }
+      },
+      "tag": {
+        "type": "Text",
+        "config": {
+          "label": "Tag",
+          "placeholder": "e.g. US - Pay as you go"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
