@@ -90,6 +90,9 @@
           "choices": {
             "markdown": {
               "type": "SharedSlice"
+            },
+            "table": {
+              "type": "SharedSlice"
             }
           }
         }
