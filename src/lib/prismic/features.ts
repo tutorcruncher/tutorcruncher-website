@@ -9,7 +9,7 @@ export const fetchFeaturesLandingPage = async () => {
     const allFeatures = await client.getAllByType("feature", {
       orderings: {
         field: "my.feature.order",
-        direction: "desc",
+        direction: "asc",
       },
     });
     const schemas = await fetchSchemas(data.schemas);

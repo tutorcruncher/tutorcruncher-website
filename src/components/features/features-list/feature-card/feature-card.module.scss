@@ -12,6 +12,12 @@
         scale: 1.1;
       }
     }
+
+    .cta {
+      svg {
+        transform: rotate(-90deg) translateY(grid(1));
+      }
+    }
   }
 
   .imageWrapper {
@@ -31,5 +37,21 @@
 
   p {
     margin-bottom: 0;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: grid(1);
+    margin-top: grid(3);
+    font-weight: 600;
+    color: $sky-blue;
+
+    svg {
+      width: grid(4);
+      height: grid(4);
+      transform: rotate(-90deg);
+      transition: transform 0.3s linear;
+    }
   }
 }
