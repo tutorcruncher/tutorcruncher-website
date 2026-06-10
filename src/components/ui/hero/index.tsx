@@ -9,9 +9,15 @@ interface HeroProps {
   heading: ReactNode;
   headingVariant?: HeadingProps["variant"];
   intro?: string;
+  actions?: ReactNode;
 }
 
-export const Hero = ({ heading, headingVariant, intro }: HeroProps) => {
+export const Hero = ({
+  heading,
+  headingVariant,
+  intro,
+  actions,
+}: HeroProps) => {
   return (
     <Body
       heading={
@@ -24,6 +30,7 @@ export const Hero = ({ heading, headingVariant, intro }: HeroProps) => {
       background="blue"
     >
       {intro ? <div className={styles.intro}>{intro}</div> : null}
+      {actions ? <div className={styles.actions}>{actions}</div> : null}
     </Body>
   );
 };

@@ -1,6 +1,8 @@
 import { Metadata } from "next/types";
 
+import { Action } from "@/components/ui/action";
 import { Hero } from "@/components/ui/hero";
+import TrackingLink from "@/components/ui/tracking-link/tracking-link";
 import { formatMetaData } from "@/helpers/metaData";
 import { CallToAction } from "@/components/features/call-to-action";
 import { fetchFeaturesLandingPage } from "@/lib/prismic/features";
@@ -15,11 +17,27 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FeaturesPage() {
-  const { heading, features, schemas } = await fetchFeaturesLandingPage();
+  const { features, schemas } = await fetchFeaturesLandingPage();
   return (
     <>
       <RenderSchemas schemas={schemas} />
-      <Hero heading={heading} headingVariant="div" />
+      <Hero
+        heading="TutorCruncher features"
+        headingVariant="h1"
+        intro="TutorCruncher is built specifically for tutoring. One platform with all the features you could ask for."
+        actions={
+          <>
+            <TrackingLink
+              url="https://app.tutorcruncher.com/start/1/"
+              text="Start a free trial"
+              variant="solid"
+            />
+            <Action href="/book-a-call" variant="outline">
+              Book a call
+            </Action>
+          </>
+        }
+      />
       <FeaturesList features={features} />
       <CallToAction background="blue" />
     </>

@@ -1701,7 +1701,18 @@ export type ReleasesDocument<Lang extends string = string> =
     Lang
   >;
 
-type ReviewsDocumentDataSlicesSlice = never;
+type ReviewsDocumentDataSlicesSlice =
+  | TextImageGridSlice
+  | CallToActionSlice
+  | FaqsSlice
+  | AccordionsSlice
+  | BodyTextSlice
+  | LogosSlice
+  | StatsSlice
+  | YoutubeSlice
+  | MarkdownSlice
+  | TestimonialsSlice
+  | ReadyToGetStartedSlice;
 
 /**
  * Item in *Reviews → Schemas*
@@ -2050,6 +2061,17 @@ interface TestimonialDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   segment: prismic.SelectField<"Pay as you go" | "Startup" | "Enterprise">;
+
+  /**
+   * Location field in *Testimonial*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial.location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  location: prismic.SelectField<"US" | "UK" | "ROW">;
 
   /**
    * Tag field in *Testimonial*

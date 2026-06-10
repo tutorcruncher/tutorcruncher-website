@@ -1,9 +1,0 @@
-.section {
-  & + & {
-    margin-top: grid(16);
-  }
-
-  .sectionHeading {
-    margin-bottom: grid(8);
-  }
-}

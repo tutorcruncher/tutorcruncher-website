@@ -11,6 +11,7 @@ export const formatTestimonials = (testimonials) => {
     reviewerName: data.reviewer_name,
     reviewerRole: data.reviewer_role,
     segment: data.segment,
+    location: data.location,
     tag: data.tag,
   }));
 };

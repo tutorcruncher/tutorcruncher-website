@@ -15,10 +15,20 @@ export const TestimonialList = ({ testimonials }) => {
           testimonial,
           companyName,
           reviewerImage,
+          segment,
+          location,
           tag,
-        }) => (
+        }) => {
+          // Prefer the manual tag override; otherwise derive "Location - Plan"
+          // (e.g. "US - Pay as you go") from the structured fields.
+          const displayTag =
+            tag?.trim() || [location, segment].filter(Boolean).join(" - ");
+
+          return (
           <div className={styles.testimonial} key={id}>
-            {tag ? <span className={styles.tag}>{tag}</span> : null}
+            {displayTag ? (
+              <span className={styles.tag}>{displayTag}</span>
+            ) : null}
             <div className="main-content">{testimonial}</div>
             <div className={styles.cite}>
               {reviewerImage?.url ? (
@@ -39,7 +49,8 @@ export const TestimonialList = ({ testimonials }) => {
               </div>
             </div>
           </div>
-        )
+          );
+        }
       )}
     </div>
   );

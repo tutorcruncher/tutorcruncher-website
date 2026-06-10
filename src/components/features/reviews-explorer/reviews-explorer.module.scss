@@ -1,0 +1,65 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: grid(4);
+  margin-bottom: grid(10);
+}
+
+.filterRow {
+  display: flex;
+  flex-direction: column;
+  gap: grid(2);
+
+  @include md-display {
+    flex-direction: row;
+    align-items: center;
+    gap: grid(4);
+  }
+}
+
+.filterLabel {
+  font-weight: 600;
+  color: $navy-blue;
+  min-width: 90px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: grid(2);
+}
+
+.chip {
+  padding: grid(2) grid(4);
+  border-radius: 999px;
+  border: 1px solid $steel-blue;
+  background-color: transparent;
+  color: $steel-blue;
+  font-size: $font-size--small;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background-color: $baby-blue;
+  }
+}
+
+.chipActive {
+  background-color: $navy-blue;
+  border-color: $navy-blue;
+  color: $white;
+
+  &:hover {
+    background-color: $navy-blue;
+  }
+}
+
+.empty {
+  text-align: center;
+  color: $steel-blue;
+  font-size: $font-size--large;
+  margin: grid(10) 0;
+}

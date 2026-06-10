@@ -11,18 +11,23 @@
     padding: grid(12);
     border-radius: $border-radius--medium;
     background-color: $white;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     margin-bottom: grid(3);
 
     .tag {
-      justify-self: start;
-      margin-bottom: grid(4);
-      padding: 4px 12px;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: grid(6);
+      padding: grid(1) grid(3);
       border-radius: 999px;
       background-color: $baby-blue;
       color: $steel-blue;
       font-size: $font-size--xsmall;
       font-weight: 600;
+      line-height: 1.4;
+      white-space: nowrap;
     }
 
     .cite {
@@ -47,8 +52,8 @@
       }
 
       .reviewerImage {
-        width: 56px;
-        height: 56px;
+        width: 88px;
+        height: 88px;
         max-width: none;
         max-height: none;
         border-radius: 50%;

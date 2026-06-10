@@ -21,5 +21,5 @@ export const formatReviewsPage = (
 
   const testimonials = formatTestimonials(allTestimonials);
 
-  return { heading, meta, testimonials, schemas };
+  return { heading, meta, testimonials, slices: data.slices, schemas };
 };

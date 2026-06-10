@@ -4,3 +4,11 @@
   font-size: $font-size--xlarge;
   line-height: 33.6px;
 }
+
+.actions {
+  margin-top: grid(8);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: grid(4);
+}

@@ -68,16 +68,24 @@
       "segment": {
         "type": "Select",
         "config": {
-          "label": "Segment (reviews page section)",
+          "label": "Price plan",
           "placeholder": "",
           "options": ["Pay as you go", "Startup", "Enterprise"]
+        }
+      },
+      "location": {
+        "type": "Select",
+        "config": {
+          "label": "Location",
+          "placeholder": "",
+          "options": ["US", "UK", "ROW"]
         }
       },
       "tag": {
         "type": "Text",
         "config": {
-          "label": "Tag",
-          "placeholder": "e.g. US - Pay as you go"
+          "label": "Tag override (optional)",
+          "placeholder": "Defaults to 'Location - Price plan', e.g. US - Pay as you go"
         }
       },
       "slices": {
