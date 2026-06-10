@@ -10,6 +10,7 @@ import { HeroProps } from "./types";
 import { useEffect, useState } from "react";
 import { regions } from "app/data/regions/regions";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
+import { TrustpilotRating } from "@/components/ui/trustpilot-rating";
 
 const RegionPrice = ({ region, pricingTier }) => {
   let fromPrice = "";
@@ -91,6 +92,12 @@ export const SolutionHero = ({ heading, pricingTier, intro }: HeroProps) => {
             </Action>
           </>
         )}
+      </div>
+      <div
+        className={clsx(styles.reviews, "animate")}
+        style={{ animationDelay: "0.8s" }}
+      >
+        <TrustpilotRating />
       </div>
     </Body>
   );
