@@ -17,7 +17,7 @@ export const ReadyToGetStarted = () => {
             style={{ animationDelay: `0.2s` }}
           >
             <Heading variant="h2" size="xlarge" className={styles.heading}>
-              Ready to get <b>started?</b>
+              Ready to cut your admin time by <b>60%?</b>
             </Heading>
             <div className={styles.buttonsContainer}>
               <Action href="/book-a-call">Book a call </Action>

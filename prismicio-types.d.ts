@@ -677,7 +677,10 @@ type HomePageDocumentDataSlicesSlice =
   | LogosSlice
   | TextImageGridSlice
   | ArticlesSlice
-  | FaqsSlice;
+  | FaqsSlice
+  | HomePricingSlice
+  | HomeSecuritySlice
+  | ReadyToGetStartedSlice;
 
 /**
  * Item in *Home Page → Schemas*
@@ -2606,6 +2609,96 @@ export type CallToActionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Default variation for HomePricing Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomePricingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *HomePricing*
+ */
+type HomePricingSliceVariation = HomePricingSliceDefault;
+
+/**
+ * HomePricing Shared Slice
+ *
+ * - **API ID**: `home_pricing`
+ * - **Description**: HomePricing
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomePricingSlice = prismic.SharedSlice<
+  "home_pricing",
+  HomePricingSliceVariation
+>;
+
+/**
+ * Default variation for HomeSecurity Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeSecuritySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeSecurity*
+ */
+type HomeSecuritySliceVariation = HomeSecuritySliceDefault;
+
+/**
+ * HomeSecurity Shared Slice
+ *
+ * - **API ID**: `home_security`
+ * - **Description**: HomeSecurity
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeSecuritySlice = prismic.SharedSlice<
+  "home_security",
+  HomeSecuritySliceVariation
+>;
+
+/**
+ * Default variation for ReadyToGetStarted Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReadyToGetStartedSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *ReadyToGetStarted*
+ */
+type ReadyToGetStartedSliceVariation = ReadyToGetStartedSliceDefault;
+
+/**
+ * ReadyToGetStarted Shared Slice
+ *
+ * - **API ID**: `ready_to_get_started`
+ * - **Description**: ReadyToGetStarted
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReadyToGetStartedSlice = prismic.SharedSlice<
+  "ready_to_get_started",
+  ReadyToGetStartedSliceVariation
+>;
+
+/**
  * Item in *Faqs → Default → Primary → Faqs*
  */
 export interface FaqsSliceDefaultPrimaryFaqsItem {
@@ -3607,6 +3700,17 @@ export interface TextImageGridSliceDefaultPrimary {
   background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
 
   /**
+   * Show CTA buttons (free trial + book a call) field in *AlternatingGrid → default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: text_image_grid.default.primary.show_cta
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  show_cta: prismic.BooleanField;
+
+  /**
    * content field in *AlternatingGrid → default → Primary*
    *
    * - **Field Type**: Group
@@ -3656,6 +3760,17 @@ export interface TextImageGridSliceWithBackgroundPrimary {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   background_colour: prismic.SelectField<"Cream" | "Blue", "filled">;
+
+  /**
+   * Show CTA buttons (free trial + book a call) field in *AlternatingGrid → has background → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: text_image_grid.withBackground.primary.show_cta
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  show_cta: prismic.BooleanField;
 
   /**
    * content field in *AlternatingGrid → has background → Primary*
@@ -3886,6 +4001,15 @@ declare module "@prismicio/client" {
       CallToActionSliceDefaultPrimary,
       CallToActionSliceVariation,
       CallToActionSliceDefault,
+      HomePricingSlice,
+      HomePricingSliceVariation,
+      HomePricingSliceDefault,
+      HomeSecuritySlice,
+      HomeSecuritySliceVariation,
+      HomeSecuritySliceDefault,
+      ReadyToGetStartedSlice,
+      ReadyToGetStartedSliceVariation,
+      ReadyToGetStartedSliceDefault,
       FaqsSlice,
       FaqsSliceDefaultPrimaryFaqsItem,
       FaqsSliceDefaultPrimary,

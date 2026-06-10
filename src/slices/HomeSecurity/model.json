@@ -1,0 +1,18 @@
+{
+  "id": "home_security",
+  "type": "SharedSlice",
+  "name": "HomeSecurity",
+  "description": "HomeSecurity",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

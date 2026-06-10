@@ -16,3 +16,15 @@
     gap: grid(15);
   }
 }
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: grid(3);
+  margin-top: grid(8);
+
+  @include md-display {
+    margin-top: grid(12);
+  }
+}

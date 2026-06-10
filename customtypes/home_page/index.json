@@ -61,6 +61,15 @@
             },
             "faqs": {
               "type": "SharedSlice"
+            },
+            "home_pricing": {
+              "type": "SharedSlice"
+            },
+            "home_security": {
+              "type": "SharedSlice"
+            },
+            "ready_to_get_started": {
+              "type": "SharedSlice"
             }
           }
         }

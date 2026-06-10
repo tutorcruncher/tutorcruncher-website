@@ -1,4 +1,6 @@
+import { Action } from "@/components/ui/action";
 import { Body } from "@/components/ui/body";
+import TrackingLink from "@/components/ui/tracking-link/tracking-link";
 
 import styles from "./alternating-grid.module.scss";
 import { TextImageGridItem } from "./alternating-grid-item";
@@ -9,6 +11,7 @@ export const AlternatingGrid = ({
   backgroundColour,
   items,
   variation = "default",
+  showCta = false,
 }: AlternatingGridProps) => {
   return (
     <Body background={backgroundColour} spacing="large" heading={heading}>
@@ -25,6 +28,17 @@ export const AlternatingGrid = ({
           />
         ))}
       </div>
+      {showCta ? (
+        <div className={styles.ctaButtons}>
+          <TrackingLink
+            url="https://app.tutorcruncher.com/start/1/"
+            text="Start a free trial"
+          />
+          <Action href="/book-a-call" variant="outline">
+            Book a call
+          </Action>
+        </div>
+      ) : null}
     </Body>
   );
 };

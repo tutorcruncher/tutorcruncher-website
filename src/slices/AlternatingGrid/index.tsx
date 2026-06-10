@@ -45,6 +45,7 @@ const AlternatingGrid = ({ slice }: TextImageGridProps): JSX.Element => {
       }
       items={formattedItems}
       variation={slice.variation}
+      showCta={slice.primary.show_cta}
     />
   );
 };

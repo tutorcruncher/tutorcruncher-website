@@ -1,0 +1,18 @@
+{
+  "id": "ready_to_get_started",
+  "type": "SharedSlice",
+  "name": "ReadyToGetStarted",
+  "description": "ReadyToGetStarted",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

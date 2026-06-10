@@ -34,6 +34,15 @@
             "default_value": "Cream"
           }
         },
+        "show_cta": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show CTA buttons (free trial + book a call)",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "content": {
           "type": "Group",
           "config": {
@@ -125,6 +134,15 @@
               "Blue"
             ],
             "default_value": "Cream"
+          }
+        },
+        "show_cta": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show CTA buttons (free trial + book a call)",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
           }
         },
         "content": {

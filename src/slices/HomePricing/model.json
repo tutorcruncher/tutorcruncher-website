@@ -1,0 +1,18 @@
+{
+  "id": "home_pricing",
+  "type": "SharedSlice",
+  "name": "HomePricing",
+  "description": "HomePricing",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

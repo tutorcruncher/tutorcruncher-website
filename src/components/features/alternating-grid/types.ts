@@ -19,5 +19,6 @@ export interface AlternatingGridProps {
   backgroundColour: "cream" | "blue";
   variation?: "default" | "withBackground";
   items: AlternatingGridItem[];
+  showCta?: boolean;
   className?: string;
 }
