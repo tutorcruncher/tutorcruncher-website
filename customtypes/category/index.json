@@ -18,6 +18,22 @@
           "label": "Title",
           "placeholder": ""
         }
+      },
+      "featured": {
+        "type": "Boolean",
+        "config": {
+          "label": "Feature on blog landing",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "order": {
+        "type": "Number",
+        "config": {
+          "label": "Landing order (lowest first)",
+          "placeholder": ""
+        }
       }
     }
   }

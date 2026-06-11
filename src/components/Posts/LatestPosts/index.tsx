@@ -11,6 +11,7 @@ interface LatestPostsProps {
   posts: ArticleDocument[];
   title: string;
   showAllBtn?: boolean;
+  viewAllHref?: string;
   background?: BackgroundColour;
 }
 
@@ -18,6 +19,7 @@ export const LatestPosts = ({
   posts,
   title,
   showAllBtn = false,
+  viewAllHref = "/blog",
   background = "blue",
 }: LatestPostsProps) => {
   if (posts.length === 0) return null;
@@ -35,7 +37,7 @@ export const LatestPosts = ({
       <Posts posts={posts} carousel={showAsCarousel} animate />
       {showAllBtn ? (
         <div className={styles.linkWapper}>
-          <Action href="/blog" variant="outline">
+          <Action href={viewAllHref} variant="outline">
             View all
           </Action>
         </div>
