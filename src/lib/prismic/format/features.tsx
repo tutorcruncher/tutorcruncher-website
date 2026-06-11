@@ -11,7 +11,16 @@ export const formatFeaturesLandingPage = (
   allFeatures: Simplify<FeatureDocument>[],
   schemas
 ) => {
-  const heading = <PrismicRichText field={data.heading} />;
+  // Fall back to the previous hardcoded copy until the CMS fields are set, so
+  // the hero never renders blank.
+  const heading = data.heading?.length ? (
+    <PrismicRichText field={data.heading} />
+  ) : (
+    "TutorCruncher features"
+  );
+  const subheading =
+    data.subheading ||
+    "TutorCruncher is built specifically for tutoring. One platform with all the features you could ask for.";
 
   const meta = {
     title: data.meta_title,
@@ -25,5 +34,5 @@ export const formatFeaturesLandingPage = (
     url: `/features/${feature.uid}`,
   }));
 
-  return { heading, meta, features, schemas };
+  return { heading, subheading, meta, features, schemas };
 };

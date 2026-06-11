@@ -12,6 +12,7 @@ export const formatIntegrationsPage = (
   schemas
 ) => {
   const heading = <PrismicRichText field={data.heading} />;
+  const subheading = data.subheading;
 
   const meta = {
     title: data.meta_title,
@@ -27,5 +28,5 @@ export const formatIntegrationsPage = (
     screenshot: data.screenshot,
   }));
 
-  return { heading, meta, integrations, schemas };
+  return { heading, subheading, meta, integrations, slices: data.slices, schemas };
 };

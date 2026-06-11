@@ -321,6 +321,28 @@ export interface ContactDocumentDataSchemasItem {
  */
 interface ContactDocumentData {
   /**
+   * Heading field in *Contact*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
    * Content field in *Contact*
    *
    * - **Field Type**: Rich Text
@@ -574,6 +596,17 @@ interface FeaturesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Features*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Features*
@@ -951,7 +984,18 @@ export type IntegrationDocument<Lang extends string = string> =
     Lang
   >;
 
-type IntegrationsDocumentDataSlicesSlice = never;
+type IntegrationsDocumentDataSlicesSlice =
+  | TextImageGridSlice
+  | CallToActionSlice
+  | FaqsSlice
+  | AccordionsSlice
+  | BodyTextSlice
+  | LogosSlice
+  | StatsSlice
+  | YoutubeSlice
+  | MarkdownSlice
+  | TestimonialsSlice
+  | ReadyToGetStartedSlice;
 
 /**
  * Item in *Integrations → Schemas*
@@ -982,6 +1026,17 @@ interface IntegrationsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Integrations*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: integrations.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Integrations*
@@ -1743,6 +1798,17 @@ interface ReviewsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Reviews*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Reviews*

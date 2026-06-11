@@ -15,11 +15,52 @@
           "multi": "heading1,strong"
         }
       },
+      "subheading": {
+        "type": "Text",
+        "config": {
+          "label": "Subheading",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "text_image_grid": {
+              "type": "SharedSlice"
+            },
+            "call_to_action": {
+              "type": "SharedSlice"
+            },
+            "faqs": {
+              "type": "SharedSlice"
+            },
+            "accordions": {
+              "type": "SharedSlice"
+            },
+            "body_text": {
+              "type": "SharedSlice"
+            },
+            "logos": {
+              "type": "SharedSlice"
+            },
+            "stats": {
+              "type": "SharedSlice"
+            },
+            "youtube": {
+              "type": "SharedSlice"
+            },
+            "markdown": {
+              "type": "SharedSlice"
+            },
+            "testimonials": {
+              "type": "SharedSlice"
+            },
+            "ready_to_get_started": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },
