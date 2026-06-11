@@ -25,7 +25,7 @@ export const CallToAction = ({
         )}
         <div className={styles.content}>
           <Heading variant="h2" noMargin>
-            Start Your Journey with TutorCruncher
+            Create the software solution you need with TutorCruncher
           </Heading>
           <p>
             Ready for your 2-week free trial? Create an account or get in touch.
