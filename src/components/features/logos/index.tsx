@@ -6,10 +6,12 @@ import { Heading } from "../../ui/heading";
 import styles from "./logos.module.scss";
 import { PrismicNextImage } from "@prismicio/next";
 import { ImageField } from "@prismicio/types";
+import { BackgroundColour } from "@/types/backgroundColor";
 
 interface LogosProps {
   heading: ReactNode;
   logos: ImageField[];
+  backgroundColour?: BackgroundColour;
 }
 
 const STEP_MS = 2000;
@@ -22,7 +24,7 @@ type SlotState = {
   flipping: boolean;
 };
 
-export const Logos = ({ heading, logos }: LogosProps) => {
+export const Logos = ({ heading, logos, backgroundColour = "blue" }: LogosProps) => {
   const total = logos.length;
   const slotCount = Math.min(VISIBLE_SLOTS, total);
   const shouldRoll = total > slotCount;
@@ -70,7 +72,7 @@ export const Logos = ({ heading, logos }: LogosProps) => {
 
   return (
     <Body
-      background="blue"
+      background={backgroundColour}
       spacing="small"
       heading={
         <Heading variant="div" center>

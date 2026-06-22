@@ -2727,6 +2727,22 @@ export type HomePricingSlice = prismic.SharedSlice<
 >;
 
 /**
+ * HomeSecurity Slice Default Primary
+ */
+export interface HomeSecuritySliceDefaultPrimary {
+  /**
+   * Background colour field in *HomeSecurity → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Blue
+   * - **API ID Path**: home_security.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
+}
+
+/**
  * Default variation for HomeSecurity Slice
  *
  * - **API ID**: `default`
@@ -2735,7 +2751,7 @@ export type HomePricingSlice = prismic.SharedSlice<
  */
 export type HomeSecuritySliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<HomeSecuritySliceDefaultPrimary>,
   never
 >;
 
@@ -3115,6 +3131,17 @@ export interface LogosSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Background colour field in *Logos → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Cream
+   * - **API ID Path**: logos.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
 
   /**
    * Logo field in *Logos → Default → Primary*

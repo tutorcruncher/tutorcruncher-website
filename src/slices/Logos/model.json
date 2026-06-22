@@ -21,6 +21,19 @@
             "single": "strong,heading2"
           }
         },
+        "background_colour": {
+          "type": "Select",
+          "config": {
+            "label": "Background colour",
+            "placeholder": "",
+            "options": [
+              "Cream",
+              "Blue",
+              "White"
+            ],
+            "default_value": "Cream"
+          }
+        },
         "logo": {
           "type": "Group",
           "config": {
