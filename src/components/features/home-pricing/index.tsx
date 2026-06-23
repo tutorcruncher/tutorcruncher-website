@@ -5,6 +5,12 @@ import TrackingLink from "@/components/ui/tracking-link/tracking-link";
 
 import styles from "./home-pricing.module.scss";
 
+import { BackgroundColour } from "@/types/backgroundColor";
+
+interface HomePricingProps {
+  background?: BackgroundColour;
+}
+
 interface Tier {
   name: string;
   description: string;
@@ -37,11 +43,12 @@ const TIERS: Tier[] = [
   },
 ];
 
-export const HomePricing = () => {
+export const HomePricing = ({ background = "white" }: HomePricingProps) => {
   return (
     <Body
       containerSize="large"
       spacing="medium"
+      background={background}
       heading={
         <Heading variant="h2" center>
           Simple pricing designed to scale

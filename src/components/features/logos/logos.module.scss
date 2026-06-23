@@ -1,5 +1,5 @@
 .logos {
-  margin-top: grid(20);
+  margin-top: grid(10);
   gap: grid(6);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -8,67 +8,73 @@
 
   @include md-display {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: grid(15);
   }
 
   @include lg-display {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: grid(10);
-    margin-top: grid(20);
   }
 }
 
 .slot {
-  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+  height: 100px;
   width: 100%;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  &:nth-child(4) {
+  &[data-index="3"] {
     display: none;
 
     @include md-display {
-      display: flex;
-    }
-
-    @include lg-display {
-      display: flex;
+      display: block;
     }
   }
 
-  &:nth-child(5) {
+  &[data-index="4"] {
     display: none;
 
     @include lg-display {
-      display: flex;
+      display: block;
     }
   }
 }
 
 .track {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+  transition: transform 0s;
+  will-change: transform;
   width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 600ms ease-in-out;
 
   &.flipping {
-    transform: rotateX(180deg);
+    transform: translateY(-100px);
+    transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
   }
 }
 
 .face {
-  position: absolute;
-  inset: 0;
+  height: 100px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  backface-visibility: hidden;
 
   img {
-    max-height: 120px;
+    max-height: 100px;
     width: auto;
     object-fit: contain;
+    transform: scale(0.85);
+
+    @include md-display {
+      transform: scale(1);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track.flipping {
+    transition: none;
   }
 }

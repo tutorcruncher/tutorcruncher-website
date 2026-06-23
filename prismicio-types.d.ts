@@ -2697,6 +2697,22 @@ export type CallToActionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * HomePricing Slice Default Primary
+ */
+export interface HomePricingSliceDefaultPrimary {
+  /**
+   * Background colour field in *HomePricing → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: White
+   * - **API ID Path**: home_pricing.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
+}
+
+/**
  * Default variation for HomePricing Slice
  *
  * - **API ID**: `default`
@@ -2705,7 +2721,7 @@ export type CallToActionSlice = prismic.SharedSlice<
  */
 export type HomePricingSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<HomePricingSliceDefaultPrimary>,
   never
 >;
 
@@ -2773,6 +2789,32 @@ export type HomeSecuritySlice = prismic.SharedSlice<
 >;
 
 /**
+ * ReadyToGetStarted Slice Default Primary
+ */
+export interface ReadyToGetStartedSliceDefaultPrimary {
+  /**
+   * Heading field in *ReadyToGetStarted → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Ready to cut your admin time by 60%?
+   * - **API ID Path**: ready_to_get_started.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Background colour field in *ReadyToGetStarted → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Cream
+   * - **API ID Path**: ready_to_get_started.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
+}
+
+/**
  * Default variation for ReadyToGetStarted Slice
  *
  * - **API ID**: `default`
@@ -2781,7 +2823,7 @@ export type HomeSecuritySlice = prismic.SharedSlice<
  */
 export type ReadyToGetStartedSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<ReadyToGetStartedSliceDefaultPrimary>,
   never
 >;
 
@@ -4117,12 +4159,14 @@ declare module "@prismicio/client" {
       CallToActionSliceVariation,
       CallToActionSliceDefault,
       HomePricingSlice,
+      HomePricingSliceDefaultPrimary,
       HomePricingSliceVariation,
       HomePricingSliceDefault,
       HomeSecuritySlice,
       HomeSecuritySliceVariation,
       HomeSecuritySliceDefault,
       ReadyToGetStartedSlice,
+      ReadyToGetStartedSliceDefaultPrimary,
       ReadyToGetStartedSliceVariation,
       ReadyToGetStartedSliceDefault,
       FaqsSlice,

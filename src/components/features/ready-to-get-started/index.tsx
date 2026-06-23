@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { ReactNode } from "react";
 
 import { Action } from "@/components/ui/action";
 import { Heading } from "@/components/ui/heading";
@@ -6,10 +7,25 @@ import { PillCard } from "@/components/ui/pill-card";
 
 import styles from "./ready-to-get-started.module.scss";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
+import { BackgroundColour } from "@/types/backgroundColor";
 
-export const ReadyToGetStarted = () => {
+interface ReadyToGetStartedProps {
+  heading?: ReactNode;
+  background?: BackgroundColour;
+}
+
+export const ReadyToGetStarted = ({
+  heading,
+  background = "cream",
+}: ReadyToGetStartedProps) => {
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={clsx(styles.wrapper, {
+        [styles.cream]: background === "cream",
+        [styles.blue]: background === "blue",
+        [styles.white]: background === "white",
+      })}
+    >
       <div className={styles.inner}>
         <div className={styles.content}>
           <div
@@ -17,7 +33,11 @@ export const ReadyToGetStarted = () => {
             style={{ animationDelay: `0.2s` }}
           >
             <Heading variant="h2" size="xlarge" className={styles.heading}>
-              Ready to cut your admin time by <b>60%?</b>
+              {heading ?? (
+                <>
+                  Ready to cut your admin time by <b>60%?</b>
+                </>
+              )}
             </Heading>
             <div className={styles.buttonsContainer}>
               <Action href="/book-a-call">Book a call </Action>

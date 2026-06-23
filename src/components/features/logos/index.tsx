@@ -24,7 +24,11 @@ type SlotState = {
   flipping: boolean;
 };
 
-export const Logos = ({ heading, logos, backgroundColour = "blue" }: LogosProps) => {
+export const Logos = ({
+  heading,
+  logos,
+  backgroundColour = "blue",
+}: LogosProps) => {
   const total = logos.length;
   const slotCount = Math.min(VISIBLE_SLOTS, total);
   const shouldRoll = total > slotCount;
@@ -73,9 +77,8 @@ export const Logos = ({ heading, logos, backgroundColour = "blue" }: LogosProps)
   return (
     <Body
       background={backgroundColour}
-      spacing="small"
       heading={
-        <Heading variant="div" center>
+        <Heading variant="h2" size="xsmall" center>
           {heading}
         </Heading>
       }
@@ -85,7 +88,7 @@ export const Logos = ({ heading, logos, backgroundColour = "blue" }: LogosProps)
           const currentLogo = logos[slot.current];
           const nextLogo = logos[slot.next];
           return (
-            <div key={i} className={styles.slot}>
+            <div key={i} className={styles.slot} data-index={i}>
               <div
                 className={`${styles.track} ${slot.flipping ? styles.flipping : ""}`}
               >
