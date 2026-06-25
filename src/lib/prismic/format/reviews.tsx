@@ -12,7 +12,16 @@ export const formatReviewsPage = (
   allTestimonials: Simplify<TestimonialDocument>[],
   schemas
 ) => {
-  const heading = <PrismicRichText field={data.heading} />;
+  // Fall back to the previous hardcoded copy until the CMS fields are set, so
+  // the hero never renders blank.
+  const heading = data.heading?.length ? (
+    <PrismicRichText field={data.heading} />
+  ) : (
+    "What our customers are saying"
+  );
+  const subheading =
+    data.subheading ||
+    "Here's what tutoring business owners across the UK, US, and beyond have to say about running their businesses on TutorCruncher.";
 
   const meta = {
     title: data.meta_title,
@@ -21,5 +30,12 @@ export const formatReviewsPage = (
 
   const testimonials = formatTestimonials(allTestimonials);
 
-  return { heading, meta, testimonials, slices: data.slices, schemas };
+  return {
+    heading,
+    subheading,
+    meta,
+    testimonials,
+    slices: data.slices,
+    schemas,
+  };
 };

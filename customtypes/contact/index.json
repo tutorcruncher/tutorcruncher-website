@@ -6,6 +6,22 @@
   "status": true,
   "json": {
     "Main": {
+      "heading": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Heading",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading1,strong"
+        }
+      },
+      "subheading": {
+        "type": "Text",
+        "config": {
+          "label": "Subheading",
+          "placeholder": ""
+        }
+      },
       "content": {
         "type": "StructuredText",
         "config": {

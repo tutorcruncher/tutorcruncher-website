@@ -17,14 +17,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FeaturesPage() {
-  const { features, schemas } = await fetchFeaturesLandingPage();
+  const { heading, subheading, features, schemas } =
+    await fetchFeaturesLandingPage();
   return (
     <>
       <RenderSchemas schemas={schemas} />
       <Hero
-        heading="TutorCruncher features"
+        heading={heading}
         headingVariant="h1"
-        intro="TutorCruncher is built specifically for tutoring. One platform with all the features you could ask for."
+        intro={subheading}
         actions={
           <>
             <TrackingLink

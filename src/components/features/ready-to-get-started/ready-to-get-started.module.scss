@@ -3,6 +3,18 @@
   padding-top: 60px;
   overflow: hidden;
 
+  &.cream {
+    background-color: $cream;
+  }
+
+  &.blue {
+    background-color: $baby-blue;
+  }
+
+  &.white {
+    background-color: $white;
+  }
+
   &.bottomPadding {
     padding-bottom: 100px;
   }

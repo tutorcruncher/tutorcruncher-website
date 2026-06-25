@@ -10,6 +10,15 @@ export const formatContactPage = (
   data: Simplify<ContactDocumentData>,
   schemas
 ) => {
+  // Fall back to the previous hardcoded heading until the CMS field is set, so
+  // the hero never renders blank.
+  const heading = data.heading?.length ? (
+    <PrismicRichText field={data.heading} />
+  ) : (
+    "Get in touch"
+  );
+  const subheading = data.subheading || undefined;
+
   const content = <PrismicRichText field={data.content} />;
 
   const locations = data.locations.map(
@@ -29,5 +38,5 @@ export const formatContactPage = (
     description: data.meta_description,
   };
 
-  return { content, locations, meta, schemas };
+  return { heading, subheading, content, locations, meta, schemas };
 };

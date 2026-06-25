@@ -16,11 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const ContactPage = async () => {
-  const { content, locations, schemas } = await fetchContactPage();
+  const { heading, subheading, content, locations, schemas } =
+    await fetchContactPage();
   return (
     <>
       <RenderSchemas schemas={schemas} />
-      <Hero heading="Get in touch" />
+      <Hero heading={heading} intro={subheading} />
       <ContactForm content={content} />
       <LocationsList locations={locations} />
     </>

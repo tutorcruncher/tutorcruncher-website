@@ -5,10 +5,16 @@ import { Heading } from "@/components/ui/heading";
 
 import styles from "./home-security.module.scss";
 
+import { BackgroundColour } from "@/types/backgroundColor";
+
 interface SecurityFeature {
   title: string;
   description: string;
   icon: ReactNode;
+}
+
+interface HomeSecurityProps {
+  background?: BackgroundColour;
 }
 
 const iconProps = {
@@ -70,12 +76,12 @@ const FEATURES: SecurityFeature[] = [
   },
 ];
 
-export const HomeSecurity = () => {
+export const HomeSecurity = ({ background = "blue" }: HomeSecurityProps) => {
   return (
     <Body
       containerSize="large"
       spacing="medium"
-      background="blue"
+      background={background}
       heading={
         <>
           <Heading variant="h2" center>

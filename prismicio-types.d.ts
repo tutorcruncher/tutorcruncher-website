@@ -344,6 +344,28 @@ export interface ContactDocumentDataSchemasItem {
  */
 interface ContactDocumentData {
   /**
+   * Heading field in *Contact*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
    * Content field in *Contact*
    *
    * - **Field Type**: Rich Text
@@ -597,6 +619,17 @@ interface FeaturesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Features*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Features*
@@ -974,7 +1007,18 @@ export type IntegrationDocument<Lang extends string = string> =
     Lang
   >;
 
-type IntegrationsDocumentDataSlicesSlice = never;
+type IntegrationsDocumentDataSlicesSlice =
+  | TextImageGridSlice
+  | CallToActionSlice
+  | FaqsSlice
+  | AccordionsSlice
+  | BodyTextSlice
+  | LogosSlice
+  | StatsSlice
+  | YoutubeSlice
+  | MarkdownSlice
+  | TestimonialsSlice
+  | ReadyToGetStartedSlice;
 
 /**
  * Item in *Integrations → Schemas*
@@ -1005,6 +1049,17 @@ interface IntegrationsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Integrations*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: integrations.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Integrations*
@@ -1766,6 +1821,17 @@ interface ReviewsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Reviews*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: reviews.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Reviews*
@@ -2654,6 +2720,22 @@ export type CallToActionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * HomePricing Slice Default Primary
+ */
+export interface HomePricingSliceDefaultPrimary {
+  /**
+   * Background colour field in *HomePricing → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: White
+   * - **API ID Path**: home_pricing.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
+}
+
+/**
  * Default variation for HomePricing Slice
  *
  * - **API ID**: `default`
@@ -2662,7 +2744,7 @@ export type CallToActionSlice = prismic.SharedSlice<
  */
 export type HomePricingSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<HomePricingSliceDefaultPrimary>,
   never
 >;
 
@@ -2684,6 +2766,22 @@ export type HomePricingSlice = prismic.SharedSlice<
 >;
 
 /**
+ * HomeSecurity Slice Default Primary
+ */
+export interface HomeSecuritySliceDefaultPrimary {
+  /**
+   * Background colour field in *HomeSecurity → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Blue
+   * - **API ID Path**: home_security.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
+}
+
+/**
  * Default variation for HomeSecurity Slice
  *
  * - **API ID**: `default`
@@ -2692,7 +2790,7 @@ export type HomePricingSlice = prismic.SharedSlice<
  */
 export type HomeSecuritySliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<HomeSecuritySliceDefaultPrimary>,
   never
 >;
 
@@ -2714,6 +2812,32 @@ export type HomeSecuritySlice = prismic.SharedSlice<
 >;
 
 /**
+ * ReadyToGetStarted Slice Default Primary
+ */
+export interface ReadyToGetStartedSliceDefaultPrimary {
+  /**
+   * Heading field in *ReadyToGetStarted → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Ready to cut your admin time by 60%?
+   * - **API ID Path**: ready_to_get_started.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Background colour field in *ReadyToGetStarted → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Cream
+   * - **API ID Path**: ready_to_get_started.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
+}
+
+/**
  * Default variation for ReadyToGetStarted Slice
  *
  * - **API ID**: `default`
@@ -2722,7 +2846,7 @@ export type HomeSecuritySlice = prismic.SharedSlice<
  */
 export type ReadyToGetStartedSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<ReadyToGetStartedSliceDefaultPrimary>,
   never
 >;
 
@@ -3072,6 +3196,17 @@ export interface LogosSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Background colour field in *Logos → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Cream
+   * - **API ID Path**: logos.default.primary.background_colour
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
 
   /**
    * Logo field in *Logos → Default → Primary*
@@ -4047,12 +4182,14 @@ declare module "@prismicio/client" {
       CallToActionSliceVariation,
       CallToActionSliceDefault,
       HomePricingSlice,
+      HomePricingSliceDefaultPrimary,
       HomePricingSliceVariation,
       HomePricingSliceDefault,
       HomeSecuritySlice,
       HomeSecuritySliceVariation,
       HomeSecuritySliceDefault,
       ReadyToGetStartedSlice,
+      ReadyToGetStartedSliceDefaultPrimary,
       ReadyToGetStartedSliceVariation,
       ReadyToGetStartedSliceDefault,
       FaqsSlice,

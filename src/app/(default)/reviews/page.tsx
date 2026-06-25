@@ -17,12 +17,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const ReviewsPage = async () => {
-  const { testimonials, slices, schemas } = await fetchReviewsPage();
+  const { heading, subheading, testimonials, slices, schemas } =
+    await fetchReviewsPage();
 
   return (
     <>
       <RenderSchemas schemas={schemas} />
-      <ReviewsHero />
+      <ReviewsHero heading={heading} subheading={subheading} />
       <ReviewsExplorer testimonials={testimonials} />
       <SliceZone slices={slices} components={components} />
       <ReviewsCta />
