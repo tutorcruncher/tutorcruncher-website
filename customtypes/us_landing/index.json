@@ -1,0 +1,178 @@
+{
+  "format": "page",
+  "id": "us_landing",
+  "label": "US Landing Page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "eyebrow": {
+        "type": "Text",
+        "config": {
+          "label": "Hero Eyebrow",
+          "placeholder": "Built for US tutoring businesses"
+        }
+      },
+      "heading": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Hero Heading",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading1,strong"
+        }
+      },
+      "intro": {
+        "type": "Text",
+        "config": {
+          "label": "Hero Intro",
+          "placeholder": ""
+        }
+      },
+      "trust_line": {
+        "type": "Text",
+        "config": {
+          "label": "Hero Trust Line",
+          "placeholder": "Trusted by 1,800+ companies · 4.8 average rating · 2M+ lessons delivered · US-based customer support"
+        }
+      },
+      "cta_primary_label": {
+        "type": "Text",
+        "config": {
+          "label": "Primary CTA Label",
+          "placeholder": "Start free trial"
+        }
+      },
+      "cta_primary_link": {
+        "type": "Link",
+        "config": {
+          "label": "Primary CTA Link",
+          "placeholder": "https://app.tutorcruncher.com/start/1/",
+          "allowTargetBlank": true
+        }
+      },
+      "cta_secondary_label": {
+        "type": "Text",
+        "config": {
+          "label": "Secondary CTA Label",
+          "placeholder": "Book a call"
+        }
+      },
+      "cta_secondary_link": {
+        "type": "Link",
+        "config": {
+          "label": "Secondary CTA Link",
+          "placeholder": "/book-a-call",
+          "allowTargetBlank": true
+        }
+      },
+      "hero_images": {
+        "type": "Group",
+        "config": {
+          "label": "Hero Images",
+          "repeat": true,
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "accordions": {
+              "type": "SharedSlice"
+            },
+            "testimonials": {
+              "type": "SharedSlice"
+            },
+            "logos": {
+              "type": "SharedSlice"
+            },
+            "text_image_grid": {
+              "type": "SharedSlice"
+            },
+            "info_box_list": {
+              "type": "SharedSlice"
+            },
+            "articles": {
+              "type": "SharedSlice"
+            },
+            "faqs": {
+              "type": "SharedSlice"
+            },
+            "home_pricing": {
+              "type": "SharedSlice"
+            },
+            "home_security": {
+              "type": "SharedSlice"
+            },
+            "ready_to_get_started": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "schema": {
+        "type": "Link",
+        "config": {
+          "label": "Schema",
+          "select": "document",
+          "customtypes": ["schema"]
+        }
+      },
+      "schemas": {
+        "type": "Group",
+        "config": {
+          "label": "Schemas",
+          "repeat": true,
+          "fields": {
+            "schema": {
+              "type": "Link",
+              "config": {
+                "label": "Schema",
+                "select": "document",
+                "customtypes": ["schema"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,185 @@
+.hero {
+  padding: grid(20) 0;
+
+  .inner {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include lg-display {
+      flex-direction: row;
+      gap: 90px;
+    }
+  }
+
+  .text {
+    max-width: 700px;
+  }
+
+  .eyebrow {
+    font-size: $font-size--base;
+    font-weight: 600;
+    color: $steel-blue;
+    margin: 0 0 grid(4);
+    text-transform: none;
+  }
+
+  h1 {
+    b {
+      background: -webkit-linear-gradient(#1f374e, #5fb2ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .tagLine {
+    font-size: $font-size--xlarge;
+  }
+
+  .buttons {
+    margin-top: grid(12);
+    display: flex;
+    gap: grid(4);
+  }
+
+  .trust {
+    margin-top: grid(8);
+  }
+
+  .trustLine {
+    margin: 0;
+    font-size: $font-size--base;
+    font-weight: 600;
+    color: $steel-blue;
+  }
+
+  .animations {
+    width: 100%;
+    position: relative;
+    max-width: 600px;
+    margin: grid(20) 0 auto;
+
+    @include lg-display {
+      margin-top: 0;
+    }
+
+    .imageOne,
+    .imageTwo,
+    .imageThree,
+    .imageFour {
+      transform: scale(0);
+      position: absolute;
+      animation-fill-mode: forwards;
+      z-index: 5;
+      max-width: 30%;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .imageOne {
+      animation:
+        scaleBounceIn 1s forwards 0.5s,
+        shadowMoveUp 0.4s forwards 1.4s;
+      top: -20px;
+      right: 20px;
+      z-index: 2;
+    }
+
+    .imageTwo {
+      animation:
+        scaleBounceIn 1s forwards 0.8s,
+        shadowMoveUp 0.4s forwards 1.6s;
+      bottom: 0;
+      left: 0;
+    }
+
+    .imageThree {
+      animation:
+        scaleBounceIn 1s forwards 1s,
+        shadowMoveUp 0.4s forwards 1.8s;
+      bottom: -20px;
+      left: 60px;
+    }
+
+    .imageFour {
+      animation: scaleBounceIn 1s forwards 1.2s;
+      bottom: 30px;
+      right: 0;
+    }
+
+    .imageWrapper {
+      max-width: 100%;
+      position: relative;
+      margin: 0 auto;
+      padding: 0 60px;
+      overflow: hidden;
+
+      img {
+        border: 2px solid $navy-blue;
+        border-radius: 38.4px;
+        width: 100%;
+        height: auto;
+
+        @include md-display {
+          border-radius: 64px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes bounceAndUp {
+  0% {
+    transform: scale(0);
+    filter: drop-shadow(0 0px rgba(0, 0, 0, 0));
+  }
+
+  40% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0px rgba(0, 0, 0, 0));
+  }
+
+  55% {
+    transform: scale(1);
+    filter: drop-shadow(0 0px rgba(0, 0, 0, 0));
+  }
+
+  60% {
+    transform: scale(1);
+    filter: drop-shadow(0 0px rgba(0, 0, 0, 0));
+  }
+
+  100% {
+    transform: scale(1) translateY(-20px);
+    filter: drop-shadow(0 10px #362e83);
+  }
+}
+
+@keyframes scaleBounceIn {
+  0% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1.1);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shadowMoveUp {
+  100% {
+    transform: scale(1) translateY(-20px);
+    filter: drop-shadow(0 10px #362e83);
+  }
+}
