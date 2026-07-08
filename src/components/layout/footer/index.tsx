@@ -69,6 +69,7 @@ export const Footer = async () => {
             <Link href="/terms">Terms & Conditions</Link>
             <Link href="/privacy">Privacy</Link>
             <Link href="/sitemap">Sitemap</Link>
+            <Link href="https://status.tutorcruncher.com" target="_blank">Status</Link>
           </div>
         </div>
         <div className={styles.end}>
