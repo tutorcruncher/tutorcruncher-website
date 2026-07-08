@@ -56,6 +56,14 @@ const routes: prismic.ClientConfig["routes"] = [
     type: "testimonial",
     path: "/reviews",
   },
+  {
+    type: "community",
+    path: "/community",
+  },
+  {
+    type: "event",
+    path: "/community/:uid",
+  },
 ];
 
 export const createClient = (config = {}) => {

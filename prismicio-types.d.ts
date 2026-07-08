@@ -445,6 +445,318 @@ export type ContactDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Community → Schemas*
+ */
+export interface CommunityDocumentDataSchemasItem {
+  /**
+   * Schema field in *Community → Schemas*
+   *
+   * - **Field Type**: Content Relationship
+   * - **API ID Path**: community.schemas[].schema
+   */
+  schema: prismic.ContentRelationshipField<"schema">;
+}
+
+/**
+ * Content for Community documents
+ */
+interface CommunityDocumentData {
+  /**
+   * Hero eyebrow field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.hero_eyebrow
+   * - **Tab**: Main
+   */
+  hero_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Hero heading field in *Community*
+   *
+   * - **Field Type**: Rich Text
+   * - **API ID Path**: community.hero_heading
+   * - **Tab**: Main
+   */
+  hero_heading: prismic.RichTextField;
+
+  /**
+   * Hero subheading field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.hero_subheading
+   * - **Tab**: Main
+   */
+  hero_subheading: prismic.KeyTextField;
+
+  /**
+   * Hero button text field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.hero_button_text
+   * - **Tab**: Main
+   */
+  hero_button_text: prismic.KeyTextField;
+
+  /**
+   * Hero button link field in *Community*
+   *
+   * - **Field Type**: Link
+   * - **API ID Path**: community.hero_button_link
+   * - **Tab**: Main
+   */
+  hero_button_link: prismic.LinkField;
+
+  /**
+   * Intro heading field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.intro_heading
+   * - **Tab**: Main
+   */
+  intro_heading: prismic.KeyTextField;
+
+  /**
+   * Intro content field in *Community*
+   *
+   * - **Field Type**: Rich Text
+   * - **API ID Path**: community.intro_content
+   * - **Tab**: Main
+   */
+  intro_content: prismic.RichTextField;
+
+  /**
+   * Intro image field in *Community*
+   *
+   * - **Field Type**: Image
+   * - **API ID Path**: community.intro_image
+   * - **Tab**: Main
+   */
+  intro_image: prismic.ImageField<never>;
+
+  /**
+   * Upcoming events title field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.upcoming_events_title
+   * - **Tab**: Main
+   */
+  upcoming_events_title: prismic.KeyTextField;
+
+  /**
+   * Previous events title field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.previous_events_title
+   * - **Tab**: Main
+   */
+  previous_events_title: prismic.KeyTextField;
+
+  /**
+   * Newsletter eyebrow field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.newsletter_eyebrow
+   * - **Tab**: Main
+   */
+  newsletter_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Newsletter heading field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.newsletter_heading
+   * - **Tab**: Main
+   */
+  newsletter_heading: prismic.KeyTextField;
+
+  /**
+   * Newsletter description field in *Community*
+   *
+   * - **Field Type**: Rich Text
+   * - **API ID Path**: community.newsletter_description
+   * - **Tab**: Main
+   */
+  newsletter_description: prismic.RichTextField;
+
+  /**
+   * Newsletter button text field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.newsletter_button_text
+   * - **Tab**: Main
+   */
+  newsletter_button_text: prismic.KeyTextField;
+
+  /**
+   * Meta Title field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.meta_title
+   * - **Tab**: SEO & Metadata
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Community*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: community.meta_description
+   * - **Tab**: SEO & Metadata
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Community*
+   *
+   * - **Field Type**: Image
+   * - **API ID Path**: community.meta_image
+   * - **Tab**: SEO & Metadata
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Schemas field in *Community*
+   *
+   * - **Field Type**: Group
+   * - **API ID Path**: community.schemas[]
+   * - **Tab**: SEO & Metadata
+   */
+  schemas: prismic.GroupField<Simplify<CommunityDocumentDataSchemasItem>>;
+}
+
+/**
+ * Community document from Prismic
+ *
+ * - **API ID**: `community`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CommunityDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CommunityDocumentData>,
+    "community",
+    Lang
+  >;
+
+/**
+ * Content for Event documents
+ */
+interface EventDocumentData {
+  /**
+   * Title field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: event.title
+   * - **Tab**: Main
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Event date & time field in *Event*
+   *
+   * - **Field Type**: Timestamp
+   * - **API ID Path**: event.event_datetime
+   * - **Tab**: Main
+   */
+  event_datetime: prismic.TimestampField;
+
+  /**
+   * Time (display) field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: event.time
+   * - **Tab**: Main
+   */
+  time: prismic.KeyTextField;
+
+  /**
+   * Location field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: event.location
+   * - **Tab**: Main
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Format field in *Event*
+   *
+   * - **Field Type**: Select
+   * - **API ID Path**: event.format
+   * - **Tab**: Main
+   */
+  format: prismic.SelectField<"In-person" | "Online">;
+
+  /**
+   * Who's it for? field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: event.audience
+   * - **Tab**: Main
+   */
+  audience: prismic.KeyTextField;
+
+  /**
+   * Button text field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: event.button_text
+   * - **Tab**: Main
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button link field in *Event*
+   *
+   * - **Field Type**: Link
+   * - **API ID Path**: event.button_link
+   * - **Tab**: Main
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Meta Title field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: event.meta_title
+   * - **Tab**: SEO & Metadata
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Event*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: event.meta_description
+   * - **Tab**: SEO & Metadata
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Event*
+   *
+   * - **Field Type**: Image
+   * - **API ID Path**: event.meta_image
+   * - **Tab**: SEO & Metadata
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Event document from Prismic
+ *
+ * - **API ID**: `event`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EventDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<EventDocumentData>, "event", Lang>;
+
 type FeatureDocumentDataSlicesSlice =
   | InfoBoxListSlice
   | TextImageGridSlice
@@ -2307,7 +2619,9 @@ export type TutoringCalculatorDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | ArticleDocument
   | CategoryDocument
+  | CommunityDocument
   | ContactDocument
+  | EventDocument
   | FeatureDocument
   | FeaturesDocument
   | HomePageDocument
@@ -4076,11 +4390,16 @@ declare module "@prismicio/client" {
       ArticleDocumentDataSlicesSlice,
       CategoryDocument,
       CategoryDocumentData,
+      CommunityDocument,
+      CommunityDocumentData,
+      CommunityDocumentDataSchemasItem,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataLocationsItem,
       ContactDocumentDataSlicesSlice,
       ContactDocumentDataSchemasItem,
+      EventDocument,
+      EventDocumentData,
       FeatureDocument,
       FeatureDocumentData,
       FeatureDocumentDataSlicesSlice,

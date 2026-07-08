@@ -44,6 +44,7 @@ export const Footer = async () => {
             <Accordion title="About us">
               <Link href="/about">About</Link>
               <Link href="/blog">Blog</Link>
+              <Link href="/community">Community</Link>
               <Link href="/reviews">Reviews</Link>
               <Link href="/careers">Careers</Link>
               <Link href="/pricing">Pricing</Link>

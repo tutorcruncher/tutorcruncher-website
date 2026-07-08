@@ -1,0 +1,104 @@
+{
+  "format": "custom",
+  "id": "event",
+  "label": "Event",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "event_datetime": {
+        "type": "Timestamp",
+        "config": {
+          "label": "Event date & time",
+          "placeholder": "Used to sort events into upcoming / previous"
+        }
+      },
+      "time": {
+        "type": "Text",
+        "config": {
+          "label": "Time (display)",
+          "placeholder": "e.g. 6:00pm – 9:00pm CDT"
+        }
+      },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "Location",
+          "placeholder": "e.g. Chicago"
+        }
+      },
+      "format": {
+        "type": "Select",
+        "config": {
+          "label": "Format",
+          "placeholder": "",
+          "options": ["In-person", "Online"],
+          "default_value": "In-person"
+        }
+      },
+      "audience": {
+        "type": "Text",
+        "config": {
+          "label": "Who's it for?",
+          "placeholder": ""
+        }
+      },
+      "button_text": {
+        "type": "Text",
+        "config": {
+          "label": "Button text",
+          "placeholder": "Get your place / Watch on demand"
+        }
+      },
+      "button_link": {
+        "type": "Link",
+        "config": {
+          "label": "Button link",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}
