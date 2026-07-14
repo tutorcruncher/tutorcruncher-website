@@ -1848,6 +1848,17 @@ interface ReleaseDocumentData {
   featured: prismic.BooleanField;
 
   /**
+   * Title field in *Release*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: release.title
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
    * Video field in *Release*
    *
    * - **Field Type**: Link to Media
