@@ -1834,6 +1834,40 @@ interface ReleaseDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   changes: prismic.RichTextField;
+
+  /**
+   * Featured field in *Release*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: release.featured
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  featured: prismic.BooleanField;
+
+  /**
+   * Video field in *Release*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: release.video
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkToMediaField;
+
+  /**
+   * Description field in *Release*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: release.description
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
 }
 
 /**
