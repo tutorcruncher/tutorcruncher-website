@@ -43,7 +43,7 @@ const miscellaneousRedirects = [
   },
   {
     source: "/api",
-    destination: "https://api.tutorcruncher.com/",
+    destination: "https://app.tutorcruncher.com/api/docs/",
     permanent: true,
     statusCode: 301,
   },

@@ -24,9 +24,8 @@
 
 ## Developer / API
 
-- [API documentation (Swagger UI)](https://secure.tutorcruncher.com/api/docs/) — interactive API reference
-- [API documentation (ReDoc)](https://secure.tutorcruncher.com/api/redoc/) — alternative reference layout
-- [OpenAPI 3 schema](https://secure.tutorcruncher.com/api/schema/) — machine-readable specification
+- [API documentation](https://app.tutorcruncher.com/api/docs/) — interactive API reference
+- [OpenAPI 3 schema](https://app.tutorcruncher.com/api/schema/) — machine-readable specification
 - [AI plugin manifest](https://tutorcruncher.com/.well-known/ai-plugin.json)
 
 The REST API exposes appointments (lessons), services (jobs), clients, contractors, students (service recipients), agents, invoices, payment orders, ad-hoc charges, balance updates, reports, and more. Authentication is per-Integration via `Authorization: Token <api_key>`.

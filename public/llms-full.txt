@@ -24,7 +24,7 @@ Per-lesson and payment-processing fees vary by region and currency. See https://
 
 ## API
 
-The REST API at `https://secure.tutorcruncher.com/api/` exposes nearly every resource in the system:
+The REST API at `https://app.tutorcruncher.com/api/` exposes nearly every resource in the system:
 
 - `/api/appointments/` — lessons (create, list, update, cancel)
 - `/api/services/` — services / jobs
@@ -39,7 +39,7 @@ The REST API at `https://secure.tutorcruncher.com/api/` exposes nearly every res
 
 Authentication is per-Integration. Generate an API key in the agency's Settings > API > Integrations, then include `Authorization: Token <api_key>` on every request. Each integration is scoped to one Branch (tenant).
 
-The full machine-readable schema lives at `https://secure.tutorcruncher.com/api/schema/`. Interactive Swagger UI is at `/api/docs/` and ReDoc is at `/api/redoc/`.
+The full machine-readable schema lives at `https://app.tutorcruncher.com/api/schema/`. Interactive API documentation is at `/api/docs/`.
 
 Webhooks are delivered via the Chronos service and signed with HMAC-SHA256 using the integration's API key (sent in the `Webhook-Signature` header). Webhook events fire on create/update/delete of all major resources.
 
@@ -74,6 +74,6 @@ Every account ("Agency") has one or more Branches. Branches are the unit of tena
 
 - Marketing site: https://tutorcruncher.com
 - App: https://secure.tutorcruncher.com
-- API docs: https://secure.tutorcruncher.com/api/docs/
+- API docs: https://app.tutorcruncher.com/api/docs/
 - Privacy policy: https://tutorcruncher.com/privacy-policy
 - Sitemap: https://tutorcruncher.com/sitemap.xml
