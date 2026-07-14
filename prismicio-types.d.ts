@@ -1848,6 +1848,18 @@ interface ReleaseDocumentData {
   featured: prismic.BooleanField;
 
   /**
+   * Preview field in *Release*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: release.preview
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  preview: prismic.BooleanField;
+
+  /**
    * Title field in *Release*
    *
    * - **Field Type**: Text

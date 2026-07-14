@@ -44,6 +44,13 @@
           "default_value": false
         }
       },
+      "preview": {
+        "type": "Boolean",
+        "config": {
+          "label": "Preview",
+          "default_value": false
+        }
+      },
       "title": {
         "type": "Text",
         "config": {
