@@ -56,14 +56,19 @@ const routes: prismic.ClientConfig["routes"] = [
     type: "testimonial",
     path: "/reviews",
   },
-  {
-    type: "community",
-    path: "/community",
-  },
-  {
-    type: "event",
-    path: "/community/:uid",
-  },
+  // The community and event types are not yet published to the master ref.
+  // Prismic validates every type declared here against the ref and rejects the
+  // whole request if one is unknown, which breaks every getAllByType call at
+  // build time. Restore these together with the community types when they are
+  // published; keep this list in sync with prismic.config.json.
+  // {
+  //   type: "community",
+  //   path: "/community",
+  // },
+  // {
+  //   type: "event",
+  //   path: "/community/:uid",
+  // },
 ];
 
 export const createClient = (config = {}) => {
