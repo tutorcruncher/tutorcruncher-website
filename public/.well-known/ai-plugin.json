@@ -10,7 +10,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://secure.tutorcruncher.com/api/schema/"
+    "url": "https://app.tutorcruncher.com/api/schema/"
   },
   "logo_url": "https://tutorcruncher.com/logo_full.png",
   "contact_email": "support@tutorcruncher.com",

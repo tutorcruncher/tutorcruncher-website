@@ -9,7 +9,7 @@
     {
       "id": "tutorcruncher",
       "path": "https://tutorcruncher.com/.well-known/openapi.yaml",
-      "description": "TutorCruncher REST API OpenAPI 3 specification (proxied from secure.tutorcruncher.com/api/schema/)."
+      "description": "TutorCruncher REST API OpenAPI 3 specification (proxied from app.tutorcruncher.com/api/schema/)."
     }
   ],
   "overrides": [],

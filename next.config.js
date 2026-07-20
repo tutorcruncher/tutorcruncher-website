@@ -42,7 +42,7 @@ const nextConfig = {
     return [
       {
         source: "/.well-known/openapi.yaml",
-        destination: "https://secure.tutorcruncher.com/api/schema/",
+        destination: "https://app.tutorcruncher.com/api/schema/",
       },
     ];
   },

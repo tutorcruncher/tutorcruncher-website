@@ -64,12 +64,13 @@ export const Footer = async () => {
             <FooterSocialLinks />
           </div>
           <div className={styles.legalLinks}>
-            <Link href="https://api.tutorcruncher.com/" target="_blank">
+            <Link href="https://app.tutorcruncher.com/api/docs/" target="_blank">
               API Documentation
             </Link>
             <Link href="/terms">Terms & Conditions</Link>
             <Link href="/privacy">Privacy</Link>
             <Link href="/sitemap">Sitemap</Link>
+            <Link href="https://status.tutorcruncher.com" target="_blank">Status</Link>
           </div>
         </div>
         <div className={styles.end}>
