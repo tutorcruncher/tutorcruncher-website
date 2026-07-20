@@ -1,4 +1,5 @@
 import { Action } from "@/components/ui/action";
+import { ArrowLink } from "@/components/ui/arrow-link";
 import { Body } from "@/components/ui/body";
 import { Heading } from "@/components/ui/heading";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
@@ -92,6 +93,14 @@ export const HomePricing = ({
             </div>
           </div>
         ))}
+      </div>
+      <div className={styles.footerLink}>
+        <ArrowLink
+          text="See full pricing"
+          // Send visitors to the pricing page for their currency, so US
+          // traffic doesn't land on the GBP default.
+          href={currency === "USD" ? "/pricing/us" : "/pricing/gb"}
+        />
       </div>
     </Body>
   );

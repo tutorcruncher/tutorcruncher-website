@@ -8,16 +8,22 @@ import { formatMetaData } from "@/helpers/metaData";
 import { fetchUsLandingPage } from "@/lib/prismic/us-landing";
 import { RenderSchemas } from "@/components/schema";
 import { softwareApplicationSchema } from "@/schema/structured-data";
+import { REGIONAL_ALTERNATES, REGIONAL_URLS } from "@/schema/meta";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await fetchUsLandingPage();
 
-  const url = `https://tutorcruncher.com/us`;
+  // Self-referencing canonical — deliberately NOT pointing back at the UK
+  // homepage, so this page ranks on its own for US queries. Shares its source
+  // with REGIONAL_ALTERNATES so the two can never disagree about this URL.
+  const url = REGIONAL_URLS.us;
 
   return formatMetaData(
     content?.meta.title ?? null,
     content?.meta.description ?? null,
-    url
+    url,
+    undefined,
+    REGIONAL_ALTERNATES
   );
 }
 

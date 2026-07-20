@@ -4,7 +4,16 @@ export const formatMetaData = (
   title: string,
   description: string,
   url: string,
-  hidePage?: boolean
+  hidePage?: boolean,
+  /**
+   * Optional hreflang alternates, e.g.
+   * `{ "en-US": "https://tutorcruncher.com/us", "en-GB": "https://tutorcruncher.com" }`.
+   * Pass these on localised pages so search engines serve the right regional
+   * variant instead of treating them as duplicate content. The page's own
+   * `canonical` (the `url` argument) stays self-referencing — every regional
+   * variant emits the same `languages` map but its own canonical.
+   */
+  languages?: Record<string, string>
 ) => {
   return {
     title: title || "TutorCruncher",
@@ -23,6 +32,7 @@ export const formatMetaData = (
     },
     alternates: {
       canonical: url,
+      ...(languages ? { languages } : {}),
     },
   };
 };
