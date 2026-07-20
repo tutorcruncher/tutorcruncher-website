@@ -35,6 +35,7 @@ export default async function sitemap() {
     solutions,
     features,
     pricing,
+    usLanding,
   ] = await Promise.all([
     client.getSingle("home_page"),
     client.getSingle("integrations"),
@@ -47,6 +48,9 @@ export default async function sitemap() {
     client.getAllByType("solutions"),
     client.getAllByType("feature"),
     client.getAllByType("pricing"),
+    // Unpublished in some environments — resolve to null rather than
+    // rejecting Promise.all and taking down the whole sitemap.
+    client.getSingle("us_landing").catch(() => null),
   ]);
 
   const homeEntries = formatEntries(home, () => "");
@@ -69,6 +73,9 @@ export default async function sitemap() {
     () => "integrations"
   );
   const pricingEntries = formatEntries(pricing, (doc) => `pricing/${doc.uid}`);
+  const usLandingEntries = usLanding
+    ? formatEntries(usLanding, () => "us")
+    : [];
   const contactEntries = formatEntries(contact, () => "contact");
   const reviewEntries = formatEntries(reviews, () => "reviews");
   const releasesEntries = formatEntries(releases, () => "changes");
@@ -81,6 +88,7 @@ export default async function sitemap() {
 
   return [
     ...homeEntries,
+    ...usLandingEntries,
     ...pageEntries,
     ...articleEntries,
     ...solutionEntries,

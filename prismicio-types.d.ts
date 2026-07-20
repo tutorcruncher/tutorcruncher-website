@@ -848,6 +848,204 @@ export type HomePageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *US Landing Page → Hero Images*
+ */
+export interface UsLandingDocumentDataHeroImagesItem {
+  /**
+   * Image field in *US Landing Page → Hero Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: us_landing.hero_images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+type UsLandingDocumentDataSlicesSlice =
+  | AccordionsSlice
+  | TestimonialsSlice
+  | LogosSlice
+  | TextImageGridSlice
+  | InfoBoxListSlice
+  | ArticlesSlice
+  | FaqsSlice
+  | HomePricingSlice
+  | HomeSecuritySlice
+  | ReadyToGetStartedSlice;
+
+/**
+ * Item in *US Landing Page → Schemas*
+ */
+export interface UsLandingDocumentDataSchemasItem {
+  /**
+   * Schema field in *US Landing Page → Schemas*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: us_landing.schemas[].schema
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  schema: prismic.ContentRelationshipField<"schema">;
+}
+
+/**
+ * Content for US Landing Page documents
+ */
+interface UsLandingDocumentData {
+  /**
+   * Hero Eyebrow field in *US Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: us_landing.eyebrow
+   * - **Tab**: Main
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Hero Heading field in *US Landing Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **API ID Path**: us_landing.heading
+   * - **Tab**: Main
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Hero Intro field in *US Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: us_landing.intro
+   * - **Tab**: Main
+   */
+  intro: prismic.KeyTextField;
+
+  /**
+   * Hero Trust Line field in *US Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: us_landing.trust_line
+   * - **Tab**: Main
+   */
+  trust_line: prismic.KeyTextField;
+
+  /**
+   * Primary CTA Label field in *US Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: us_landing.cta_primary_label
+   * - **Tab**: Main
+   */
+  cta_primary_label: prismic.KeyTextField;
+
+  /**
+   * Primary CTA Link field in *US Landing Page*
+   *
+   * - **Field Type**: Link
+   * - **API ID Path**: us_landing.cta_primary_link
+   * - **Tab**: Main
+   */
+  cta_primary_link: prismic.LinkField;
+
+  /**
+   * Secondary CTA Label field in *US Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: us_landing.cta_secondary_label
+   * - **Tab**: Main
+   */
+  cta_secondary_label: prismic.KeyTextField;
+
+  /**
+   * Secondary CTA Link field in *US Landing Page*
+   *
+   * - **Field Type**: Link
+   * - **API ID Path**: us_landing.cta_secondary_link
+   * - **Tab**: Main
+   */
+  cta_secondary_link: prismic.LinkField;
+
+  /**
+   * Hero Images field in *US Landing Page*
+   *
+   * - **Field Type**: Group
+   * - **API ID Path**: us_landing.hero_images[]
+   * - **Tab**: Main
+   */
+  hero_images: prismic.GroupField<
+    Simplify<UsLandingDocumentDataHeroImagesItem>
+  >;
+
+  /**
+   * Slice Zone field in *US Landing Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **API ID Path**: us_landing.slices[]
+   * - **Tab**: Main
+   */
+  slices: prismic.SliceZone<UsLandingDocumentDataSlicesSlice> /**
+   * Meta Title field in *US Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: us_landing.meta_title
+   * - **Tab**: SEO & Metadata
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *US Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **API ID Path**: us_landing.meta_description
+   * - **Tab**: SEO & Metadata
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *US Landing Page*
+   *
+   * - **Field Type**: Image
+   * - **API ID Path**: us_landing.meta_image
+   * - **Tab**: SEO & Metadata
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Schema field in *US Landing Page*
+   *
+   * - **Field Type**: Content Relationship
+   * - **API ID Path**: us_landing.schema
+   * - **Tab**: SEO & Metadata
+   */
+  schema: prismic.ContentRelationshipField<"schema">;
+
+  /**
+   * Schemas field in *US Landing Page*
+   *
+   * - **Field Type**: Group
+   * - **API ID Path**: us_landing.schemas[]
+   * - **Tab**: SEO & Metadata
+   */
+  schemas: prismic.GroupField<Simplify<UsLandingDocumentDataSchemasItem>>;
+}
+
+/**
+ * US Landing Page document from Prismic
+ *
+ * - **API ID**: `us_landing`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type UsLandingDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<UsLandingDocumentData>,
+    "us_landing",
+    Lang
+  >;
+
 type IntegrationDocumentDataSlicesSlice = never;
 
 /**
@@ -1636,6 +1834,63 @@ interface ReleaseDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   changes: prismic.RichTextField;
+
+  /**
+   * Featured field in *Release*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: release.featured
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  featured: prismic.BooleanField;
+
+  /**
+   * Preview field in *Release*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: release.preview
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  preview: prismic.BooleanField;
+
+  /**
+   * Title field in *Release*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: release.title
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Video field in *Release*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: release.video
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkToMediaField;
+
+  /**
+   * Description field in *Release*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: release.description
+   * - **Tab**: Featured
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
 }
 
 /**
@@ -2323,7 +2578,8 @@ export type AllDocumentTypes =
   | SchemaDocument
   | SolutionsDocument
   | TestimonialDocument
-  | TutoringCalculatorDocument;
+  | TutoringCalculatorDocument
+  | UsLandingDocument;
 
 /**
  * Item in *Accordions → Default → Primary → Content*
@@ -2710,6 +2966,17 @@ export interface HomePricingSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   background_colour: prismic.SelectField<"Cream" | "Blue" | "White", "filled">;
+
+  /**
+   * Currency field in *HomePricing → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: GBP
+   * - **API ID Path**: home_pricing.default.primary.currency
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  currency: prismic.SelectField<"GBP" | "USD", "filled">;
 }
 
 /**
