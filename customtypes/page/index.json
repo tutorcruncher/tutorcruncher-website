@@ -1,9 +1,7 @@
 {
   "id": "page",
   "label": "Page",
-  "format": "page",
   "repeatable": true,
-  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -18,8 +16,8 @@
         "config": {
           "label": "Title",
           "placeholder": "Title for the page",
-          "allowTargetBlank": false,
-          "single": "heading1"
+          "single": "heading1",
+          "allowTargetBlank": false
         }
       },
       "slices": {
@@ -95,7 +93,9 @@
         "config": {
           "label": "Schema",
           "select": "document",
-          "customtypes": ["schema"]
+          "customtypes": [
+            "schema"
+          ]
         }
       },
       "schemas": {
@@ -109,12 +109,16 @@
               "config": {
                 "label": "Schema",
                 "select": "document",
-                "customtypes": ["schema"]
+                "customtypes": [
+                  "schema"
+                ]
               }
             }
           }
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "page"
 }

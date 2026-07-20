@@ -1,0 +1,64 @@
+{
+  "repositoryName": "tutor-cruncher",
+  "libraries": [
+    "./src/slices"
+  ],
+  "routes": [
+    {
+      "type": "home_page",
+      "path": "/"
+    },
+    {
+      "type": "page",
+      "path": "/:uid"
+    },
+    {
+      "type": "solutions",
+      "path": "/solutions/:uid"
+    },
+    {
+      "type": "article",
+      "path": "/blog/:uid"
+    },
+    {
+      "type": "feature",
+      "path": "/features/:uid"
+    },
+    {
+      "type": "features",
+      "path": "/features"
+    },
+    {
+      "type": "pricing",
+      "path": "/pricing/:uid"
+    },
+    {
+      "type": "release",
+      "path": "/changes"
+    },
+    {
+      "type": "releases",
+      "path": "/changes"
+    },
+    {
+      "type": "integration",
+      "path": "/integrations"
+    },
+    {
+      "type": "integrations",
+      "path": "/integrations"
+    },
+    {
+      "type": "testimonial",
+      "path": "/reviews"
+    },
+    {
+      "type": "community",
+      "path": "/community"
+    },
+    {
+      "type": "event",
+      "path": "/community/:uid"
+    }
+  ]
+}

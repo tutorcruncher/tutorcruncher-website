@@ -2,23 +2,22 @@
   "id": "logos",
   "type": "SharedSlice",
   "name": "Logos",
-  "description": "Logos",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/tutor-cruncher/shared-slices/logos/default/e42f4287a7c69cc4d6429537d2b844630565da3e.png?auto=compress%2Cformat",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "heading": {
           "type": "StructuredText",
           "config": {
             "label": "Heading",
             "placeholder": "",
-            "allowTargetBlank": false,
-            "single": "strong,heading2"
+            "single": "strong,heading2",
+            "allowTargetBlank": false
           }
         },
         "background_colour": {
@@ -26,12 +25,12 @@
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "White",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "White"
+            ]
           }
         },
         "logo": {
@@ -54,5 +53,6 @@
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "Logos"
 }

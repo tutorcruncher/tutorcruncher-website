@@ -1,9 +1,7 @@
 {
-  "format": "page",
   "id": "community",
   "label": "Community",
   "repeatable": false,
-  "status": true,
   "json": {
     "Main": {
       "hero_eyebrow": {
@@ -18,8 +16,8 @@
         "config": {
           "label": "Hero heading",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "heading1,strong"
+          "multi": "heading1,strong",
+          "allowTargetBlank": true
         }
       },
       "hero_subheading": {
@@ -41,8 +39,8 @@
         "config": {
           "label": "Hero button link",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "select": null
+          "select": null,
+          "allowTargetBlank": true
         }
       },
       "intro_heading": {
@@ -57,8 +55,8 @@
         "config": {
           "label": "Intro content",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,em,hyperlink"
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
         }
       },
       "intro_image": {
@@ -102,8 +100,8 @@
         "config": {
           "label": "Newsletter description",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,em,hyperlink"
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
         }
       },
       "newsletter_button_text": {
@@ -116,29 +114,29 @@
     },
     "SEO & Metadata": {
       "meta_title": {
+        "type": "Text",
         "config": {
           "label": "Meta Title",
           "placeholder": "A title of the page used for social media and search engines"
-        },
-        "type": "Text"
+        }
       },
       "meta_description": {
+        "type": "Text",
         "config": {
           "label": "Meta Description",
           "placeholder": "A brief summary of the page"
-        },
-        "type": "Text"
+        }
       },
       "meta_image": {
+        "type": "Image",
         "config": {
-          "constraint": {
-            "height": 1260,
-            "width": 2400
-          },
           "label": "Meta Image",
+          "constraint": {
+            "width": 2400,
+            "height": 1260
+          },
           "thumbnails": []
-        },
-        "type": "Image"
+        }
       },
       "schemas": {
         "type": "Group",
@@ -151,12 +149,16 @@
               "config": {
                 "label": "Schema",
                 "select": "document",
-                "customtypes": ["schema"]
+                "customtypes": [
+                  "schema"
+                ]
               }
             }
           }
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "page"
 }

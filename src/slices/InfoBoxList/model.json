@@ -2,15 +2,14 @@
   "id": "info_box_list",
   "type": "SharedSlice",
   "name": "InfoBoxList",
-  "description": "InfoBoxList",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/tutor-cruncher/shared-slices/info_box_list/default/077e002d18946af42a4a9381de669911a0b34f21.png?auto=compress%2Cformat",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "title": {
           "type": "Text",
@@ -24,12 +23,12 @@
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Cream",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "Cream"
+            ]
           }
         },
         "features": {
@@ -65,8 +64,8 @@
                 "config": {
                   "label": "Content",
                   "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em,hyperlink"
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "allowTargetBlank": true
                 }
               }
             }
@@ -75,5 +74,6 @@
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "InfoBoxList"
 }

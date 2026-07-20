@@ -1,9 +1,7 @@
 {
-  "format": "custom",
   "id": "schema",
   "label": "Schema",
   "repeatable": true,
-  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -17,10 +15,12 @@
         "config": {
           "label": "Schema Script",
           "placeholder": "",
-          "allowTargetBlank": false,
-          "multi": "preformatted"
+          "multi": "preformatted",
+          "allowTargetBlank": false
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "custom"
 }

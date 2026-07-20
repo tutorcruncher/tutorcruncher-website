@@ -2,23 +2,22 @@
   "id": "text_image_grid",
   "type": "SharedSlice",
   "name": "AlternatingGrid",
-  "description": "TextImageGrid",
   "variations": [
     {
       "id": "default",
       "name": "default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/tutor-cruncher/shared-slices/text_image_grid/default/d5fd166f9076cfd33f487235e773b1454748aa08.png?auto=compress%2Cformat",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "heading": {
           "type": "StructuredText",
           "config": {
             "label": "Heading",
             "placeholder": "",
-            "allowTargetBlank": false,
-            "single": "strong,heading2"
+            "single": "strong,heading2",
+            "allowTargetBlank": false
           }
         },
         "background_colour": {
@@ -26,21 +25,21 @@
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Cream",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "Cream"
+            ]
           }
         },
         "show_cta": {
           "type": "Boolean",
           "config": {
             "label": "Show CTA buttons (free trial + book a call)",
-            "placeholder_false": "false",
+            "default_value": false,
             "placeholder_true": "true",
-            "default_value": false
+            "placeholder_false": "false"
           }
         },
         "content": {
@@ -61,8 +60,8 @@
                 "config": {
                   "label": "content",
                   "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em,o-list-item,list-item,hyperlink"
+                  "multi": "paragraph,strong,em,o-list-item,list-item,hyperlink",
+                  "allowTargetBlank": true
                 }
               },
               "button_text": {
@@ -77,8 +76,8 @@
                 "config": {
                   "label": "Button link",
                   "placeholder": "",
-                  "allowTargetBlank": false,
-                  "select": null
+                  "select": null,
+                  "allowTargetBlank": false
                 }
               },
               "image": {
@@ -94,11 +93,11 @@
                 "config": {
                   "label": "Image postion",
                   "placeholder": "",
+                  "default_value": "Right",
                   "options": [
                     "Right",
                     "Left"
-                  ],
-                  "default_value": "Right"
+                  ]
                 }
               }
             }
@@ -110,18 +109,18 @@
     {
       "id": "withBackground",
       "name": "has background",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/tutor-cruncher/shared-slices/text_image_grid/withBackground/c14ca661fa0c7c8ccb8c1f9508f9057a90c105d5.png?auto=compress%2Cformat",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "heading": {
           "type": "StructuredText",
           "config": {
             "label": "Heading",
             "placeholder": "",
-            "allowTargetBlank": false,
-            "single": "strong,heading2"
+            "single": "strong,heading2",
+            "allowTargetBlank": false
           }
         },
         "background_colour": {
@@ -129,20 +128,20 @@
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Cream",
             "options": [
               "Cream",
               "Blue"
-            ],
-            "default_value": "Cream"
+            ]
           }
         },
         "show_cta": {
           "type": "Boolean",
           "config": {
             "label": "Show CTA buttons (free trial + book a call)",
-            "placeholder_false": "false",
+            "default_value": false,
             "placeholder_true": "true",
-            "default_value": false
+            "placeholder_false": "false"
           }
         },
         "content": {
@@ -163,8 +162,8 @@
                 "config": {
                   "label": "content",
                   "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em,o-list-item,list-item,hyperlink"
+                  "multi": "paragraph,strong,em,o-list-item,list-item,hyperlink",
+                  "allowTargetBlank": true
                 }
               },
               "button_text": {
@@ -179,8 +178,8 @@
                 "config": {
                   "label": "Button link",
                   "placeholder": "",
-                  "allowTargetBlank": false,
-                  "select": null
+                  "select": null,
+                  "allowTargetBlank": false
                 }
               },
               "image": {
@@ -196,11 +195,11 @@
                 "config": {
                   "label": "Image postion",
                   "placeholder": "",
+                  "default_value": "Right",
                   "options": [
                     "Right",
                     "Left"
-                  ],
-                  "default_value": "Right"
+                  ]
                 }
               }
             }
@@ -209,5 +208,6 @@
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "TextImageGrid"
 }

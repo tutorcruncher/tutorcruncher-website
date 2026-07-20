@@ -1,9 +1,7 @@
 {
-  "format": "custom",
   "id": "optional_extra",
   "label": "Optional Extra",
   "repeatable": true,
-  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -45,10 +43,12 @@
         "config": {
           "label": "Content",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,em,hyperlink"
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "custom"
 }

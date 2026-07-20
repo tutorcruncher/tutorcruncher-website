@@ -1,9 +1,7 @@
 {
-  "format": "page",
   "id": "us_landing",
   "label": "US Landing Page",
   "repeatable": false,
-  "status": true,
   "json": {
     "Main": {
       "eyebrow": {
@@ -18,8 +16,8 @@
         "config": {
           "label": "Hero Heading",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "heading1,strong"
+          "multi": "heading1,strong",
+          "allowTargetBlank": true
         }
       },
       "intro": {
@@ -48,6 +46,7 @@
         "config": {
           "label": "Primary CTA Link",
           "placeholder": "https://app.tutorcruncher.com/start/1/",
+          "select": null,
           "allowTargetBlank": true
         }
       },
@@ -63,6 +62,7 @@
         "config": {
           "label": "Secondary CTA Link",
           "placeholder": "/book-a-call",
+          "select": null,
           "allowTargetBlank": true
         }
       },
@@ -124,36 +124,38 @@
     },
     "SEO & Metadata": {
       "meta_title": {
+        "type": "Text",
         "config": {
           "label": "Meta Title",
           "placeholder": "A title of the page used for social media and search engines"
-        },
-        "type": "Text"
+        }
       },
       "meta_description": {
+        "type": "Text",
         "config": {
           "label": "Meta Description",
           "placeholder": "A brief summary of the page"
-        },
-        "type": "Text"
+        }
       },
       "meta_image": {
+        "type": "Image",
         "config": {
-          "constraint": {
-            "height": 1260,
-            "width": 2400
-          },
           "label": "Meta Image",
+          "constraint": {
+            "width": 2400,
+            "height": 1260
+          },
           "thumbnails": []
-        },
-        "type": "Image"
+        }
       },
       "schema": {
         "type": "Link",
         "config": {
           "label": "Schema",
           "select": "document",
-          "customtypes": ["schema"]
+          "customtypes": [
+            "schema"
+          ]
         }
       },
       "schemas": {
@@ -167,12 +169,16 @@
               "config": {
                 "label": "Schema",
                 "select": "document",
-                "customtypes": ["schema"]
+                "customtypes": [
+                  "schema"
+                ]
               }
             }
           }
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "page"
 }

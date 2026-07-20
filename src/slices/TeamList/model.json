@@ -2,23 +2,22 @@
   "id": "team_list",
   "type": "SharedSlice",
   "name": "TeamList",
-  "description": "TeamList",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "heading": {
           "type": "StructuredText",
           "config": {
             "label": "Heading",
             "placeholder": "",
-            "allowTargetBlank": false,
-            "single": "strong,heading2"
+            "single": "strong,heading2",
+            "allowTargetBlank": false
           }
         },
         "team_members": {
@@ -65,18 +64,18 @@
     {
       "id": "salesTeam",
       "name": "Sales Team",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "heading": {
           "type": "StructuredText",
           "config": {
             "label": "Heading",
             "placeholder": "",
-            "allowTargetBlank": false,
-            "single": "strong,heading2"
+            "single": "strong,heading2",
+            "allowTargetBlank": false
           }
         },
         "team_members": {
@@ -120,5 +119,6 @@
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "TeamList"
 }
