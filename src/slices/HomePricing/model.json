@@ -24,6 +24,18 @@
             ],
             "default_value": "White"
           }
+        },
+        "currency": {
+          "type": "Select",
+          "config": {
+            "label": "Currency",
+            "placeholder": "",
+            "options": [
+              "GBP",
+              "USD"
+            ],
+            "default_value": "GBP"
+          }
         }
       },
       "items": {}

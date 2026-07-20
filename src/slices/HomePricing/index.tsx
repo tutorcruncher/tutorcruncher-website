@@ -15,13 +15,14 @@ export type HomePricingProps = SliceComponentProps<Content.HomePricingSlice>;
  */
 const HomePricing = ({ slice }: HomePricingProps): JSX.Element => {
   const background = backgroundColor(slice.primary.background_colour);
+  const currency = slice.primary.currency === "USD" ? "USD" : "GBP";
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <HomePricingComponent background={background} />
+      <HomePricingComponent background={background} currency={currency} />
     </section>
   );
 };

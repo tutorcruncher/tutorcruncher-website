@@ -35,6 +35,45 @@
           "multi": "strong,em,hyperlink,list-item"
         }
       }
+    },
+    "Featured": {
+      "featured": {
+        "type": "Boolean",
+        "config": {
+          "label": "Featured",
+          "default_value": false
+        }
+      },
+      "preview": {
+        "type": "Boolean",
+        "config": {
+          "label": "Preview",
+          "default_value": false
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "video": {
+        "type": "Link",
+        "config": {
+          "label": "Video",
+          "select": "media"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink,list-item"
+        }
+      }
     }
   }
 }

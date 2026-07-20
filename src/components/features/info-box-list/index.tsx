@@ -38,6 +38,7 @@ export const InfoBoxList = ({
             <InfoCard
               key={integration.title}
               title={integration.title}
+              intro={integration.intro}
               icon={integration.icon}
               variant="feature"
               onClick={() => handleCardClick(integration)}

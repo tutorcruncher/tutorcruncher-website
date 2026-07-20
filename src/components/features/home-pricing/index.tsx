@@ -1,4 +1,5 @@
 import { Action } from "@/components/ui/action";
+import { ArrowLink } from "@/components/ui/arrow-link";
 import { Body } from "@/components/ui/body";
 import { Heading } from "@/components/ui/heading";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
@@ -7,14 +8,17 @@ import styles from "./home-pricing.module.scss";
 
 import { BackgroundColour } from "@/types/backgroundColor";
 
+type Currency = "GBP" | "USD";
+
 interface HomePricingProps {
   background?: BackgroundColour;
+  currency?: Currency;
 }
 
 interface Tier {
   name: string;
   description: string;
-  startingFrom: string;
+  startingFrom: Record<Currency, string>;
   pricingKey: string;
   solutionUrl: string;
 }
@@ -23,27 +27,30 @@ const TIERS: Tier[] = [
   {
     name: "Pay as you go",
     description: "For tutoring companies starting out",
-    startingFrom: "£25",
+    startingFrom: { GBP: "£25", USD: "$30" },
     pricingKey: "payg",
     solutionUrl: "/solutions/payg",
   },
   {
     name: "Startup",
     description: "For scaling tutoring companies",
-    startingFrom: "£60",
+    startingFrom: { GBP: "£60", USD: "$80" },
     pricingKey: "startup",
     solutionUrl: "/solutions/startup",
   },
   {
     name: "Enterprise",
     description: "For large-scale tutoring companies",
-    startingFrom: "£200",
+    startingFrom: { GBP: "£200", USD: "$240" },
     pricingKey: "enterprise",
     solutionUrl: "/solutions/enterprise",
   },
 ];
 
-export const HomePricing = ({ background = "white" }: HomePricingProps) => {
+export const HomePricing = ({
+  background = "white",
+  currency = "GBP",
+}: HomePricingProps) => {
   return (
     <Body
       containerSize="large"
@@ -65,7 +72,7 @@ export const HomePricing = ({ background = "white" }: HomePricingProps) => {
             <div className={styles.pricing}>
               <p className={styles.startingFrom}>Starting from</p>
               <p className={styles.price}>
-                {tier.startingFrom}
+                {tier.startingFrom[currency]}
                 <span className={styles.cycle}>/month</span>
               </p>
             </div>
@@ -86,6 +93,14 @@ export const HomePricing = ({ background = "white" }: HomePricingProps) => {
             </div>
           </div>
         ))}
+      </div>
+      <div className={styles.footerLink}>
+        <ArrowLink
+          text="See full pricing"
+          // Send visitors to the pricing page for their currency, so US
+          // traffic doesn't land on the GBP default.
+          href={currency === "USD" ? "/pricing/us" : "/pricing/gb"}
+        />
       </div>
     </Body>
   );

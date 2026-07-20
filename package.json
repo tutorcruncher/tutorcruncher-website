@@ -11,6 +11,7 @@
     "start": "next start -p 8000",
     "lint": "next lint && npx tsc --noEmit",
     "slicemachine": "start-slicemachine",
+    "migrate:us-landing": "node migrations/us-landing.mjs",
     "format": "prettier --write .",
     "prepare": "husky"
   },
