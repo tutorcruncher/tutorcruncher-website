@@ -1,12 +1,21 @@
 import { COUNTRIES_CURRENCIES, LISTED_CURRENCIES } from "./constants";
 
-export const getCurrencyOptions = (countryCode: string) => {
-  let currencyStr = COUNTRIES_CURRENCIES[countryCode]?.currencies[0];
+// Resolves the currency key ("USD ($)") actually used for a country's brackets,
+// falling back to USD for countries with no listed currency.
+export const getCurrencyKeyForCountry = (countryCode: string) => {
+  const currencyStr = COUNTRIES_CURRENCIES[countryCode]?.currencies[0];
   if (!(currencyStr in LISTED_CURRENCIES)) {
-    currencyStr = COUNTRIES_CURRENCIES["US"]["currencies"][0];
+    return COUNTRIES_CURRENCIES["US"]["currencies"][0];
   }
-  return LISTED_CURRENCIES[currencyStr];
+  return currencyStr;
 };
+
+// The ISO code ("USD") for a country, matching the brackets the user was shown.
+export const getCurrencyCodeForCountry = (countryCode: string) =>
+  getCurrencyKeyForCountry(countryCode).split(" ")[0];
+
+export const getCurrencyOptions = (countryCode: string) =>
+  LISTED_CURRENCIES[getCurrencyKeyForCountry(countryCode)];
 
 export const getKeyByCurrencyCode = (currencyCode: string) => {
   for (const key in LISTED_CURRENCIES) {
