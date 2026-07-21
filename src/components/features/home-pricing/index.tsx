@@ -1,8 +1,11 @@
-import { Action } from "@/components/ui/action";
+"use client";
+
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Body } from "@/components/ui/body";
 import { Heading } from "@/components/ui/heading";
+import { TrackedAction } from "@/components/ui/tracked-action";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
+import { useTrackedHref } from "@/hooks/use-tracked-href";
 
 import styles from "./home-pricing.module.scss";
 
@@ -51,6 +54,12 @@ export const HomePricing = ({
   background = "white",
   currency = "GBP",
 }: HomePricingProps) => {
+  // Send visitors to the pricing page for their currency, so US traffic
+  // doesn't land on the GBP default.
+  const pricingHref = useTrackedHref(
+    currency === "USD" ? "/pricing/us" : "/pricing/gb"
+  );
+
   return (
     <Body
       containerSize="large"
@@ -77,14 +86,14 @@ export const HomePricing = ({
               </p>
             </div>
             <div className={styles.buttons}>
-              <Action
+              <TrackedAction
                 href={tier.solutionUrl}
                 variant="outline"
                 fullwidth
                 size="small"
               >
                 Find out more
-              </Action>
+              </TrackedAction>
               <TrackingLink
                 url={`https://app.tutorcruncher.com/start/1/?plan=${tier.pricingKey}`}
                 text="Get started"
@@ -95,12 +104,7 @@ export const HomePricing = ({
         ))}
       </div>
       <div className={styles.footerLink}>
-        <ArrowLink
-          text="See full pricing"
-          // Send visitors to the pricing page for their currency, so US
-          // traffic doesn't land on the GBP default.
-          href={currency === "USD" ? "/pricing/us" : "/pricing/gb"}
-        />
+        <ArrowLink text="See full pricing" href={pricingHref} />
       </div>
     </Body>
   );

@@ -58,6 +58,28 @@ const getPageInfo = () => {
   return `tc-${pageType}-${slugify(title)}`;
 };
 
+/**
+ * Regional landing pages that report their own source/campaign instead of the
+ * title-derived defaults, so paid and organic traffic to them can be told apart
+ * in BigQuery.
+ *
+ * Keyed by pathname. `source` is only applied when the visitor did NOT arrive
+ * from an ad — a `utm_source` always wins, otherwise we would overwrite Google
+ * Ads attribution and break the "US Search" campaign mapping.
+ */
+const REGIONAL_LANDING_PAGES: Record<
+  string,
+  { source: string; campaign: string }
+> = {
+  "/us": { source: "tutorcruncher.com/us", campaign: "tc-home-US" },
+};
+
+const getRegionalLandingPage = () => {
+  // Ignore any trailing slash so "/us/" matches "/us".
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  return REGIONAL_LANDING_PAGES[path];
+};
+
 // Google Click ID (GCLID) storage helpers (90-day expiry)
 // Use consistent key "_tc_gclid" and ISO datetime expiry
 const GCLID_KEY = "_tc_gclid";
@@ -116,6 +138,19 @@ const getTrackingParams = (): Record<string, string> => {
 
     params.tc_source = utmSource;
     if (utmCampaign) params.tc_campaign = utmCampaign;
+    return params;
+  }
+
+  // Regional landing pages (e.g. /us) label their own traffic. This runs after
+  // the UTM branch above, so an ad click keeps its utm_source/utm_campaign and
+  // only direct/organic visitors get the page's own source and campaign.
+  const regional = getRegionalLandingPage();
+  if (regional) {
+    localStorage.setItem("_tc_source", regional.source);
+    localStorage.setItem("_tc_campaign", regional.campaign);
+
+    params.tc_source = regional.source;
+    params.tc_campaign = regional.campaign;
     return params;
   }
 

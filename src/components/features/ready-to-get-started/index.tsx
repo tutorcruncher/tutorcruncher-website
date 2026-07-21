@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
 
-import { Action } from "@/components/ui/action";
 import { Heading } from "@/components/ui/heading";
 import { PillCard } from "@/components/ui/pill-card";
+import { TrackedAction } from "@/components/ui/tracked-action";
 
 import styles from "./ready-to-get-started.module.scss";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
@@ -40,7 +40,7 @@ export const ReadyToGetStarted = ({
               )}
             </Heading>
             <div className={styles.buttonsContainer}>
-              <Action href="/book-a-call">Book a call </Action>
+              <TrackedAction href="/book-a-call">Book a call </TrackedAction>
               <TrackingLink
                 url="https://app.tutorcruncher.com/start/1/"
                 text="Start a free trial"

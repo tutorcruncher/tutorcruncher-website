@@ -1,7 +1,7 @@
 import { ImageField, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 
-import { Action } from "@/components/ui/action";
+import { TrackedAction } from "@/components/ui/tracked-action";
 import { Heading } from "@/components/ui/heading";
 import { TrustpilotRating } from "@/components/ui/trustpilot-rating";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
@@ -53,7 +53,9 @@ export const UsLandingHero = ({
           {intro && <p className={styles.tagLine}>{intro}</p>}
           <div className={styles.buttons}>
             <TrackingLink url={primaryCta.url} text={primaryCta.label} />
-            <Action href={secondaryCta.url}>{secondaryCta.label}</Action>
+            <TrackedAction href={secondaryCta.url}>
+              {secondaryCta.label}
+            </TrackedAction>
           </div>
           <div className={styles.trust}>
             {trustLine ? (
