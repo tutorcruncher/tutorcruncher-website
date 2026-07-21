@@ -12,11 +12,16 @@ import { Heading } from "@/components/ui/heading";
 
 import styles from "./call-booker.module.scss";
 import { fetchAvailableSlots, getUpcomingWeekSlotDates } from "./helpers";
-import { getCurrencyOptions } from "../booking-widget/helpers";
-import { regions } from "app/data/regions/regions";
+import {
+  getCurrencyCodeForCountry,
+  getCurrencyOptions,
+} from "../booking-widget/helpers";
 import { useSearchParams } from "next/navigation";
 import { Slot } from "./types";
 import Link from "next/link";
+
+// Used only when geolocation genuinely fails, never as an initial guess.
+const FALLBACK_COUNTRY_CODE = "US";
 
 export const CallBooker = ({ rep, rb }) => {
   const [openSlots, setOpenSlots] = useState([]);
@@ -31,7 +36,10 @@ export const CallBooker = ({ rep, rb }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [revenueOptions, setRevenueOptions] = useState(null);
-  const [countryCode, setCountryCode] = useState("GB");
+  const [selectedRevenue, setSelectedRevenue] = useState("");
+  // Starts null so we never render a guessed currency: showing GBP brackets to a
+  // US visitor until geolocation resolved was reported as a live bug.
+  const [countryCode, setCountryCode] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasLowAvailability, sethasLowAvailability] = useState(false);
 
@@ -43,6 +51,7 @@ export const CallBooker = ({ rep, rb }) => {
 
   const searchParams = useSearchParams();
   const recaptchaRef = createRef();
+  const defaultRevenueOptionIndex = +rb;
 
   useEffect(() => {
     const zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -58,22 +67,34 @@ export const CallBooker = ({ rep, rb }) => {
 
   useEffect(() => {
     const getCountryCode = async () => {
-      let storedCountryCode = localStorage.getItem("_country_code");
+      const storedCountryCode = localStorage.getItem("_country_code");
 
-      if (!storedCountryCode) {
-        try {
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_HERMES_BASE_URL}/loc/`
-          );
+      // A cached code still has to be applied to state, otherwise returning
+      // visitors were left on the initial value regardless of what was stored.
+      if (storedCountryCode) {
+        setCountryCode(storedCountryCode);
+        return;
+      }
 
-          const { country_code }: { country_code: string } =
-            await response.json();
-          storedCountryCode = country_code || "GB";
-          localStorage.setItem("_country_code", storedCountryCode);
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_HERMES_BASE_URL}/loc/`
+        );
+
+        const { country_code }: { country_code: string } =
+          await response.json();
+
+        // Only cache a real answer; caching the fallback would make a transient
+        // failure permanent for that visitor.
+        if (country_code) {
+          localStorage.setItem("_country_code", country_code);
           setCountryCode(country_code);
-        } catch (error) {
-          console.error(error);
+        } else {
+          setCountryCode(FALLBACK_COUNTRY_CODE);
         }
+      } catch (error) {
+        console.error(error);
+        setCountryCode(FALLBACK_COUNTRY_CODE);
       }
     };
 
@@ -115,8 +136,17 @@ export const CallBooker = ({ rep, rb }) => {
   }, [isExpress, rep.hermes_admin_id]);
 
   useEffect(() => {
-    setRevenueOptions(getCurrencyOptions(countryCode));
-  }, [countryCode]);
+    if (!countryCode) return;
+    const options = getCurrencyOptions(countryCode);
+    setRevenueOptions(options);
+
+    // Clamp the ?rb= index: currencies have differing bracket counts (EUR has
+    // five, the rest six), so an out-of-range index would select nothing.
+    const requestedIndex = Number.isInteger(defaultRevenueOptionIndex)
+      ? Math.min(Math.max(defaultRevenueOptionIndex, 0), options.length - 1)
+      : 0;
+    setSelectedRevenue(options[requestedIndex]?.[1] ?? "");
+  }, [countryCode, defaultRevenueOptionIndex]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -132,9 +162,6 @@ export const CallBooker = ({ rep, rb }) => {
     setIsLoading(true);
 
     const formData = new FormData(event.target as HTMLFormElement);
-    const region = regions.find(
-      (region) => region.region_code === countryCode.toLowerCase()
-    );
 
     const estimatedIncome = formData.get("revenue");
     const pricePlan = revenueOptions.find(
@@ -156,7 +183,7 @@ export const CallBooker = ({ rep, rb }) => {
       call_type: callType,
       company_name: formData.get("company"),
       country: countryCode,
-      currency: region.currency_code,
+      currency: getCurrencyCodeForCountry(countryCode),
       email: formData.get("email"),
       estimated_income: estimatedIncome,
       meeting_dt: formData.get("selected-time"),
@@ -201,8 +228,6 @@ export const CallBooker = ({ rep, rb }) => {
       setIsLoading(false);
     }
   };
-  const defaultRevenueOptionIndex = +rb;
-
   if (isSubmitted) {
     return (
       <div className={clsx(styles.bookWidget)}>
@@ -395,15 +420,20 @@ export const CallBooker = ({ rep, rb }) => {
             <select
               id="revenue"
               name="revenue"
-              defaultValue={
-                revenueOptions?.[defaultRevenueOptionIndex]?.[1] || ""
-              }
+              required
+              disabled={!revenueOptions}
+              value={selectedRevenue}
+              onChange={(e) => setSelectedRevenue(e.target.value)}
             >
-              {revenueOptions?.map(([, label]) => (
-                <option value={label} key={`revenue-option-${label}`}>
-                  {label}
-                </option>
-              ))}
+              {revenueOptions ? (
+                revenueOptions.map(([, label]) => (
+                  <option value={label} key={`revenue-option-${label}`}>
+                    {label}
+                  </option>
+                ))
+              ) : (
+                <option value="">Loading…</option>
+              )}
             </select>
             <ReCAPTCHA
               ref={recaptchaRef}
