@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
-import { Action } from "@/components/ui/action";
 import { Heading } from "@/components/ui/heading";
+import { TrackedAction } from "@/components/ui/tracked-action";
 
 import { AlternatingGridItem } from "../types";
 import styles from "./alternating-grid-item.module.scss";
@@ -23,7 +23,7 @@ export const TextImageGridItem = ({
         styles.alternatingGridItem,
         styles[`variant--${variation}`],
         image && imagePosition === "Left" && styles.imageOnLeft,
-        className
+        className,
       )}
     >
       {image ? (
@@ -45,7 +45,7 @@ export const TextImageGridItem = ({
         <div className={styles.content}>{content}</div>
         {button ? (
           <div className={styles.actionWrapper}>
-            <Action href={button.url}>{button.text}</Action>
+            <TrackedAction href={button.url}>{button.text}</TrackedAction>
           </div>
         ) : null}
       </div>

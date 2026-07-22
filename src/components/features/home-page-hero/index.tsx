@@ -1,5 +1,5 @@
-import { Action } from "../../ui/action";
 import { Heading } from "../../ui/heading";
+import { TrackedAction } from "../../ui/tracked-action";
 import { TrustpilotRating } from "../../ui/trustpilot-rating";
 import { TRUSTED_BY_LABEL } from "../customer-trust";
 import styles from "./home-page-hero.module.scss";
@@ -21,7 +21,7 @@ export const HomePageHero = ({ heading, intro, heroImages }) => {
               url="https://app.tutorcruncher.com/start/1/"
               text="Start a free trial"
             />
-            <Action href="/book-a-call">Book a demo</Action>
+            <TrackedAction href="/book-a-call">Book a demo</TrackedAction>
           </div>
           <div className={styles.trust}>
             <TrustpilotRating />

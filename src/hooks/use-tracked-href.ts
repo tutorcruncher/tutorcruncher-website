@@ -3,15 +3,31 @@
 import { useTracking } from "app/providers/tracking-provider";
 
 /**
- * Pages whose internal CTAs carry tracking params. Scoped deliberately: the
- * rest of the site keeps clean internal URLs, and only the regional landing
- * pages propagate attribution across internal navigation.
+ * Pages whose internal CTAs carry tracking params, mapped to which hrefs get
+ * them: "all", or an allowlist of pathnames. Scoped deliberately: the rest of
+ * the site keeps clean internal URLs. The homepage only tracks its book-a-call
+ * CTAs — its "Find out more" / "See full pricing" links stay clean so signups
+ * from those pages attribute to the page they happened on, not the homepage.
  */
-const TRACKED_INTERNAL_LINK_PATHS = ["/us"];
+const TRACKED_INTERNAL_LINKS: Record<string, "all" | string[]> = {
+  "/us": "all",
+  "/": ["/book-a-call"],
+};
 
-const isTrackedPath = () => {
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
-  return TRACKED_INTERNAL_LINK_PATHS.includes(path);
+const normalisePath = (path: string) => path.replace(/\/+$/, "") || "/";
+
+const isTrackedHref = (href: string) => {
+  const tracked =
+    TRACKED_INTERNAL_LINKS[normalisePath(window.location.pathname)];
+  if (!tracked) return false;
+  if (tracked === "all") return true;
+
+  try {
+    const { pathname } = new URL(href, window.location.origin);
+    return tracked.includes(normalisePath(pathname));
+  } catch {
+    return false;
+  }
 };
 
 /**
@@ -30,7 +46,7 @@ export const useTrackedHref = (href: string): string => {
   const { queryParams } = useTracking();
 
   if (typeof window === "undefined") return href;
-  if (!isTrackedPath()) return href;
+  if (!isTrackedHref(href)) return href;
   if (!queryParams || Object.keys(queryParams).length === 0) return href;
 
   try {
