@@ -1,6 +1,0 @@
-{
-  "libraries": ["./src/slices"],
-  "adapter": "@slicemachine/adapter-next",
-  "repositoryName": "tutor-cruncher",
-  "localSliceSimulatorURL": "https://tutorcruncher.vercel.app/slice-simulator"
-}

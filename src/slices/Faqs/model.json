@@ -2,15 +2,14 @@
   "id": "faqs",
   "type": "SharedSlice",
   "name": "Faqs",
-  "description": "Faqs",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "title": {
           "type": "Text",
@@ -24,12 +23,12 @@
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Cream",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "Cream"
+            ]
           }
         },
         "faqs": {
@@ -50,8 +49,8 @@
                 "config": {
                   "label": "Answer",
                   "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "allowTargetBlank": true
                 }
               }
             }
@@ -60,5 +59,6 @@
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "Faqs"
 }

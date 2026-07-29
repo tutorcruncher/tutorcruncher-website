@@ -2,40 +2,40 @@
   "id": "call_to_action",
   "type": "SharedSlice",
   "name": "CallToAction",
-  "description": "CallToAction",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "background_colour": {
           "type": "Select",
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Cream",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "Cream"
+            ]
           }
         },
         "show_image": {
           "type": "Boolean",
           "config": {
             "label": "Show Image",
-            "placeholder_false": "false",
+            "default_value": false,
             "placeholder_true": "true",
-            "default_value": false
+            "placeholder_false": "false"
           }
         }
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "CallToAction"
 }

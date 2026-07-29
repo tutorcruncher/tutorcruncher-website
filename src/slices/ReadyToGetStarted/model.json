@@ -2,23 +2,22 @@
   "id": "ready_to_get_started",
   "type": "SharedSlice",
   "name": "ReadyToGetStarted",
-  "description": "ReadyToGetStarted",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "heading": {
           "type": "StructuredText",
           "config": {
             "label": "Heading",
             "placeholder": "Ready to cut your admin time by 60%?",
-            "allowTargetBlank": false,
-            "single": "strong,heading2"
+            "single": "strong,heading2",
+            "allowTargetBlank": false
           }
         },
         "background_colour": {
@@ -26,16 +25,17 @@
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Cream",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "Cream"
+            ]
           }
         }
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "ReadyToGetStarted"
 }

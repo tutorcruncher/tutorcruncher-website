@@ -1,0 +1,68 @@
+{
+  "repositoryName": "tutor-cruncher",
+  "libraries": [
+    "./src/slices"
+  ],
+  "routes": [
+    {
+      "type": "community",
+      "path": "/community"
+    },
+    {
+      "type": "contact",
+      "path": "/contact"
+    },
+    {
+      "type": "ebook",
+      "path": "/ebook/:uid"
+    },
+    {
+      "type": "feature",
+      "path": "/feature/:uid"
+    },
+    {
+      "type": "features",
+      "path": "/features"
+    },
+    {
+      "type": "home_page",
+      "path": "/home-page"
+    },
+    {
+      "type": "integration",
+      "path": "/integration/:uid"
+    },
+    {
+      "type": "integrations",
+      "path": "/integrations"
+    },
+    {
+      "type": "page",
+      "path": "/:uid"
+    },
+    {
+      "type": "pricing",
+      "path": "/pricing/:uid"
+    },
+    {
+      "type": "releases",
+      "path": "/releases"
+    },
+    {
+      "type": "reviews",
+      "path": "/reviews"
+    },
+    {
+      "type": "solutions",
+      "path": "/solutions/:uid"
+    },
+    {
+      "type": "tutoring_calculator",
+      "path": "/tutoring-calculator"
+    },
+    {
+      "type": "us_landing",
+      "path": "/us-landing"
+    }
+  ]
+}

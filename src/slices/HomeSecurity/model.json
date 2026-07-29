@@ -2,31 +2,31 @@
   "id": "home_security",
   "type": "SharedSlice",
   "name": "HomeSecurity",
-  "description": "HomeSecurity",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "background_colour": {
           "type": "Select",
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Blue",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "Blue"
+            ]
           }
         }
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "HomeSecurity"
 }

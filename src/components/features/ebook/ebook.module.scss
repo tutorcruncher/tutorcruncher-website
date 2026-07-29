@@ -1,0 +1,44 @@
+.layout {
+  display: grid;
+  gap: grid(8);
+  align-items: start;
+
+  @include md-display {
+    grid-template-columns: 1fr 1fr;
+    gap: grid(12);
+  }
+}
+
+.content {
+  .image {
+    height: auto;
+    max-width: 100%;
+    margin-bottom: grid(6);
+    border-radius: $border-radius--small;
+  }
+}
+
+.description {
+  margin-top: grid(4);
+
+  p {
+    font-size: $font-size--large;
+    margin-bottom: grid(3);
+  }
+
+  ul,
+  ol {
+    font-size: $font-size--large;
+    margin: 0 0 grid(3);
+    padding-left: grid(4);
+  }
+
+  li {
+    margin-bottom: grid(2);
+  }
+}
+
+.aside {
+  position: sticky;
+  top: grid(6);
+}

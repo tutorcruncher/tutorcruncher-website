@@ -2,15 +2,14 @@
   "id": "articles",
   "type": "SharedSlice",
   "name": "Articles",
-  "description": "Articles",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "heading": {
           "type": "Text",
@@ -24,21 +23,21 @@
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Cream",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "Cream"
+            ]
           }
         },
         "show_all_button": {
           "type": "Boolean",
           "config": {
             "label": "Show all button",
-            "placeholder_false": "false",
+            "default_value": false,
             "placeholder_true": "true",
-            "default_value": false
+            "placeholder_false": "false"
           }
         },
         "articles": {
@@ -66,10 +65,10 @@
     {
       "id": "articlesByCategory",
       "name": "Articles - By Category",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "heading": {
           "type": "Text",
@@ -83,21 +82,21 @@
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "Cream",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "Cream"
+            ]
           }
         },
         "show_all_button": {
           "type": "Boolean",
           "config": {
             "label": "Show all button",
-            "placeholder_false": "false",
+            "default_value": false,
             "placeholder_true": "true",
-            "default_value": false
+            "placeholder_false": "false"
           }
         },
         "category": {
@@ -113,5 +112,6 @@
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "Articles"
 }

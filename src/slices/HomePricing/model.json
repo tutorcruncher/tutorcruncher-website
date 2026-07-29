@@ -2,27 +2,26 @@
   "id": "home_pricing",
   "type": "SharedSlice",
   "name": "HomePricing",
-  "description": "HomePricing",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "background_colour": {
           "type": "Select",
           "config": {
             "label": "Background colour",
             "placeholder": "",
+            "default_value": "White",
             "options": [
               "Cream",
               "Blue",
               "White"
-            ],
-            "default_value": "White"
+            ]
           }
         },
         "currency": {
@@ -30,15 +29,16 @@
           "config": {
             "label": "Currency",
             "placeholder": "",
+            "default_value": "GBP",
             "options": [
               "GBP",
               "USD"
-            ],
-            "default_value": "GBP"
+            ]
           }
         }
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "HomePricing"
 }

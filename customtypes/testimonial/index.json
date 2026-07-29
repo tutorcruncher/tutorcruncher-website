@@ -1,9 +1,7 @@
 {
-  "format": "custom",
   "id": "testimonial",
   "label": "Testimonial",
   "repeatable": true,
-  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -24,8 +22,8 @@
         "config": {
           "label": "Testimonial",
           "placeholder": "",
-          "allowTargetBlank": false,
-          "multi": "paragraph,strong"
+          "multi": "paragraph,strong",
+          "allowTargetBlank": false
         }
       },
       "company_logo": {
@@ -70,7 +68,11 @@
         "config": {
           "label": "Price plan",
           "placeholder": "",
-          "options": ["Pay as you go", "Startup", "Enterprise"]
+          "options": [
+            "Pay as you go",
+            "Startup",
+            "Enterprise"
+          ]
         }
       },
       "location": {
@@ -78,7 +80,11 @@
         "config": {
           "label": "Location",
           "placeholder": "",
-          "options": ["US", "UK", "ROW"]
+          "options": [
+            "US",
+            "UK",
+            "ROW"
+          ]
         }
       },
       "tag": {
@@ -96,5 +102,7 @@
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "custom"
 }

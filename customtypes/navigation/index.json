@@ -1,9 +1,7 @@
 {
   "id": "navigation",
   "label": "Navigation",
-  "format": "custom",
   "repeatable": false,
-  "status": true,
   "json": {
     "Main": {
       "homepageLabel": {
@@ -11,8 +9,8 @@
         "config": {
           "label": "Homepage Label",
           "placeholder": "Label for the homepage link",
-          "allowTargetBlank": false,
-          "single": "heading3"
+          "single": "heading3",
+          "allowTargetBlank": false
         }
       },
       "links": {
@@ -25,8 +23,8 @@
               "config": {
                 "label": "Label",
                 "placeholder": "Optional - Label for the link",
-                "allowTargetBlank": false,
-                "single": "heading3"
+                "single": "heading3",
+                "allowTargetBlank": false
               }
             },
             "link": {
@@ -41,5 +39,7 @@
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "custom"
 }

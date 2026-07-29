@@ -1,0 +1,164 @@
+{
+  "id": "community",
+  "label": "Community",
+  "repeatable": false,
+  "json": {
+    "Main": {
+      "hero_eyebrow": {
+        "type": "Text",
+        "config": {
+          "label": "Hero eyebrow",
+          "placeholder": "Community"
+        }
+      },
+      "hero_heading": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Hero heading",
+          "placeholder": "",
+          "multi": "heading1,strong",
+          "allowTargetBlank": true
+        }
+      },
+      "hero_subheading": {
+        "type": "Text",
+        "config": {
+          "label": "Hero subheading",
+          "placeholder": ""
+        }
+      },
+      "hero_button_text": {
+        "type": "Text",
+        "config": {
+          "label": "Hero button text",
+          "placeholder": "Join the community"
+        }
+      },
+      "hero_button_link": {
+        "type": "Link",
+        "config": {
+          "label": "Hero button link",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true
+        }
+      },
+      "intro_heading": {
+        "type": "Text",
+        "config": {
+          "label": "Intro heading",
+          "placeholder": ""
+        }
+      },
+      "intro_content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Intro content",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      },
+      "intro_image": {
+        "type": "Image",
+        "config": {
+          "label": "Intro image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "upcoming_events_title": {
+        "type": "Text",
+        "config": {
+          "label": "Upcoming events title",
+          "placeholder": "Upcoming Leaders in Tutoring events"
+        }
+      },
+      "previous_events_title": {
+        "type": "Text",
+        "config": {
+          "label": "Previous events title",
+          "placeholder": "Catch up on previous events"
+        }
+      },
+      "newsletter_eyebrow": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter eyebrow",
+          "placeholder": "Join the community"
+        }
+      },
+      "newsletter_heading": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter heading",
+          "placeholder": "Never miss an event"
+        }
+      },
+      "newsletter_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Newsletter description",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      },
+      "newsletter_button_text": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter button text",
+          "placeholder": "Subscribe"
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        }
+      },
+      "meta_image": {
+        "type": "Image",
+        "config": {
+          "label": "Meta Image",
+          "constraint": {
+            "width": 2400,
+            "height": 1260
+          },
+          "thumbnails": []
+        }
+      },
+      "schemas": {
+        "type": "Group",
+        "config": {
+          "label": "Schemas",
+          "repeat": true,
+          "fields": {
+            "schema": {
+              "type": "Link",
+              "config": {
+                "label": "Schema",
+                "select": "document",
+                "customtypes": [
+                  "schema"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "status": true,
+  "format": "page"
+}

@@ -2,23 +2,26 @@
   "id": "stats",
   "type": "SharedSlice",
   "name": "Stats",
-  "description": "Stats",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "background_colour": {
           "type": "Select",
           "config": {
             "label": "Background colour",
             "placeholder": "",
-            "options": ["Cream", "Blue", "White"],
-            "default_value": "Cream"
+            "default_value": "Cream",
+            "options": [
+              "Cream",
+              "Blue",
+              "White"
+            ]
           }
         },
         "heading": {
@@ -26,8 +29,8 @@
           "config": {
             "label": "Heading",
             "placeholder": "",
-            "allowTargetBlank": false,
-            "single": "heading2,strong"
+            "single": "heading2,strong",
+            "allowTargetBlank": false
           }
         },
         "stats": {
@@ -71,5 +74,6 @@
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "Stats"
 }

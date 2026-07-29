@@ -2,27 +2,27 @@
   "id": "markdown",
   "type": "SharedSlice",
   "name": "Markdown",
-  "description": "Markdown",
   "variations": [
     {
       "id": "default",
       "name": "Default",
+      "description": "Default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
       "docURL": "...",
       "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
       "primary": {
         "markdown": {
           "type": "StructuredText",
           "config": {
             "label": "Markdown",
             "placeholder": "",
-            "allowTargetBlank": false,
-            "multi": "preformatted"
+            "multi": "preformatted",
+            "allowTargetBlank": false
           }
         }
       },
       "items": {}
     }
-  ]
+  ],
+  "description": "Markdown"
 }

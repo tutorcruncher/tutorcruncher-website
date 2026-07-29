@@ -1,9 +1,7 @@
 {
-  "format": "custom",
   "id": "release",
   "label": "Release",
   "repeatable": true,
-  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -31,8 +29,8 @@
         "config": {
           "label": "Changes",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "strong,em,hyperlink,list-item"
+          "multi": "strong,em,hyperlink,list-item",
+          "allowTargetBlank": true
         }
       }
     },
@@ -70,10 +68,12 @@
         "config": {
           "label": "Description",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,em,hyperlink,list-item"
+          "multi": "paragraph,strong,em,hyperlink,list-item",
+          "allowTargetBlank": true
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "custom"
 }

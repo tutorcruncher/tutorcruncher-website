@@ -1,9 +1,7 @@
 {
-  "format": "page",
   "id": "tutoring_calculator",
   "label": "Tutoring Calculator",
   "repeatable": false,
-  "status": true,
   "json": {
     "Main": {
       "heading": {
@@ -11,8 +9,8 @@
         "config": {
           "label": "Heading",
           "placeholder": "",
-          "allowTargetBlank": false,
-          "single": "strong,heading1"
+          "single": "strong,heading1",
+          "allowTargetBlank": false
         }
       },
       "intro": {
@@ -20,8 +18,8 @@
         "config": {
           "label": "Intro",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,em"
+          "multi": "paragraph,strong,em",
+          "allowTargetBlank": true
         }
       },
       "content": {
@@ -29,8 +27,8 @@
         "config": {
           "label": "Content",
           "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+          "allowTargetBlank": true
         }
       },
       "slices": {
@@ -43,29 +41,29 @@
     },
     "SEO & Metadata": {
       "meta_title": {
+        "type": "Text",
         "config": {
           "label": "Meta Title",
           "placeholder": "A title of the page used for social media and search engines"
-        },
-        "type": "Text"
+        }
       },
       "meta_description": {
+        "type": "Text",
         "config": {
           "label": "Meta Description",
           "placeholder": "A brief summary of the page"
-        },
-        "type": "Text"
+        }
       },
       "meta_image": {
+        "type": "Image",
         "config": {
-          "constraint": {
-            "height": 1260,
-            "width": 2400
-          },
           "label": "Meta Image",
+          "constraint": {
+            "width": 2400,
+            "height": 1260
+          },
           "thumbnails": []
-        },
-        "type": "Image"
+        }
       },
       "schemas": {
         "type": "Group",
@@ -78,13 +76,17 @@
               "config": {
                 "label": "Schema",
                 "select": "document",
-                "repeat": false,
-                "customtypes": ["schema"]
+                "customtypes": [
+                  "schema"
+                ],
+                "repeat": false
               }
             }
           }
         }
       }
     }
-  }
+  },
+  "status": true,
+  "format": "page"
 }
