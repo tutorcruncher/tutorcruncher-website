@@ -2,6 +2,7 @@
 The following comment outlines the logic for setting the tracking parameters:
 If someone comes from direct first, we assign tc_source to Direct and then overwrite it if they come from somewhere else
 If utm_source is present, then the user must have come from an ad. tc_source is set to the utm_source and tc_campaign is set to utm_campaign. This is then never changed
+If there is no utm_source but the URL has a Google Ads click ID (gclid/gbraid/wbraid, e.g. Performance Max), the user also came from an ad: tc_source is set to google
 If utm_source is not present, we set tc_source from the referrer unless tc_source has already been set as a cookie and tc_source is not Direct. tc_campaign should be set to tc-[page-type]-[page-title-slugified] which is based off of the landing page
 */
 
@@ -138,6 +139,24 @@ const getTrackingParams = (): Record<string, string> => {
 
     params.tc_source = utmSource;
     if (utmCampaign) params.tc_campaign = utmCampaign;
+    return params;
+  }
+
+  // Google Ads auto-tagging (Performance Max in particular) lands with a
+  // gclid/gbraid/wbraid but no UTM parameters, so the referrer logic below
+  // would label the visit organic (google.com). A click ID in the URL means a
+  // paid Google click, so label it like a utm_source=google ad click.
+  const freshClickId =
+    (gclidParam && isGclsrcValid ? gclidParam : null) ||
+    urlParams.get("gbraid") ||
+    urlParams.get("wbraid");
+  if (freshClickId) {
+    const campaign = storedCampaign || getPageInfo();
+    localStorage.setItem("_tc_source", "google");
+    localStorage.setItem("_tc_campaign", campaign);
+
+    params.tc_source = "google";
+    params.tc_campaign = campaign;
     return params;
   }
 
