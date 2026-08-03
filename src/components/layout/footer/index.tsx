@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Action } from "@/components/ui/action";
+import { NEWSLETTER_SIGNUP_URL } from "@/components/features/newsletter-signup-popup/data";
 import LogoSvg from "@/svgs/logo";
 
 import { Accordion } from "./accordion";
@@ -44,6 +45,9 @@ export const Footer = async () => {
             <Accordion title="About us">
               <Link href="/about">About</Link>
               <Link href="/blog">Blog</Link>
+              <Link href={NEWSLETTER_SIGNUP_URL} target="_blank">
+                Newsletter
+              </Link>
               <Link href="/reviews">Reviews</Link>
               <Link href="/careers">Careers</Link>
               <Link href="/pricing">Pricing</Link>

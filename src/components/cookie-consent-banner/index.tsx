@@ -13,6 +13,10 @@ const REQUIRED_COOKIES = [
   "_gat_enquirytcs=",
   "cookieControlPrefs=",
   "cookieControl=",
+  // Dismissal flags for our own popups — functional, not tracking. Without
+  // these the popups reappear for anyone who declines analytics.
+  "bobbinSignupPopup=",
+  "newsletterSignupPopup=",
 ];
 
 const CookieConsentBanner = () => {
