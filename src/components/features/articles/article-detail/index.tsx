@@ -20,6 +20,16 @@ const addBlogUtm = (url: string) => {
   if (!url) return url;
   try {
     const parsed = new URL(url, "https://tutorcruncher.com");
+    // Only tag links leaving our sites. The tracking provider permanently
+    // stores any utm_source as the visitor's acquisition source, so tagging
+    // internal links overwrote their real channel with "tutorcruncherblog".
+    const hostname = parsed.hostname;
+    if (
+      hostname === "tutorcruncher.com" ||
+      hostname.endsWith(".tutorcruncher.com")
+    ) {
+      return url;
+    }
     parsed.searchParams.set("utm_source", "tutorcruncherblog");
     return parsed.toString();
   } catch {
@@ -57,9 +67,9 @@ const components = {
     if (text === "{{ blog_ctas() }}") {
       return (
         <div className={styles.buttonsContainer}>
-          <Action href="/book-a-call?utm_source=tutorcruncherblog">Book a call </Action>
+          <Action href="/book-a-call">Book a call </Action>
           <TrackingLink
-            url="https://app.tutorcruncher.com/start/1/?utm_source=tutorcruncherblog"
+            url="https://app.tutorcruncher.com/start/1/"
             text="Start a free trial"
           />
         </div>
