@@ -1,9 +1,12 @@
-/* 
-The following comment outlines the logic for setting the tracking parameters:
-If someone comes from direct first, we assign tc_source to Direct and then overwrite it if they come from somewhere else
-If utm_source is present, then the user must have come from an ad. tc_source is set to the utm_source and tc_campaign is set to utm_campaign. This is then never changed
-If there is no utm_source but the URL has a Google Ads click ID (gclid/gbraid/wbraid, e.g. Performance Max), the user also came from an ad: tc_source is set to google
-If utm_source is not present, we set tc_source from the referrer unless tc_source has already been set as a cookie and tc_source is not Direct. tc_campaign should be set to tc-[page-type]-[page-title-slugified] which is based off of the landing page
+/*
+Attribution model: last non-direct click, to match GA4's session attribution.
+Each arrival is classified and any NON-DIRECT arrival overwrites the stored source:
+- utm_source present: came from an ad; tc_source = utm_source, tc_campaign = utm_campaign.
+- No utm_source but a Google Ads click ID (gclid/gbraid/wbraid, e.g. Performance Max): also an ad; tc_source = google.
+- External referrer (own tutorcruncher.com domains excluded): tc_source = referrer domain,
+  tc_campaign = tc-[page-type]-[page-title-slugified] from the landing page.
+- Direct arrival (no params, no external referrer): NEVER overwrites — we keep the last known
+  source, or Direct if we never had one.
 */
 
 "use client";
@@ -43,6 +46,14 @@ const getReferrerDomain = () => {
     const referrer = document.referrer;
     if (referrer) {
       const { hostname } = new URL(referrer);
+      // Our own domains (app/secure/www) are internal navigation, not an
+      // acquisition source — treat them as direct so they never overwrite.
+      if (
+        hostname === "tutorcruncher.com" ||
+        hostname.endsWith(".tutorcruncher.com")
+      ) {
+        return null;
+      }
       const parts = hostname.split(".");
       return parts.length >= 2 ? parts.slice(-2).join(".") : hostname;
     }
@@ -160,11 +171,27 @@ const getTrackingParams = (): Record<string, string> => {
     return params;
   }
 
-  // Regional landing pages (e.g. /us) label their own traffic. This runs after
-  // the UTM branch above, so an ad click keeps its utm_source/utm_campaign and
-  // only direct/organic visitors get the page's own source and campaign.
+  // Last non-direct click: a new external referrer always overwrites the stored
+  // source (matching GA4), with the campaign refreshed to the new landing page.
+  const referrer = getReferrerDomain();
+  if (referrer) {
+    const campaign = getPageInfo();
+    localStorage.setItem("_tc_source", referrer);
+    localStorage.setItem("_tc_campaign", campaign);
+
+    params.tc_source = referrer;
+    params.tc_campaign = campaign;
+    return params;
+  }
+
+  // From here on the arrival is direct. Regional landing pages (e.g. /us) label
+  // otherwise-unattributed traffic with their own source/campaign; a known prior
+  // source is kept, since a direct arrival never overwrites (matching GA4).
   const regional = getRegionalLandingPage();
-  if (regional) {
+  if (
+    regional &&
+    (!storedSource || storedSource === "Direct" || storedSource === regional.source)
+  ) {
     localStorage.setItem("_tc_source", regional.source);
     localStorage.setItem("_tc_campaign", regional.campaign);
 
@@ -179,14 +206,6 @@ const getTrackingParams = (): Record<string, string> => {
   if (!source) {
     source = "Direct";
     localStorage.setItem("_tc_source", source);
-  }
-
-  if (source === "Direct") {
-    const referrer = getReferrerDomain();
-    if (referrer) {
-      source = referrer;
-      localStorage.setItem("_tc_source", source);
-    }
   }
 
   if (!campaign || source === "Direct") {
