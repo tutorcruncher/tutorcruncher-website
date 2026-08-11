@@ -4,14 +4,13 @@ import { useEffect, useState } from "react";
 import cookie from "js-cookie";
 
 import { CloseSvg } from "@/svgs/close";
+import { NewsletterForm } from "@/components/features/articles/newsletter/newsletter-form";
 
-import { NEWSLETTER_SIGNUP_URL } from "./data";
 import styles from "./newsletter-signup-popup.module.scss";
 
 const COOKIE_NAME = "newsletterSignupPopup";
 const COOKIE_VALUE = "dismissed";
-const SHOW_DELAY_MS = 15000;
-const CTA_URL = `${NEWSLETTER_SIGNUP_URL}?utm_source=tutorcruncher&utm_medium=popup&utm_campaign=blog-newsletter`;
+const SHOW_DELAY_MS = 10000;
 
 const benefits = [
   "Monthly updates on what's new in TutorCruncher",
@@ -33,25 +32,6 @@ const CheckIcon = () => (
       d="M8 12.5l2.8 2.8L16.5 9.5"
       stroke="#fff"
       strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const ArrowRightIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path
-      d="M4 10h12m0 0l-5-5m5 5l-5 5"
-      stroke="currentColor"
-      strokeWidth="1.7"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -90,10 +70,6 @@ export const NewsletterSignupPopup = () => {
     setIsOpen(false);
   };
 
-  const handleCtaClick = () => {
-    persistDismissal();
-  };
-
   if (!isOpen) return null;
 
   return (
@@ -128,20 +104,9 @@ export const NewsletterSignupPopup = () => {
               ))}
             </ul>
           </div>
-          <a
-            href={CTA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.cta}
-            onClick={handleCtaClick}
-          >
-            Sign up
-            <ArrowRightIcon />
-          </a>
-          <p className={styles.legalText}>
-            By signing up to our newsletter you consent to receive marketing
-            communications from TutorCruncher. You can unsubscribe at any time.
-          </p>
+          <div className={styles.form}>
+            <NewsletterForm onSuccess={persistDismissal} />
+          </div>
         </div>
       </div>
     </div>

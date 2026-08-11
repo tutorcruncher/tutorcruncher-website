@@ -92,42 +92,33 @@
   }
 }
 
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: grid(2);
-  width: 100%;
-  padding: 16px 24px;
-  background-color: $steel-blue;
-  color: $white;
-  border: none;
-  border-radius: 36px;
-  font-size: $font-size--base;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+.form {
+  button {
+    margin: 0;
+    text-align: center;
+    width: 100%;
 
-  &:hover {
-    color: $white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 0 0 rgba(54, 46, 131, 0.2);
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
-  svg {
-    width: 20px;
-    height: 20px;
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: grid(3) 0 0;
   }
-}
 
-.legalText {
-  margin: 0;
-  background-color: $white;
-  padding: grid(3);
-  border-radius: $border-radius--small;
-  font-size: $font-size--small;
-  line-height: 1.4;
+  p {
+    margin-top: grid(1);
+    font-size: $font-size--small;
+    line-height: 1.4;
+  }
+
+  label {
+    display: none;
+  }
 }
 
 .close {
