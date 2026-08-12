@@ -18,9 +18,12 @@ const Markdown = ({ slice, index, context }: MarkdownProps): JSX.Element => {
     ? slice.primary.markdown.map((block) => block.text).join("\n")
     : "";
   
-  // Only apply no-padding logic to privacy page
   const isPrivacyPage = (context as any)?.isPrivacyPage === true;
-  const spacing = isPrivacyPage && index > 0 ? "none" : "small";
+  // Inside a blog article the content should flow with the surrounding text,
+  // so drop the section padding.
+  const isArticle = (context as any)?.isArticle === true;
+  const spacing =
+    (isPrivacyPage && index > 0) || isArticle ? "none" : "small";
   
   return (
     <section>
