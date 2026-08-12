@@ -160,7 +160,11 @@ export const ArticleDetail = ({
           <div>
             <article className="main-content">
               <PrismicRichText field={content.body} components={components} />
-              <SliceZone slices={content.slices} components={sliceComponents} />
+              <SliceZone
+                slices={content.slices}
+                components={sliceComponents}
+                context={{ isArticle: true }}
+              />
             </article>
             <div className={styles.dateAndShareWraper}>
               <div className={styles.hideOnMobile}>{publishedDate}</div>

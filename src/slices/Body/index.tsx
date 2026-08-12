@@ -19,9 +19,15 @@ const BodyText = ({ slice, index, context }: BodyTextProps): JSX.Element => {
       | "blue"
       | "cream") || "white";
   
-  // Only apply no-padding logic to privacy page
   const isPrivacyPage = (context as any)?.isPrivacyPage === true;
-  const spacing = isPrivacyPage && index > 0 ? "none" : "small";
+  // Inside a blog article the text should flow with the surrounding content,
+  // so drop the section padding — unless the slice has a background colour,
+  // in which case it renders as a callout box and keeps its padding.
+  const isArticle = (context as any)?.isArticle === true;
+  const spacing =
+    (isPrivacyPage && index > 0) || (isArticle && backgroundColour === "white")
+      ? "none"
+      : "small";
   
   return (
     <Body containerSize="small" spacing={spacing} background={backgroundColour}>
