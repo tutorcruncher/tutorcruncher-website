@@ -1,0 +1,56 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: grid(6);
+
+  @include md-display {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg-display {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: grid(6);
+  padding: grid(8);
+  background-color: $white;
+  border: 1px solid $navy-blue-15;
+  border-radius: $border-radius--small;
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: grid(3);
+}
+
+.date {
+  margin: 0;
+  font-size: $font-size--small;
+  font-weight: 600;
+  color: $steel-blue;
+}
+
+.details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: grid(1);
+
+  li {
+    font-size: $font-size--base;
+    color: $navy-blue-75;
+  }
+}
+
+.cardAction {
+  display: flex;
+}

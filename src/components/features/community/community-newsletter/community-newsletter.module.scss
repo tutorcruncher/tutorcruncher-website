@@ -1,0 +1,32 @@
+.newsletter {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: grid(4);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: $font-size--base;
+  font-weight: 600;
+  color: $steel-blue;
+}
+
+.description {
+  color: $navy-blue-75;
+
+  p {
+    margin: 0;
+    font-size: $font-size--large;
+  }
+}
+
+.form {
+  width: 100%;
+  max-width: 440px;
+  margin-top: grid(2);
+  text-align: left;
+}
