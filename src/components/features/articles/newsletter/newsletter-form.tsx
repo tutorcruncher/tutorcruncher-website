@@ -10,9 +10,10 @@ const MAILCHIMP_POST_URL =
 
 interface NewsletterFormProps {
   onSuccess?: () => void;
+  buttonText?: string;
 }
 
-export const NewsletterForm = ({ onSuccess }: NewsletterFormProps) => {
+export const NewsletterForm = ({ onSuccess, buttonText }: NewsletterFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -90,7 +91,7 @@ export const NewsletterForm = ({ onSuccess }: NewsletterFormProps) => {
         ) : (
           <>
           <Action disableAnimation type="submit" disabled={isLoading} loading={isLoading}>
-            Subscribe
+            {buttonText || "Subscribe"}
           </Action>
            <p className={styles.legalText}>
           By signing up to our newsletter you consent to receive marketing communications from TutorCruncher.

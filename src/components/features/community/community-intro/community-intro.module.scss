@@ -1,0 +1,39 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: grid(10);
+  align-items: center;
+
+  @include lg-display {
+    flex-direction: row;
+    gap: grid(20);
+  }
+}
+
+.text {
+  flex: 1;
+}
+
+.content {
+  color: $navy-blue-75;
+
+  p {
+    margin: 0 0 grid(4);
+    font-size: $font-size--large;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.imageWrapper {
+  flex: 1;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius--small;
+  }
+}
