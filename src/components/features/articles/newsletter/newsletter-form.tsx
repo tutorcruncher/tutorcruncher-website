@@ -11,9 +11,10 @@ const MAILCHIMP_POST_URL =
 interface NewsletterFormProps {
   onSuccess?: () => void;
   buttonText?: string;
+  variant?: "stacked" | "inline";
 }
 
-export const NewsletterForm = ({ onSuccess, buttonText }: NewsletterFormProps) => {
+export const NewsletterForm = ({ onSuccess, buttonText, variant = "stacked" }: NewsletterFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -59,6 +60,53 @@ export const NewsletterForm = ({ onSuccess, buttonText }: NewsletterFormProps) =
     document.body.appendChild(script);
   };
 
+  if (variant === "inline") {
+    return (
+      <form onSubmit={handleSubmit} className={styles.inlineForm}>
+        <input type="hidden" name="tags" value="7236437" />
+        <input type="hidden" name="gdpr[71425]" value="Y" />
+        <div style={{ position: "absolute", left: "-5000px" }} aria-hidden="true">
+          <input
+            type="text"
+            name="b_ea12d2871ca6b988ff70c3dbe_492dd26d91"
+            tabIndex={-1}
+            defaultValue=""
+          />
+        </div>
+        {isSubmitted ? (
+          <div className={styles.inlineSuccess}>
+            <p className={styles.inlineSuccessTitle}>Thank you for subscribing!</p>
+            <p>
+              You can unsubscribe at any time by clicking the link in the footer
+              of our emails.
+            </p>
+          </div>
+        ) : (
+          <>
+            <div className={styles.inlineRow}>
+              <input
+                type="email"
+                name="EMAIL"
+                placeholder="Enter your email"
+                aria-label="Email"
+                required
+                disabled={isLoading}
+              />
+              <Action disableAnimation type="submit" disabled={isLoading} loading={isLoading}>
+                {buttonText || "Subscribe"}
+              </Action>
+            </div>
+            {errorMessage && <p className={styles.inlineError}>{errorMessage}</p>}
+            <p className={styles.inlineLegal}>
+              By signing up you consent to receive marketing communications from
+              TutorCruncher. You can unsubscribe at any time.
+            </p>
+          </>
+        )}
+      </form>
+    );
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <input type="hidden" name="tags" value="7236437" />
@@ -80,7 +128,7 @@ export const NewsletterForm = ({ onSuccess, buttonText }: NewsletterFormProps) =
       />
       <fieldset className={styles.gdpr}>
         <label className={styles.consent}>
-          <input type="checkbox" name="gdpr[71425]" value="Y" disabled={isLoading || isSubmitted} checked />
+          <input type="checkbox" name="gdpr[71425]" value="Y" disabled={isLoading || isSubmitted} defaultChecked />
           <span>Email marketing</span>
         </label>
         {isSubmitted ? (

@@ -42,7 +42,7 @@ export const CommunityNewsletter = ({
         ))}
       </ul>
       <div className={styles.form}>
-        <NewsletterForm buttonText={buttonText || undefined} />
+        <NewsletterForm variant="inline" buttonText={buttonText || undefined} />
       </div>
     </div>
   </Body>
