@@ -1,4 +1,4 @@
-import { ArticlePage } from "@/lib/prismic/format/article";
+import { ArticlePage, DEFAULT_AUTHOR } from "@/lib/prismic/format/article";
 
 export const generateArticleSchema = (article: ArticlePage) => {
   const { content } = article;
@@ -37,7 +37,8 @@ export const generateArticleSchema = (article: ArticlePage) => {
     name: content.title,
     thumbnailUrl: image.url,
     author: {
-      "@type": "Organization",
+      // Named authors are people; the fallback byline is the company itself.
+      "@type": content.author === DEFAULT_AUTHOR ? "Organization" : "Person",
       name: content.author,
     },
     creator: [content.author],

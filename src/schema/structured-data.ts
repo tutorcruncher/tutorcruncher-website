@@ -12,10 +12,9 @@ export const organizationSchema = {
   legalName: "TutorCruncher Limited",
   url: SITE_URL,
   logo: `${SITE_URL}/logo_full.png`,
-  email: "support@tutorcruncher.com",
   description:
-    "TutorCruncher is business-management software for tutoring, coaching and teaching agencies. It handles scheduling, invoicing, payments, CRM, contractor management and integrations.",
-  foundingDate: "2014",
+    "The most comprehensive software for tutoring companies. Trusted by the leading names in tutoring for more than 10 years to run their business and their lessons from one place.",
+  foundingDate: "2013",
   sameAs: [
     "https://www.linkedin.com/company/tutorcruncher/",
     "https://x.com/TutorCruncher",
@@ -23,13 +22,31 @@ export const organizationSchema = {
     "https://www.instagram.com/tutorcruncher/",
     "https://www.youtube.com/@tutorcruncher",
   ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer support",
-    email: "support@tutorcruncher.com",
-    url: `${SITE_URL}/contact`,
-    availableLanguage: ["English"],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "The Food Exchange, New Covent Garden Market",
+    addressLocality: "London",
+    postalCode: "SW8 5EL",
+    addressCountry: "GB",
   },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+44-20-4572-8106",
+      contactType: "customer support",
+      email: "info@tutorcruncher.com",
+      url: `${SITE_URL}/contact`,
+      areaServed: "GB",
+      availableLanguage: ["English"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+1-646-859-2047",
+      contactType: "sales",
+      areaServed: "US",
+      availableLanguage: ["English"],
+    },
+  ],
 };
 
 export const softwareApplicationSchema = {
@@ -42,14 +59,38 @@ export const softwareApplicationSchema = {
   applicationSubCategory: "Education Management",
   operatingSystem: "Web",
   description:
-    "All-in-one business management platform for tutoring agencies: scheduling, CRM, invoicing, payment processing, contractor management and a documented REST API.",
+    "Tutoring management software for scheduling, billing, payments, payroll and lesson delivery — all in one platform built specifically for tutoring companies.",
   publisher: { "@id": `${SITE_URL}/#organization` },
   offers: {
     "@type": "AggregateOffer",
     priceCurrency: "GBP",
-    lowPrice: "0",
+    lowPrice: "25",
+    highPrice: "200",
     offerCount: "3",
-    url: `${SITE_URL}/pricing`,
+    url: `${SITE_URL}/pricing/gb`,
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Pay as you go",
+        price: "25",
+        priceCurrency: "GBP",
+        url: `${SITE_URL}/pricing/gb`,
+      },
+      {
+        "@type": "Offer",
+        name: "Startup",
+        price: "60",
+        priceCurrency: "GBP",
+        url: `${SITE_URL}/pricing/gb`,
+      },
+      {
+        "@type": "Offer",
+        name: "Enterprise",
+        price: "200",
+        priceCurrency: "GBP",
+        url: `${SITE_URL}/pricing/gb`,
+      },
+    ],
   },
   featureList: [
     "Lesson scheduling and calendar management",
@@ -65,6 +106,33 @@ export const softwareApplicationSchema = {
     "Branded email and SMS communications",
   ],
 };
+
+interface FaqEntry {
+  question: string | null | undefined;
+  answer: string | null | undefined;
+}
+
+// Built from the page's actual FAQ content — emitted by the Faqs slice.
+export function buildFaqSchema(faqs: FaqEntry[]) {
+  const mainEntity = faqs
+    .filter((faq) => faq.question && faq.answer)
+    .map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    }));
+
+  if (!mainEntity.length) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity,
+  };
+}
 
 interface PricingTierData {
   name: string;
