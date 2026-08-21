@@ -45,6 +45,7 @@ export default async function CommunityPage() {
             title={data.upcoming_events_title || "Upcoming events"}
             events={upcomingEvents}
             upcoming
+            background="blue"
           />
         ) : null}
         {previousEvents.length ? (

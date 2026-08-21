@@ -36,6 +36,64 @@ $header-height: 75px;
     font-weight: 500;
     color: $navy-blue;
   }
+
+  .hasSubMenu {
+    position: relative;
+  }
+
+  .subMenu {
+    li {
+      list-style: none;
+    }
+  }
+
+  .subMenuLink {
+    display: block;
+    font-weight: 500;
+    color: $navy-blue;
+    text-decoration: none;
+
+    &:hover {
+      color: $navy-blue-75;
+    }
+  }
+
+  @include lg-max-display {
+    .subMenu {
+      display: flex;
+      flex-direction: column;
+      gap: grid(3);
+      padding: grid(3) 0 0;
+      margin: 0;
+    }
+
+    .subMenuLink {
+      font-size: $font-size--xxlarge;
+      font-family: $font-secondary;
+    }
+  }
+
+  @include lg-display {
+    .subMenu {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: grid(4);
+      min-width: 180px;
+      margin: 0;
+      padding: grid(2) 0;
+      background-color: $white;
+      border: 1px solid $navy-blue-15;
+      border-radius: $border-radius--small;
+      box-shadow: 0 12px 24px rgba(31, 55, 78, 0.12);
+      z-index: 10;
+    }
+
+    .subMenuLink {
+      padding: grid(3) grid(5);
+    }
+  }
 }
 
 .primaryNav {

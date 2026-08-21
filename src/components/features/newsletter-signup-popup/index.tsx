@@ -3,40 +3,16 @@
 import { useEffect, useState } from "react";
 import cookie from "js-cookie";
 
+import { CheckCircleSvg } from "@/svgs/check-circle";
 import { CloseSvg } from "@/svgs/close";
 import { NewsletterForm } from "@/components/features/articles/newsletter/newsletter-form";
 
+import { NEWSLETTER_BENEFITS } from "./data";
 import styles from "./newsletter-signup-popup.module.scss";
 
 const COOKIE_NAME = "newsletterSignupPopup";
 const COOKIE_VALUE = "dismissed";
 const SHOW_DELAY_MS = 10000;
-
-const benefits = [
-  "Monthly updates on what's new in TutorCruncher",
-  "Practical tips for running a tutoring business",
-  "Industry insights straight to your inbox",
-];
-
-const CheckIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <circle cx="12" cy="12" r="9.08" fill="currentColor" />
-    <path
-      d="M8 12.5l2.8 2.8L16.5 9.5"
-      stroke="#fff"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 export const NewsletterSignupPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -96,9 +72,9 @@ export const NewsletterSignupPopup = () => {
               Sign up to the TutorCruncher newsletter and get:
             </p>
             <ul className={styles.benefits}>
-              {benefits.map((benefit) => (
+              {NEWSLETTER_BENEFITS.map((benefit) => (
                 <li key={benefit}>
-                  <CheckIcon />
+                  <CheckCircleSvg />
                   <span>{benefit}</span>
                 </li>
               ))}
