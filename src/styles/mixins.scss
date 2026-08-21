@@ -82,13 +82,15 @@
 
   @if $center {
     margin: 0 auto;
-  }
-  else {
+  } @else {
     margin: 0;
   }
 
-  @include xl-display {
-    padding: 0;
+  // Mid-size laptop screens (1200px+) keep generous side padding; the
+  // max-width allows for it so content stays at $containerWidth on large screens.
+  @media screen and (min-width: 1200px) {
+    padding: 0 grid(10);
+    max-width: calc(#{$containerWidth} + #{grid(20)});
   }
 }
 
