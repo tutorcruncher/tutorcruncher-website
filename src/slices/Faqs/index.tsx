@@ -1,9 +1,11 @@
-import { Content } from "@prismicio/client";
+import { asText, Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import type { JSX } from "react";
 
+import { RenderSchemas } from "@/components/schema";
 import { FaqsList } from "@/components/features/faqs/faqs-list";
 import { backgroundColor } from "@/helpers/backgroundColor";
+import { buildFaqSchema } from "@/schema/structured-data";
 
 /**
  * Props for `Faqs`.
@@ -23,12 +25,19 @@ const Faqs = async ({ slice }: FaqsProps): Promise<JSX.Element> => {
       answer: <PrismicRichText field={faq.answer} />,
     };
   });
+  const faqSchema = buildFaqSchema(
+    faqs.map((faq) => ({
+      question: faq.question,
+      answer: asText(faq.answer),
+    }))
+  );
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
+      {faqSchema ? <RenderSchemas schemas={[faqSchema]} /> : null}
       <FaqsList faqs={formattedFaqs} background={background} title={title} />
     </section>
   );

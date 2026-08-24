@@ -5,6 +5,7 @@ import { Action } from "@/components/ui/action";
 import { Body } from "@/components/ui/body";
 import { Heading } from "@/components/ui/heading";
 import { Tag } from "@/components/ui/tag";
+import { BackgroundColour } from "@/types/backgroundColor";
 
 import styles from "./events-section.module.scss";
 
@@ -12,6 +13,7 @@ interface EventsSectionProps {
   title: string;
   events: EventDocument[];
   upcoming?: boolean;
+  background?: BackgroundColour;
 }
 
 const formatEventDate = (isoDate: string) =>
@@ -26,8 +28,9 @@ export const EventsSection = ({
   title,
   events,
   upcoming = false,
+  background,
 }: EventsSectionProps) => (
-  <Body containerSize="large" spacing="medium">
+  <Body containerSize="large" spacing="medium" background={background}>
     <Heading variant="h2" size="large" center>
       {title}
     </Heading>

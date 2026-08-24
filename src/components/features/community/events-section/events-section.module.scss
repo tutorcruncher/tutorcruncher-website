@@ -9,6 +9,11 @@
 
   @include lg-display {
     grid-template-columns: repeat(3, 1fr);
+
+    // A lone card on the last row (e.g. the 4th of 4 events) sits in the middle column
+    > :nth-child(3n + 1):last-child {
+      grid-column: 2;
+    }
   }
 }
 

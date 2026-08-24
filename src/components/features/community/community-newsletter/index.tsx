@@ -2,8 +2,10 @@ import { isFilled, KeyTextField, RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 
 import { NewsletterForm } from "@/components/features/articles/newsletter/newsletter-form";
+import { NEWSLETTER_BENEFITS } from "@/components/features/newsletter-signup-popup/data";
 import { Body } from "@/components/ui/body";
 import { Heading } from "@/components/ui/heading";
+import { CheckCircleSvg } from "@/svgs/check-circle";
 
 import styles from "./community-newsletter.module.scss";
 
@@ -31,8 +33,16 @@ export const CommunityNewsletter = ({
           <PrismicRichText field={description} />
         </div>
       ) : null}
+      <ul className={styles.benefits}>
+        {NEWSLETTER_BENEFITS.map((benefit) => (
+          <li key={benefit}>
+            <CheckCircleSvg />
+            <span>{benefit}</span>
+          </li>
+        ))}
+      </ul>
       <div className={styles.form}>
-        <NewsletterForm buttonText={buttonText || undefined} />
+        <NewsletterForm variant="inline" buttonText={buttonText || undefined} />
       </div>
     </div>
   </Body>

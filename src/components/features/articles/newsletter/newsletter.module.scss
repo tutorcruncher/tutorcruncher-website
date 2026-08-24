@@ -1,3 +1,75 @@
+/* Inline variant — self-contained, no `.newsletter` wrapper required */
+.inlineForm {
+  width: 100%;
+
+  .inlineRow {
+    display: flex;
+    gap: grid(3);
+
+    input {
+      flex: 1 1 auto;
+      min-width: 0;
+      background-color: $white;
+      border: 1px solid $navy-blue-15;
+    }
+
+    button {
+      flex-shrink: 0;
+      margin: 0;
+      min-width: 140px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        display: block;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    @include sm-max-display {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  .inlineLegal {
+    margin: 0;
+    font-size: $font-size--small;
+    color: $navy-blue-50;
+    text-align: center;
+  }
+
+  .inlineError {
+    margin: 0;
+    text-align: center;
+    font-size: $font-size--small;
+    font-weight: 600;
+    color: #c0392b;
+  }
+
+  .inlineSuccess {
+    text-align: center;
+
+    p {
+      margin: 0;
+      font-size: $font-size--base;
+      color: $navy-blue-75;
+    }
+
+    .inlineSuccessTitle {
+      margin-bottom: grid(1);
+      font-size: $font-size--xlarge;
+      font-weight: 700;
+      color: $navy-blue;
+    }
+  }
+}
+
 .newsletter {
   background-color: $baby-blue;
   border-radius: 30px;

@@ -23,7 +23,7 @@ export const CommunityIntro = ({
   }
 
   return (
-    <Body containerSize="large" spacing="medium">
+    <Body containerSize="large" spacing="medium" background="cream">
       <div className={styles.intro}>
         <div className={styles.text}>
           {heading ? (

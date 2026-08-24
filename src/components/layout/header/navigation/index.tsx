@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { usePathname } from "next/dist/client/components/navigation";
 import Link from "next/dist/client/link";
 import type { Dispatch, MouseEvent, SetStateAction } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Action } from "@/components/ui/action";
 
@@ -13,7 +13,14 @@ import { SolutionsMenu } from "./solutions-menu";
 import { ChevronDown } from "@/svgs/chevron-down";
 import TrackingLink from "@/components/ui/tracking-link/tracking-link";
 
-const NavigationItems = [
+interface NavigationItem {
+  title: string;
+  link: string;
+  mobileOnly?: boolean;
+  children?: { title: string; link: string }[];
+}
+
+const NavigationItems: NavigationItem[] = [
   {
     title: "Home",
     link: "/",
@@ -38,6 +45,10 @@ const NavigationItems = [
   {
     title: "Knowledge Hub",
     link: "/blog",
+    children: [
+      { title: "Blog", link: "/blog" },
+      { title: "Community", link: "/community" },
+    ],
   },
 ];
 
@@ -52,11 +63,34 @@ export const Navigation = ({
 }: NavigationProps) => {
   const pathname = usePathname();
   const [solutionsVisbile, setSolutionsVisible] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+  const subMenuRef = useRef<HTMLLIElement>(null);
 
   const handleToggleSolutionsMenu = (event) => {
     event.stopPropagation();
     setSolutionsVisible((prev) => !prev);
   };
+
+  const handleToggleSubMenu = (event: MouseEvent, title: string) => {
+    event.stopPropagation();
+    setOpenSubMenu((prev) => (prev === title ? null : title));
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: globalThis.MouseEvent) => {
+      if (
+        subMenuRef.current &&
+        !subMenuRef.current.contains(event.target as Node)
+      ) {
+        setOpenSubMenu(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleLinkClick = (event: MouseEvent<HTMLAnchorElement>) => {
     const linkHrefPathname = new URL(event.currentTarget.href).pathname;
@@ -69,6 +103,7 @@ export const Navigation = ({
   useEffect(() => {
     setNavigationOpen(false);
     setSolutionsVisible(false);
+    setOpenSubMenu(null);
     document.body.className = "";
   }, [pathname, setNavigationOpen]);
 
@@ -79,8 +114,10 @@ export const Navigation = ({
           return (
             <li
               key={item.title}
+              ref={item.children ? subMenuRef : undefined}
               className={clsx(styles.hasChildren, {
                 [styles.mobileOnly]: item.mobileOnly,
+                [styles.hasSubMenu]: item.children,
               })}
             >
               {item.title === "Solutions" ? (
@@ -100,6 +137,35 @@ export const Navigation = ({
                     solutionsVisbile={solutionsVisbile}
                     setSolutionsVisible={setSolutionsVisible}
                   />
+                </>
+              ) : item.children ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={(e) => handleToggleSubMenu(e, item.title)}
+                    className={clsx(
+                      styles.navigationLink,
+                      openSubMenu === item.title && styles.solutionsVisible
+                    )}
+                  >
+                    <span>{item.title}</span>
+                    <ChevronDown />
+                  </button>
+                  {openSubMenu === item.title ? (
+                    <ul className={styles.subMenu}>
+                      {item.children.map((child) => (
+                        <li key={child.title}>
+                          <Link
+                            href={child.link}
+                            className={styles.subMenuLink}
+                            onClick={(e) => handleLinkClick(e)}
+                          >
+                            {child.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </>
               ) : (
                 <Link
