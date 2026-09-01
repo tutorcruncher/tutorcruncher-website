@@ -42,7 +42,7 @@ export const Form = () => {
       client_phone: formData.client_phone,
       grecaptcha_response: recaptchaValue,
       attributes: {
-        'company_name"': formData["attributes-company_name"],
+        company_name: formData["attributes-company_name"],
         who_are_you_trying_to_reach:
           formData["attributes-who_are_you_trying_to_reach"],
         sign_up: formData["attributes-sign_up"],
