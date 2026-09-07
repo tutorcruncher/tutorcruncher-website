@@ -1,6 +1,5 @@
 import "../../styles/globals.scss";
 
-import { TrackingProvider } from "app/providers/tracking-provider";
 import { Inter } from "next/font/google";
 
 export const metadata = {
@@ -21,9 +20,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/mnd5til.css" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <TrackingProvider>
-        <body>{children}</body>
-      </TrackingProvider>
+      <body>{children}</body>
     </html>
   );
 }
