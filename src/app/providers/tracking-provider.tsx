@@ -104,13 +104,11 @@ const storeGclid = (value: string): {gclid: string, expiryDate: string} => {
     return record;
 };
 
-// utm_medium, utm_term and utm_content, which the Google Ads offline conversion import needs
-// alongside the click id. Stored like the source and campaign so they survive the visitor reading a
-// few pages before they reach the signup form, and forwarded with the tc_ prefix the app expects.
+// utm_medium, which is what tells paid Google and ChatGPT traffic apart from organic in our
+// reporting. Stored like the source and campaign so it survives the visitor reading a few pages
+// before they reach the signup form, and forwarded with the tc_ prefix the app expects.
 const CAMPAIGN_DETAIL_PARAMS = [
   { urlKey: "utm_medium", storageKey: "_tc_medium", paramKey: "tc_medium" },
-  { urlKey: "utm_term", storageKey: "_tc_term", paramKey: "tc_term" },
-  { urlKey: "utm_content", storageKey: "_tc_content", paramKey: "tc_content" },
 ];
 
 const getTrackingParams = (): Record<string, string> => {
