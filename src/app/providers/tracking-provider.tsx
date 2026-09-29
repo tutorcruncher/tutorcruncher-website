@@ -1,12 +1,16 @@
 /*
 Attribution model: last non-direct click, to match GA4's session attribution.
 Each arrival is classified and any NON-DIRECT arrival overwrites the stored source:
-- utm_source present: came from an ad; tc_source = utm_source, tc_campaign = utm_campaign.
-- No utm_source but a Google Ads click ID (gclid/gbraid/wbraid, e.g. Performance Max): also an ad; tc_source = google.
+- utm_source present: came from an ad; tc_source = utm_source, tc_campaign = utm_campaign,
+  tc_medium = utm_medium.
+- No utm_source but a Google Ads click ID (gclid/gbraid/wbraid, e.g. Performance Max): also an ad;
+  tc_source = google, tc_medium = cpc.
 - External referrer (own tutorcruncher.com domains excluded): tc_source = referrer domain,
-  tc_campaign = tc-[page-type]-[page-title-slugified] from the landing page.
+  tc_campaign = tc-[page-type]-[page-title-slugified] from the landing page, no tc_medium.
 - Direct arrival (no params, no external referrer): NEVER overwrites — we keep the last known
   source, or Direct if we never had one.
+Source, campaign and medium describe one touch, so they are always written together: a new touch
+without a medium clears the stored one rather than inheriting the previous touch's.
 */
 
 "use client";
@@ -104,6 +108,22 @@ const storeGclid = (value: string): {gclid: string, expiryDate: string} => {
     return record;
 };
 
+const setAttribution = (
+  params: Record<string, string>,
+  source: string,
+  campaign: string,
+  medium: string | null
+) => {
+  localStorage.setItem("_tc_source", source);
+  localStorage.setItem("_tc_campaign", campaign);
+  if (medium) localStorage.setItem("_tc_medium", medium);
+  else localStorage.removeItem("_tc_medium");
+
+  params.tc_source = source;
+  params.tc_campaign = campaign;
+  if (medium) params.tc_medium = medium;
+};
+
 const getTrackingParams = (): Record<string, string> => {
   const params: Record<string, string> = {};
   if (typeof window === "undefined") return params;
@@ -111,6 +131,7 @@ const getTrackingParams = (): Record<string, string> => {
   const urlParams = new URLSearchParams(window.location.search);
   const storedSource = localStorage.getItem("_tc_source") || null;
   const storedCampaign = localStorage.getItem("_tc_campaign") || null;
+  const storedMedium = localStorage.getItem("_tc_medium") || null;
 
   // Capture and persist Google Click ID (GCLID) with 90-day expiry
   // Google documentation suggests validating gclsrc contains "aw" (e.g. aw.ds)
@@ -143,13 +164,17 @@ const getTrackingParams = (): Record<string, string> => {
   const hasUTM = urlParams.has("utm_source");
   const utmSource = urlParams.get("utm_source");
   const utmCampaign = urlParams.get("utm_campaign");
+  const utmMedium = urlParams.get("utm_medium");
 
   if (hasUTM && utmSource) {
     localStorage.setItem("_tc_source", utmSource);
     if (utmCampaign) localStorage.setItem("_tc_campaign", utmCampaign);
+    if (utmMedium) localStorage.setItem("_tc_medium", utmMedium);
+    else localStorage.removeItem("_tc_medium");
 
     params.tc_source = utmSource;
     if (utmCampaign) params.tc_campaign = utmCampaign;
+    if (utmMedium) params.tc_medium = utmMedium;
     return params;
   }
 
@@ -162,12 +187,7 @@ const getTrackingParams = (): Record<string, string> => {
     urlParams.get("gbraid") ||
     urlParams.get("wbraid");
   if (freshClickId) {
-    const campaign = storedCampaign || getPageInfo();
-    localStorage.setItem("_tc_source", "google");
-    localStorage.setItem("_tc_campaign", campaign);
-
-    params.tc_source = "google";
-    params.tc_campaign = campaign;
+    setAttribution(params, "google", storedCampaign || getPageInfo(), "cpc");
     return params;
   }
 
@@ -175,12 +195,7 @@ const getTrackingParams = (): Record<string, string> => {
   // source (matching GA4), with the campaign refreshed to the new landing page.
   const referrer = getReferrerDomain();
   if (referrer) {
-    const campaign = getPageInfo();
-    localStorage.setItem("_tc_source", referrer);
-    localStorage.setItem("_tc_campaign", campaign);
-
-    params.tc_source = referrer;
-    params.tc_campaign = campaign;
+    setAttribution(params, referrer, getPageInfo(), null);
     return params;
   }
 
@@ -192,11 +207,7 @@ const getTrackingParams = (): Record<string, string> => {
     regional &&
     (!storedSource || storedSource === "Direct" || storedSource === regional.source)
   ) {
-    localStorage.setItem("_tc_source", regional.source);
-    localStorage.setItem("_tc_campaign", regional.campaign);
-
-    params.tc_source = regional.source;
-    params.tc_campaign = regional.campaign;
+    setAttribution(params, regional.source, regional.campaign, null);
     return params;
   }
 
@@ -215,6 +226,8 @@ const getTrackingParams = (): Record<string, string> => {
 
   params.tc_source = source;
   params.tc_campaign = campaign;
+  // The stored source is carried forward, so the medium from the same touch goes with it.
+  if (storedMedium) params.tc_medium = storedMedium;
 
   return params;
 };
