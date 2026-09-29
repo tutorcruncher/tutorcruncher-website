@@ -52,6 +52,7 @@ export default async function CommunityPage() {
           <EventsSection
             title={data.previous_events_title || "Catch up on previous events"}
             events={previousEvents}
+            background="cream"
           />
         ) : null}
         <CommunityNewsletter

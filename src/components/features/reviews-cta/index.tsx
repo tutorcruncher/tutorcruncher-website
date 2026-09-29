@@ -9,7 +9,7 @@ export const ReviewsCta = () => (
   <Body
     containerSize="medium"
     spacing="small"
-    background="cream"
+    background="blue"
     heading={
       <Heading variant="h2" center>
         Ready to see why 1,800+ tutoring companies chose TutorCruncher?

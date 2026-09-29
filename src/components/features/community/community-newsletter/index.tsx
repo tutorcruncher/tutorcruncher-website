@@ -22,7 +22,7 @@ export const CommunityNewsletter = ({
   description,
   buttonText,
 }: CommunityNewsletterProps) => (
-  <Body containerSize="large" spacing="medium" background="cream">
+  <Body containerSize="large" spacing="medium" background="blue">
     <div className={styles.newsletter}>
       {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
       <Heading variant="h2" size="large" center noMargin>
