@@ -6,6 +6,7 @@ import { TrackingProvider } from "../../providers/tracking-provider";
 import IntercomClientComponent from "@/components/intercom/intercom";
 import CookieConsentBanner from "@/components/cookie-consent-banner";
 import ChatGptPixel from "@/components/chatgpt-pixel";
+import DiginiusAnalytics from "@/components/diginius-analytics";
 import Image from "next/image";
 import Script from "next/script";
 
@@ -16,6 +17,7 @@ export default async function LandingLayout({ children }) {
     <html lang="en" className={inter.className}>
       <head>
         <ChatGptPixel />
+        <DiginiusAnalytics />
         <link rel="stylesheet" href="https://use.typekit.net/mnd5til.css" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
