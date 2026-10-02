@@ -215,7 +215,7 @@ export const CallBooker = ({ rep, rb }) => {
 
       const data = await response.json();
 
-      if (data.status === "error") {
+      if (!response.ok || data.status === "error") {
         setErrorMessage("Sorry something went wrong, please try again");
       } else {
         localStorage.setItem("call_data", JSON.stringify(hermesData));
