@@ -12,7 +12,7 @@ import { RenderSchemas } from "@/components/schema";
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const { data } = await fetchCommunityPage();
-    const url = "https://tutorcruncher.com/community";
+    const url = "https://tutorcruncher.com/events";
 
     return formatMetaData(data.meta_title, data.meta_description, url);
   } catch {

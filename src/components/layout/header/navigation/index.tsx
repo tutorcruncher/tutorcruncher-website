@@ -47,7 +47,7 @@ const NavigationItems: NavigationItem[] = [
     link: "/blog",
     children: [
       { title: "Blog", link: "/blog" },
-      { title: "Community", link: "/community" },
+      { title: "Events", link: "/events" },
     ],
   },
 ];

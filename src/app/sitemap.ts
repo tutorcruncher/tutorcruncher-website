@@ -79,7 +79,7 @@ export default async function sitemap() {
     ? formatEntries(usLanding, () => "us")
     : [];
   const communityEntries = community
-    ? formatEntries(community, () => "community")
+    ? formatEntries(community, () => "events")
     : [];
   const contactEntries = formatEntries(contact, () => "contact");
   const reviewEntries = formatEntries(reviews, () => "reviews");

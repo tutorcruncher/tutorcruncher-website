@@ -1,5 +1,11 @@
 const miscellaneousRedirects = [
   {
+    source: "/community",
+    destination: "/events",
+    permanent: true,
+    statusCode: 301,
+  },
+  {
     source: "/us/features/tutorcruncher-socket",
     destination: "/features/customization",
     permanent: true,
