@@ -28,14 +28,14 @@ export default async function FeaturesPage() {
         intro={subheading}
         actions={
           <>
+            <Action href="/book-a-call" variant="outline">
+              Book a product demo
+            </Action>
             <TrackingLink
               url="https://app.tutorcruncher.com/start/1/"
               text="Start a free trial"
               variant="solid"
             />
-            <Action href="/book-a-call" variant="outline">
-              Book a call
-            </Action>
           </>
         }
       />
