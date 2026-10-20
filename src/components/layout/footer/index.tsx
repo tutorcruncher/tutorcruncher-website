@@ -57,7 +57,7 @@ export const Footer = async () => {
               <Link href="/contact">Contact</Link>
               <Link href="/changes">Change log</Link>
               <Link href="https://help.tutorcruncher.com/en/" target="_blank">
-                Help centre
+                Help center
               </Link>
             </Accordion>
           </div>
