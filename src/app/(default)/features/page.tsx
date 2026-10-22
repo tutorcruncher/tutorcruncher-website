@@ -1,8 +1,7 @@
 import { Metadata } from "next/types";
 
-import { Action } from "@/components/ui/action";
 import { Hero } from "@/components/ui/hero";
-import TrackingLink from "@/components/ui/tracking-link/tracking-link";
+import { HeroActions } from "@/components/features/hero/hero-actions";
 import { formatMetaData } from "@/helpers/metaData";
 import { CallToAction } from "@/components/features/call-to-action";
 import { fetchFeaturesLandingPage } from "@/lib/prismic/features";
@@ -26,18 +25,7 @@ export default async function FeaturesPage() {
         heading={heading}
         headingVariant="h1"
         intro={subheading}
-        actions={
-          <>
-            <Action href="/book-a-call" variant="outline">
-              Book a product demo
-            </Action>
-            <TrackingLink
-              url="https://app.tutorcruncher.com/start/1/"
-              text="Start a free trial"
-              variant="solid"
-            />
-          </>
-        }
+        actions={<HeroActions />}
       />
       <FeaturesList features={features} />
       <CallToAction background="blue" />

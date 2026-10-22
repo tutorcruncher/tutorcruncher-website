@@ -33,7 +33,13 @@ const FeaturePage = async ({ params }) => {
   try {
     const client = createClient();
     const content = await client.getByUID("feature", params.uid);
-    return <SliceZone slices={content.data.slices} components={components} />;
+    return (
+      <SliceZone
+        slices={content.data.slices}
+        components={components}
+        context={{ showHeroActions: true }}
+      />
+    );
   } catch {
     return notFound();
   }
