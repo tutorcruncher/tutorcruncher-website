@@ -4,8 +4,15 @@ import { useState } from "react";
 import styles from "./player.module.scss";
 import { PrismicImage } from "@prismicio/react";
 
+// Matches watch, youtu.be, embed and shorts links, so pasted iframe embed code works too
+const getYoutubeId = (videoUrl: string) =>
+  videoUrl?.match(
+    /(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/,
+  )?.[1];
+
 export const VideoPlayer = ({ videoUrl, placeholderImage }) => {
   const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const youtubeId = getYoutubeId(videoUrl);
 
   const showVideo = () => {
     setIsVideoVisible(true);
@@ -46,6 +53,14 @@ export const VideoPlayer = ({ videoUrl, placeholderImage }) => {
             </svg>
           </button>
         </>
+      ) : youtubeId ? (
+        <iframe
+          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
       ) : (
         <video src={videoUrl} autoPlay controls />
       )}
