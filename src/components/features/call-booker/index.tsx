@@ -198,6 +198,8 @@ export const CallBooker = ({ rep, rb }) => {
     const hermesData = callType === 'support' ? {
       ...baseHermesData,
       company_id: searchParams.get("company_id"),
+      e: Number(searchParams.get("e")),
+      s: searchParams.get("s"),
     } : baseHermesData;
 
     try {
