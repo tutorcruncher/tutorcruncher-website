@@ -31,7 +31,7 @@ const isTrackedHref = (href: string) => {
 };
 
 /**
- * Appends the current tracking params (tc_source / tc_campaign / gclid) to an
+ * Appends the current tracking params (tc_source / tc_campaign / gclid / msclkid) to an
  * internal href, but only on the pages listed above.
  *
  * `TrackingLink` already does this for the external signup links. This hook

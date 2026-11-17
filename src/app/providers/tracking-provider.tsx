@@ -108,6 +108,36 @@ const storeGclid = (value: string): {gclid: string, expiryDate: string} => {
     return record;
 };
 
+// Microsoft Click ID (MSCLKID), kept for the 90 days Microsoft suggests. The signup
+// page sends it on to Microsoft Ads with the signup, so the ad click is credited.
+// A newer click always replaces the stored one.
+const MSCLKID_KEY = "_tc_msclkid";
+const MSCLKID_EXPIRY_MS = 90 * 24 * 60 * 60 * 1000;
+
+const getMsclkid = (urlParams: URLSearchParams): string | null => {
+  const fresh = urlParams.get("msclkid");
+  if (fresh) {
+    const expiryDate = new Date(Date.now() + MSCLKID_EXPIRY_MS).toISOString();
+    localStorage.setItem(
+      MSCLKID_KEY,
+      JSON.stringify({ msclkid: fresh, expiryDate }),
+    );
+    return fresh;
+  }
+  try {
+    const raw = localStorage.getItem(MSCLKID_KEY);
+    if (raw) {
+      const record = JSON.parse(raw) as { msclkid: string; expiryDate: string };
+      if (Date.now() < new Date(record.expiryDate).getTime()) {
+        return record.msclkid;
+      }
+    }
+  } catch {
+    // ignore parse/storage errors
+  }
+  return null;
+};
+
 const setAttribution = (
   params: Record<string, string>,
   source: string,
@@ -160,6 +190,9 @@ const getTrackingParams = (): Record<string, string> => {
         // ignore parse/storage errors
       }
   }
+
+  const msclkid = getMsclkid(urlParams);
+  if (msclkid) params.msclkid = msclkid;
 
   const hasUTM = urlParams.has("utm_source");
   const utmSource = urlParams.get("utm_source");
