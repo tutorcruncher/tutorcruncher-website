@@ -14,10 +14,17 @@
 
   .logo {
     img {
-      max-height: 60px;
+      // Wide logos are limited by max-width, square/stacked ones by
+      // max-height, so both end up with a similar visual weight.
+      max-width: min(100%, 380px);
+      max-height: 72px;
       width: auto;
-      object-position: center;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
+
+      @include md-display {
+        max-height: 90px;
+      }
     }
   }
 
